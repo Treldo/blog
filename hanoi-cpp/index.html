@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Hanoi 塔问题在 C++ 中的递归实现 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="Hanoi 塔问题想必是很多同学在大一都会接触到的，它是一个很经典的算法问题，这里主要阐释 Hanoi 问题在 C++ 中的递归实现。">
+<meta name="keywords" content="算法,C++,Hanoi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hanoi 塔问题在 C++ 中的递归实现">
+<meta property="og:url" content="http://vubee.github.io/hanoi-cpp/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="Hanoi 塔问题想必是很多同学在大一都会接触到的，它是一个很经典的算法问题，这里主要阐释 Hanoi 问题在 C++ 中的递归实现。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-26T16:50:00.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hanoi 塔问题在 C++ 中的递归实现">
+<meta name="twitter:description" content="Hanoi 塔问题想必是很多同学在大一都会接触到的，它是一个很经典的算法问题，这里主要阐释 Hanoi 问题在 C++ 中的递归实现。">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Hanoi 塔问题在 C++ 中的递归实现" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-31T16:14:33.000Z">2019-01-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/C/">C++</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/C/算法/">算法</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1174 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Hanoi 塔问题在 C++ 中的递归实现
+            
+        </h1>
+        <div class="content">
+            <p>Hanoi 塔问题想必是很多同学在大一都会接触到的，它是一个很经典的算法问题，这里主要阐释 Hanoi 问题在 C++ 中的递归实现。<a id="more"></a>当然你也可以查阅一些其他资料来理解它的非递归实现过程，这里就不再叙述了。有兴趣的同学可以参考：<a href="https://blog.csdn.net/silence_rui/article/details/19141519" target="_blank" rel="noopener">迭代式汉诺塔(利用栈实现非递归)</a> &emsp; <a href="https://blog.csdn.net/computerme/article/details/18080511" target="_blank" rel="noopener">汉诺塔问题的递归和非递归算法</a></p>
+<ul>
+<li>本文意旨解决“为何圆盘的移动的位置不对？”的问题，用两组代码来分析圆盘的移动位置。</li>
+</ul>
+<blockquote>
+<p><strong><em>PS:</em></strong> 当然，如果想更好地理解这篇博客，就需要你在阅读之前对 Hanoi 塔问题有一个清晰的了解。如果你还不知道什么是 Hanoi 塔问题，请移步 <a href="https://baike.baidu.com/item/汉诺塔问题" target="_blank" rel="noopener">百度百科</a>。</p>
+</blockquote>
+<hr>
+<h2 id="开始分析"><a href="#开始分析" class="headerlink" title="开始分析"></a>开始分析</h2><h3 id="1-先来看一组示例代码"><a href="#1-先来看一组示例代码" class="headerlink" title="1. 先来看一组示例代码"></a>1. 先来看一组示例代码</h3><p>在此代码块中，<strong><em>n</em></strong> 代表圆盘的个数，需要通过键盘输入。开始时圆盘都位于 <strong><em>a</em></strong> 柱，期间借助 <strong><em>b</em></strong> 柱将圆盘全部移到 <strong><em>c</em></strong> 柱</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">hanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">char</span> a, <span class="hljs-keyword">char</span> b, <span class="hljs-keyword">char</span> c)</span></span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> n;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"input the number of saucers: "</span>;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    hanoi(n, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">hanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">char</span> a, <span class="hljs-keyword">char</span> b, <span class="hljs-keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"move "</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">" from "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" to "</span> &lt;&lt; c &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    hanoi(n - <span class="hljs-number">1</span>, a, c, b); <span class="hljs-comment">// 将第 n-1 个圆盘从 a 柱借助 c 柱移动到 b 柱</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"move "</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">" from "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" to "</span> &lt;&lt; c &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">// 将第 n个圆盘从 a柱直接移动到 c柱</span></span><br><span class="line"></span><br><span class="line">    hanoi(n - <span class="hljs-number">1</span>, b, a, c); <span class="hljs-comment">// 将第 n-1个圆盘从 b柱借助 a柱移动到 c柱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你之前有成功实现过hanoi塔从 a 移动到 c (a ⟹ c) 的递归算法，应该很容易就能看懂。但是你试过将圆盘从 a 柱全部移动到 b 柱上的情况吗？</p>
+<p><strong>如果你已经清楚了代码的含义，那么你可以试着实现另外的几种情况</strong></p>
+<p><strong>a ⟹ b</strong></p>
+<p><strong>b ⟹ c</strong></p>
+<p><strong>c ⟹ a</strong></p>
+<p><strong>c ⟹ b</strong></p>
+<h3 id="2-再来看另一组示例代码"><a href="#2-再来看另一组示例代码" class="headerlink" title="2. 再来看另一组示例代码"></a>2. 再来看另一组示例代码</h3><p>在此代码块中，<strong><em>n</em></strong> 代表圆盘的个数，需要通过键盘输入。开始时圆盘都位于 <strong><em>a</em></strong> 柱，期间借助 <strong><em>c</em></strong> 柱将圆盘全部移到 <strong><em>b</em></strong> 柱</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">hanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">char</span> a, <span class="hljs-keyword">char</span> b, <span class="hljs-keyword">char</span> c)</span></span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> n;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"input the number of saucer: "</span>;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    hanoi(n, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">hanoi</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">char</span> a, <span class="hljs-keyword">char</span> b, <span class="hljs-keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">": "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" --&gt; "</span> &lt;&lt; b &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    hanoi(n - <span class="hljs-number">1</span>, a, c, b); <span class="hljs-comment">// 将第 n-1个圆盘从 a柱经由 b柱移动到 c柱</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">": "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" --&gt; "</span> &lt;&lt; b &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">// 将第 n个圆盘直接移动到 b柱</span></span><br><span class="line"></span><br><span class="line">    hanoi(n - <span class="hljs-number">1</span>, c, b, a); <span class="hljs-comment">// 将第 n-1个圆盘从 c柱经由 a柱移动到 b柱</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>你可能会觉得两组代码在实现上没什么差别，那我们来看两组代码其中一行的对照：</strong></p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line">hanoi(n - <span class="hljs-number">1</span>, a, c, b); <span class="hljs-comment">// 将第 n-1 个圆盘从 a 柱借助 c 柱移动到 b 柱</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line">hanoi(n - <span class="hljs-number">1</span>, a, c, b); <span class="hljs-comment">// 将第 n-1个圆盘从 a柱经由 b柱移动到 c柱</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以发现，两组代码中这一行代码都是相同的，但为什么实现的操作是不一样的呢？</p>
+<h3 id="3-其中两行代码的对比"><a href="#3-其中两行代码的对比" class="headerlink" title="3. 其中两行代码的对比"></a>3. 其中两行代码的对比</h3><figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"move "</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">" from "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" to "</span> &lt;&lt; c &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">// 将第 n个圆盘从 a柱直接移动到 c柱</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="hljs-string">": "</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">" --&gt; "</span> &lt;&lt; b &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>; <span class="hljs-comment">// 将第 n个圆盘直接移动到 b柱</span></span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到第一行代码时从 <strong>a位置</strong> 指向 <strong>c位置</strong>，第二行代码则是从 <strong>a位置</strong> 指向 <strong>b位置</strong>， 而第一行代码中的 “<strong>a位置</strong>” 和 “<strong>c位置</strong>” 对应了第一组代码 <strong><em>hanoi(n - 1, a, c, b);</em></strong> 中的 c 和 b，第二行代码中的 “<strong>a位置</strong>” 和 “<strong>b位置</strong>”对应了第二组代码 <strong><em>hanoi(n - 1, a, c, b);</em></strong> 中的 c 和 b</p>
+<p>整组代码中实现输出是依靠 <strong>输出流语句</strong>，所以 <strong><em>hanoi(n - 1, a, c, b);</em></strong> 中的字母顺序要根据 <strong>输出流语句</strong> 的变化而变化以达到正确调用递归的目的。</p>
+<p>也是大一刚开始接触编程语言，希望我的分享能给大家带来帮助 (｡･∀･)ﾉﾞ</p>
+<blockquote>
+<p>到这里如果你还没有弄明白，这里能以图的形式更直观地理解 Hanoi 塔问题的递归实现，请参考：<a href="https://dmego.me/2016/10/16/hanoi.html" target="_blank" rel="noopener">汉诺塔的图解递归算法</a></p>
+</blockquote>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C/">C++</a>, <a class="has-link-grey -link" href="/tags/Hanoi/">Hanoi</a>, <a class="has-link-grey -link" href="/tags/算法/">算法</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/git-one-more-account/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">同一客户端下使用多个 Git 账号</span>
+            </a>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time></div>
+                    <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time></div>
+                    <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Hanoi 塔问题在 C++ 中的递归实现" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>《算法（第4版）》知识点归纳 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="这篇博客主要来记录自己在书中总结归纳的知识点，来帮助自己更好地记忆书中的内容，并在复习时有一个可以参考的大纲。">
+<meta name="keywords" content="Java,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《算法（第4版）》知识点归纳">
+<meta property="og:url" content="http://vubee.github.io/algs4/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="这篇博客主要来记录自己在书中总结归纳的知识点，来帮助自己更好地记忆书中的内容，并在复习时有一个可以参考的大纲。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-26T16:49:37.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《算法（第4版）》知识点归纳">
+<meta name="twitter:description" content="这篇博客主要来记录自己在书中总结归纳的知识点，来帮助自己更好地记忆书中的内容，并在复习时有一个可以参考的大纲。">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="《算法（第4版）》知识点归纳" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 671 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                《算法（第4版）》知识点归纳
+            
+        </h1>
+        <div class="content">
+            <p>这篇博客主要来记录自己在书中总结归纳的知识点，来帮助自己更好地记忆书中的内容，并在复习时有一个可以参考的大纲。<a id="more"></a>我在每个小节的后面也有附上习题的解答（因为想要加快一下学习进度，所以目前只提供练习题的解题步骤，后期会对提高题以及实验题进行补充）。部分解题代码用到了书中提供的类库，VS Code、 IDEA 等编辑器或编译器内置了快捷跳转至源码位置的操作，读者可以根据自身情况进行参考。另附本书配套的 <a href="https://algs4.cs.princeton.edu/code/javadoc/" target="_blank" rel="noopener">在线 API 文档</a> 、<a href="https://algs4.cs.princeton.edu/code/" target="_blank" rel="noopener">源码</a> ，以及下载链接 <a href="https://algs4.cs.princeton.edu/code/algs4.jar" target="_blank" rel="noopener">algs4.jar <img src="https://algs4.cs.princeton.edu/cover.png" width="12"></a> 、<a href="https://algs4.cs.princeton.edu/code/algs4-data.zip" target="_blank" rel="noopener">algs4-data.zip <img src="https://static.easyicon.net/preview/3/30782.gif" width="12"></a> 。</p>
+<blockquote>
+<p>部分习题答案是可以在 <a href="https://algs4.cs.princeton.edu/home/" target="_blank" rel="noopener">官网</a> 上找到的。另外在 GitHub 上有一个分享自己解题代码的仓库，很详细，值得参考，见 <a href="https://github.com/jimmysuncpt/Algorithms" target="_blank" rel="noopener">Algorithms <img src="https://static.easyicon.net/preview/121/1213004.gif" width="12"></a> 。</p>
+<p><strong><em>PS:</em></strong> 本文中的大部分内容来自于《算法（第4版）》一书，想要了解的同学可以参阅 <a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">豆瓣读书</a> ，另见 <a href="https://book.douban.com/subject/4854123/" target="_blank" rel="noopener">英文版</a> 。</p>
+</blockquote>
+<hr>
+<h2 id="第-1-章-emsp-基-础"><a href="#第-1-章-emsp-基-础" class="headerlink" title="第 1 章&emsp;基 础"></a>第 1 章&emsp;基 础</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/1/1.1/">1.1&emsp;基础编程模型</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/1/1.2/">1.2&emsp;数据抽象</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/1/1.3/">1.3&emsp;背包、队列和栈</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/1/1.4/">1.4&emsp;算法分析</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/1/1.5/">1.5&emsp;案例研究：union-find 算法</a></p>
+<h2 id="第-2-章-emsp-排-序"><a href="#第-2-章-emsp-排-序" class="headerlink" title="第 2 章&emsp;排 序"></a>第 2 章&emsp;排 序</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/2/2.1/">2.1&emsp;初级排序算法</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/2/2.2/">2.2&emsp;归并排序</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/2/2.3/">2.3&emsp;快速排序</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/2/2.4/">2.4&emsp;优先队列</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/2/2.5/">2.5&emsp;应用</a></p>
+<h2 id="第-3-章-emsp-查-找"><a href="#第-3-章-emsp-查-找" class="headerlink" title="第 3 章&emsp;查 找"></a>第 3 章&emsp;查 找</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/3/3.1/">3.1&emsp;符号表</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/3/3.2/">3.2&emsp;二叉查找树</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/3/3.3/">3.3&emsp;平衡查找树</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/3/3.4/">3.4&emsp;散列表</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/3/3.5/">3.5&emsp;应用</a></p>
+<h2 id="第-4-章-emsp-图"><a href="#第-4-章-emsp-图" class="headerlink" title="第 4 章&emsp;图"></a>第 4 章&emsp;图</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/4/4.1/">4.1&emsp;无向图</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/4/4.2/">4.2&emsp;有向图</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/4/4.3/">4.3&emsp;最小生成树</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/4/4.4/">4.4&emsp;最短路径</a></p>
+<h2 id="第-5-章-emsp-排-序"><a href="#第-5-章-emsp-排-序" class="headerlink" title="第 5 章&emsp;排 序"></a>第 5 章&emsp;排 序</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/5/5.1/">5.1&emsp;字符串排序</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/5/5.2/">5.2&emsp;单词查找树</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/5/5.3/">5.3&emsp;子字符串查找</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/5/5.4/">5.4&emsp;正则表达式</a><br>&emsp;&emsp;<a href="/independent-pages/list/algs4/5/5.5/">5.5&emsp;数据压缩</a></p>
+<h2 id="第-6-章-emsp-背-景"><a href="#第-6-章-emsp-背-景" class="headerlink" title="第 6 章&emsp;背 景"></a>第 6 章&emsp;背 景</h2><p>&emsp;&emsp;<a href="/independent-pages/list/algs4/6/">6.0&emsp;背景</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Java/">Java</a>, <a class="has-link-grey -link" href="/tags/算法/">算法</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/awesome-mac-apps/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Mac 上好用的 APP 整理</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/emacs-note/">
+                <span class="level-item">Emacs Note</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time></div>
+                    <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time></div>
+                    <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="《算法（第4版）》知识点归纳" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
