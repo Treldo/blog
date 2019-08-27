@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>algs4 习题 1-2 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="练习 部分用例的用法 % javac Testxxx.java% java Testxxx [args]  以下出现 Integer.parseInt(args[x]) 的地方均可以替换为 StdIn.readxxx() ，不过这样变成了从标准输入中读取数据。题中要求从命令行接受数据，所以最好避免从标准输入中进行数据的获取。    1. Point2D 用例public class TestPoi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4 习题 1-2">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/src/algs4/1/1.2/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="练习 部分用例的用法 % javac Testxxx.java% java Testxxx [args]  以下出现 Integer.parseInt(args[x]) 的地方均可以替换为 StdIn.readxxx() ，不过这样变成了从标准输入中读取数据。题中要求从命令行接受数据，所以最好避免从标准输入中进行数据的获取。    1. Point2D 用例public class TestPoi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-27T08:07:14.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algs4 习题 1-2">
+<meta name="twitter:description" content="练习 部分用例的用法 % javac Testxxx.java% java Testxxx [args]  以下出现 Integer.parseInt(args[x]) 的地方均可以替换为 StdIn.readxxx() ，不过这样变成了从标准输入中读取数据。题中要求从命令行接受数据，所以最好避免从标准输入中进行数据的获取。    1. Point2D 用例public class TestPoi">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="algs4 习题 1-2" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4 习题 1-2
+            
+        </h1>
+        <div class="content">
+            <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><ul>
+<li><p>部分用例的用法</p>
+<figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">%</span> javac Testxxx.java</span><br><span class="line"><span class="hljs-meta">%</span> java Testxxx [args]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以下出现 <code>Integer.parseInt(args[x])</code> 的地方均可以替换为 <code>StdIn.readxxx()</code> ，不过这样变成了从标准输入中读取数据。题中要求从命令行接受数据，所以最好避免从标准输入中进行数据的获取。</p>
+</li>
+</ul>
+<hr>
+<h3 id="1-Point2D-用例"><a href="#1-Point2D-用例" class="headerlink" title="1. Point2D 用例"></a>1. Point2D 用例</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestPoint2D</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> N = Integer.parseInt(args[<span class="hljs-number">0</span>]);</span><br><span class="line">        Point2D[] points = <span class="hljs-keyword">new</span> Point2D[N];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            points[i] = <span class="hljs-keyword">new</span> Point2D(Math.random(), Math.random());</span><br><span class="line">            points[i].draw();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N &gt; <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">double</span> min = points[<span class="hljs-number">0</span>].distanceTo(points[<span class="hljs-number">1</span>]);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (points[i].distanceTo(points[j]) &lt; min) &#123;</span><br><span class="line">                        min = points[i].distanceTo(points[j]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="hljs-string">"The min distance: "</span> + min);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Interval1D-用例"><a href="#2-Interval1D-用例" class="headerlink" title="2. Interval1D 用例"></a>2. Interval1D 用例</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestInterval1D</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> N = Integer.parseInt(args[<span class="hljs-number">0</span>]);</span><br><span class="line">        Interval1D[] intervals = <span class="hljs-keyword">new</span> Interval1D[N];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            intervals[i] = <span class="hljs-keyword">new</span> Interval1D(StdIn.readDouble(), StdIn.readDouble());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (intervals[i].intersects(intervals[j])) &#123;</span><br><span class="line">                    StdOut.println(intervals[i] + <span class="hljs-string">" -- "</span> + intervals[j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Interval2D-用例"><a href="#3-Interval2D-用例" class="headerlink" title="3. Interval2D 用例"></a>3. Interval2D 用例</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestInterval2D</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> intersectCount = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> containCount = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> Math.max(a, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> Math.min(a, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> N = Integer.parseInt(args[<span class="hljs-number">0</span>]);</span><br><span class="line">        <span class="hljs-keyword">double</span> min = Double.parseDouble(args[<span class="hljs-number">1</span>]);</span><br><span class="line">        <span class="hljs-keyword">double</span> max = Double.parseDouble(args[<span class="hljs-number">2</span>]);</span><br><span class="line">        <span class="hljs-comment">// 设置绘图范围（可以保证所有矩形都绘制在窗格内）</span></span><br><span class="line">        StdDraw.setXscale(min, max);</span><br><span class="line">        StdDraw.setYscale(min, max);</span><br><span class="line">        <span class="hljs-comment">// 供判断 contains 条件的点集合</span></span><br><span class="line">        Point2D[] leftTopPoints = <span class="hljs-keyword">new</span> Point2D[N];</span><br><span class="line">        Point2D[] rightBottomPoints = <span class="hljs-keyword">new</span> Point2D[N];</span><br><span class="line">        Interval2D[] interval2DS = <span class="hljs-keyword">new</span> Interval2D[N];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">double</span> x1 = StdRandom.uniform(min, max);</span><br><span class="line">            <span class="hljs-keyword">double</span> x2 = StdRandom.uniform(min, max);</span><br><span class="line">            <span class="hljs-keyword">double</span> y1 = StdRandom.uniform(min, max);</span><br><span class="line">            <span class="hljs-keyword">double</span> y2 = StdRandom.uniform(min, max);</span><br><span class="line">            leftTopPoints[i] = <span class="hljs-keyword">new</span> Point2D(min(x1, x2), min(y1, y2));</span><br><span class="line">            rightBottomPoints[i] = <span class="hljs-keyword">new</span> Point2D(max(x1, x2), max(y1, y2));</span><br><span class="line">            interval2DS[i] = <span class="hljs-keyword">new</span> Interval2D(<span class="hljs-keyword">new</span> Interval1D(min(x1, x2), max(x1, x2)), <span class="hljs-keyword">new</span> Interval1D(min(y1, y2), max(y1, y2)));</span><br><span class="line">            interval2DS[i].draw();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N - <span class="hljs-number">1</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; N; j++) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (interval2DS[i].intersects(interval2DS[j])) &#123;</span><br><span class="line">                    intersectCount++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span> (interval2DS[i].contains(leftTopPoints[j]) &amp;&amp; interval2DS[i].contains(rightBottomPoints[j])) &#123;</span><br><span class="line">                    containCount++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        StdOut.println(<span class="hljs-string">"Intersect count: "</span> + intersectCount);</span><br><span class="line">        StdOut.println(<span class="hljs-string">"Contain count: "</span> + containCount);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-单纯的值传递"><a href="#4-单纯的值传递" class="headerlink" title="4. 单纯的值传递"></a>4. 单纯的值传递</h3><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">world</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-String-对象不可变"><a href="#5-String-对象不可变" class="headerlink" title="5. String 对象不可变"></a>5. String 对象不可变</h3><p>所有的字符串方法都不会改变参数对象的值，而是返回一个新的 String 对象。</p>
+<h3 id="6-回环变位"><a href="#6-回环变位" class="headerlink" title="6. 回环变位"></a>6. 回环变位</h3><ul>
+<li><p>书中提示的方法</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> ((s + s).indexOf(t) &gt;= <span class="hljs-number">0</span>) &#123;&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用了字符串拼接的方法</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (s.concat(s).contains(t)) &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="7-递归函数的返回值"><a href="#7-递归函数的返回值" class="headerlink" title="7. 递归函数的返回值"></a>7. 递归函数的返回值</h3><p>返回一个倒序的字符串。</p>
+<h3 id="8-数组引用"><a href="#8-数组引用" class="headerlink" title="8. 数组引用"></a>8. 数组引用</h3><p>复制的是引用，不是数据。原始数据类型才会将数据复制下来，其余复制的都是对象的引用。</p>
+<h3 id="9-BinarySearch-中增加-Counter"><a href="#9-BinarySearch-中增加-Counter" class="headerlink" title="9. BinarySearch 中增加 Counter"></a>9. BinarySearch 中增加 Counter</h3><p>我这里又定义了一个 Counter 类，以便于对记录值进行修改。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getVal</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        val++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinarySearch</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rank</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span>[] a, Counter counter)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> rank(key, a, <span class="hljs-number">0</span>, a.length - <span class="hljs-number">1</span>, counter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rank</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span>[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi, Counter counter)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 如果 key 存在于 a[] 中，它的索引不会小于 lo 且不会大于 hi</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (lo &gt; hi) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> mid = lo + (hi - lo) / <span class="hljs-number">2</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (key &lt; a[mid]) &#123;</span><br><span class="line">            counter.add();</span><br><span class="line">            <span class="hljs-keyword">return</span> rank(key, a, lo, mid - <span class="hljs-number">1</span>, counter);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key &gt; a[mid]) &#123;</span><br><span class="line">            counter.add();</span><br><span class="line">            <span class="hljs-keyword">return</span> rank(key, a, mid + <span class="hljs-number">1</span>, hi, counter);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            counter.add();</span><br><span class="line">            <span class="hljs-keyword">return</span> mid;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Counter counter = <span class="hljs-keyword">new</span> Counter();</span><br><span class="line">        <span class="hljs-keyword">int</span>[] a = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>&#125;;</span><br><span class="line">        System.out.println(rank(<span class="hljs-number">6</span>, a, counter));</span><br><span class="line">        System.out.println(counter.getVal());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-类-VisualCounter"><a href="#10-类-VisualCounter" class="headerlink" title="10. 类 VisualCounter"></a>10. 类 VisualCounter</h3><ul>
+<li><p>实现：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VisualCounter</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> val;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> max;</span><br><span class="line">    <span class="hljs-comment">// 用来记录操作次数</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">VisualCounter</span><span class="hljs-params">(<span class="hljs-keyword">int</span> N, <span class="hljs-keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.N = N;</span><br><span class="line">        <span class="hljs-keyword">this</span>.max = max;</span><br><span class="line">        StdDraw.setXscale(<span class="hljs-number">0</span>, N);</span><br><span class="line">        StdDraw.setYscale(<span class="hljs-number">0</span>, max);</span><br><span class="line">        StdDraw.setPenColor(StdDraw.RED);</span><br><span class="line">        StdDraw.setPenRadius(.<span class="hljs-number">01</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (val &lt; max &amp;&amp; counter &lt; N) val++;</span><br><span class="line">        StdDraw.point(counter, val);</span><br><span class="line">        counter++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (counter &lt; N) val--;</span><br><span class="line">        StdDraw.point(counter, val);</span><br><span class="line">        counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用例：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestVisualCounter</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        VisualCounter counter = <span class="hljs-keyword">new</span> VisualCounter(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">50</span>; i++) &#123;</span><br><span class="line">            counter.add();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">30</span>; i++) &#123;</span><br><span class="line">            counter.reduce();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;</span><br><span class="line">            counter.add();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="11-SmartDate-类"><a href="#11-SmartDate-类" class="headerlink" title="11. SmartDate 类"></a>11. SmartDate 类</h3><p>这里定义了 <code>年-月-日-时-分-秒</code> 这六个变量，设置了四个构造器，提供了对变量进行操作和得到当前星期的方法。因为代码比较易懂，所以这里就不会多作说明了。书上 表1.2.12 中 Date 类的另一种实现还挺有意思的，有兴趣的同学可以看一下，另外还可以阅读 <font color="#16a085">edu.princeton.cs.algs4</font> 包中 Date 类的 <a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/Date.java.html" target="_blank" rel="noopener">源码</a> 。</p>
+<blockquote>
+<p>当日期信息错误时，会报异常：<code>java.lang.IllegalArgumentException: Illegal date message.</code><br>当时间信息错误时，会报异常：<code>java.lang.IllegalArgumentException: Illegal time message.</code></p>
+</blockquote>
+<p><strong>PS:</strong> 没有注意到书中提供的 Date 的 API 😂，所以可能同书中的要求有所不同，变化不大，就不作修改了。</p>
+<ul>
+<li><p>实现：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmartDate</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> year;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> month;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> date;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> hrs;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> min;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> sec;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SmartDate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> date)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>(year, month, date, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SmartDate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> date, <span class="hljs-keyword">int</span> hrs)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>(year, month, date, hrs, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SmartDate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> date, <span class="hljs-keyword">int</span> hrs, <span class="hljs-keyword">int</span> min)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>(year, month, date, hrs, min, <span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SmartDate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> date, <span class="hljs-keyword">int</span> hrs, <span class="hljs-keyword">int</span> min, <span class="hljs-keyword">int</span> sec)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (year &gt;= <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">switch</span> (month) &#123;</span><br><span class="line">                <span class="hljs-keyword">default</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (hrs &gt;= <span class="hljs-number">0</span> &amp;&amp; hrs &lt;= <span class="hljs-number">23</span>) &#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span> (min &gt;= <span class="hljs-number">0</span> &amp;&amp; min &lt;= <span class="hljs-number">59</span>) &#123;</span><br><span class="line">                            <span class="hljs-keyword">if</span> (sec &gt;= <span class="hljs-number">0</span> &amp;&amp; sec &lt;= <span class="hljs-number">59</span>) &#123;</span><br><span class="line">                                <span class="hljs-keyword">this</span>.hrs = hrs;</span><br><span class="line">                                <span class="hljs-keyword">this</span>.min = min;</span><br><span class="line">                                <span class="hljs-keyword">this</span>.sec = sec;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal time message."</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">12</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (date &gt;= <span class="hljs-number">1</span> &amp;&amp; date &lt;= <span class="hljs-number">31</span>) &#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span> (hrs &gt;= <span class="hljs-number">0</span> &amp;&amp; hrs &lt;= <span class="hljs-number">23</span>) &#123;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.year = year;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.month = month;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal date message."</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">11</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (date &gt;= <span class="hljs-number">1</span> &amp;&amp; date &lt;= <span class="hljs-number">30</span>) &#123;</span><br><span class="line">                        <span class="hljs-keyword">this</span>.year = year;</span><br><span class="line">                        <span class="hljs-keyword">this</span>.month = month;</span><br><span class="line">                        <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">                    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal date message."</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:</span><br><span class="line">                    <span class="hljs-keyword">if</span> (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span> || year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span> (date &gt;= <span class="hljs-number">1</span> &amp;&amp; date &lt;= <span class="hljs-number">29</span>) &#123;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.year = year;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.month = month;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">                        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal date message."</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                        <span class="hljs-keyword">if</span> (date &gt;= <span class="hljs-number">1</span> &amp;&amp; date &lt;= <span class="hljs-number">28</span>) &#123;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.year = year;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.month = month;</span><br><span class="line">                            <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">                        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal date message."</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">"Illegal date message."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDayOfWeek</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> (date + <span class="hljs-number">2</span> * month + <span class="hljs-number">3</span> * (month + <span class="hljs-number">1</span>) / <span class="hljs-number">5</span> + year + year / <span class="hljs-number">4</span> - year / <span class="hljs-number">100</span> + year / <span class="hljs-number">400</span>) % <span class="hljs-number">7</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getYear</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMonth</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMonth</span><span class="hljs-params">(<span class="hljs-keyword">int</span> month)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.month = month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getDate</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> date)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getHrs</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> hrs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setHrs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> hrs)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.hrs = hrs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getMin</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setMin</span><span class="hljs-params">(<span class="hljs-keyword">int</span> min)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.min = min;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getSec</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> sec;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSec</span><span class="hljs-params">(<span class="hljs-keyword">int</span> sec)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.sec = sec;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试用例：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSmartDate</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SmartDate date = <span class="hljs-keyword">new</span> SmartDate(<span class="hljs-number">2019</span>, <span class="hljs-number">8</span>, <span class="hljs-number">27</span>);</span><br><span class="line">        System.out.println(date.getDayOfWeek());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="12-方法-dayOfTheWeek"><a href="#12-方法-dayOfTheWeek" class="headerlink" title="12. 方法 dayOfTheWeek()"></a>12. 方法 dayOfTheWeek()</h3><p>上面已经有了 SmartDate 类的源码，这里只给出方法的实现。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">dayOfTheWeek</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> index = (date + <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * month + <span class="hljs-number">3</span> * (month + <span class="hljs-number">1</span>) / <span class="hljs-number">5</span> + year + year / <span class="hljs-number">4</span> - year / <span class="hljs-number">100</span> + year / <span class="hljs-number">400</span>) % <span class="hljs-number">7</span>;</span><br><span class="line">    <span class="hljs-keyword">switch</span> (index) &#123;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Sunday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Monday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Tuesday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Wednesday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Thursday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Friday"</span>;</span><br><span class="line">        <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>: <span class="hljs-keyword">return</span> <span class="hljs-string">"Saturday"</span>;</span><br><span class="line">        <span class="hljs-keyword">default</span>: <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-Transaction-类型"><a href="#13-Transaction-类型" class="headerlink" title="13. Transaction 类型"></a>13. Transaction 类型</h3><p>参考了一下 edu.princeton.cs.algs4 包里的 Transaction 类，发现写这个类型是为了记录交易信息，类中包含了 <code>人-时间-交易数目</code> 。有兴趣的同学可以阅读 <font color="#16a085">edu.princeton.cs.algs4</font> 包中 Transaction 类的 <a href="https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/Transaction.java.html" target="_blank" rel="noopener">源码</a> 。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Transaction</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String who;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> SmartDate date;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> amount;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Transaction</span><span class="hljs-params">(String name, SmartDate date, <span class="hljs-keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">        who = name;</span><br><span class="line">        <span class="hljs-keyword">this</span>.date = date;</span><br><span class="line">        <span class="hljs-keyword">this</span>.amount = amount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">who</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> who;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> SmartDate <span class="hljs-title">date</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> date;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">amount</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> amount;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> who() + <span class="hljs-string">"/"</span> + date() + <span class="hljs-string">"/"</span> + amount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-Transaction-类的-equals-方法"><a href="#14-Transaction-类的-equals-方法" class="headerlink" title="14. Transaction 类的 equals() 方法"></a>14. Transaction 类的 equals() 方法</h3><p>这个方法是完全仿照书上 Date 类中的 equals() 方法写的。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span> == x) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    <span class="hljs-comment">// 如果两者的类型不同则返回 false 值</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.getClass() != x.getClass()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    <span class="hljs-comment">// 类型转换</span></span><br><span class="line">    Transaction that = (Transaction) x;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.who != that.who) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.date != that.date) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.amount != that.amount) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="提高题"><a href="#提高题" class="headerlink" title="提高题"></a>提高题</h2><ul>
+<li><input disabled type="checkbox"> 待更新</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time></div>
+                    <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time></div>
+                    <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="algs4 习题 1-2" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

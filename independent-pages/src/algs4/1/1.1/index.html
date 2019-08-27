@@ -7,20 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>习题 1-1 - Vubee&#39;s Site</title>
+<title>algs4 习题 1-1 - Vubee&#39;s Site</title>
 
 
     <meta name="description" content="知乎上有一篇总结的还不错, 如果觉得不够详细，或者想要参考题目以及其他答案的同学，可以在 这里 找到。  练习1. 表达式的值&amp;emsp;a. 7&amp;emsp;b. 200.0000002&amp;emsp;c. true 2. 类型和值&amp;emsp;a. double, 1.618&amp;emsp;b. double, 10.0&amp;emsp;c. boolean, true&amp;emsp;d. String, 33 3">
 <meta property="og:type" content="website">
-<meta property="og:title" content="习题 1-1">
+<meta property="og:title" content="algs4 习题 1-1">
 <meta property="og:url" content="http://vubee.github.io/independent-pages/src/algs4/1/1.1/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
 <meta property="og:description" content="知乎上有一篇总结的还不错, 如果觉得不够详细，或者想要参考题目以及其他答案的同学，可以在 这里 找到。  练习1. 表达式的值&amp;emsp;a. 7&amp;emsp;b. 200.0000002&amp;emsp;c. true 2. 类型和值&amp;emsp;a. double, 1.618&amp;emsp;b. double, 10.0&amp;emsp;c. boolean, true&amp;emsp;d. String, 33 3">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-26T16:48:56.056Z">
+<meta property="og:updated_time" content="2019-08-27T08:07:00.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="习题 1-1">
+<meta name="twitter:title" content="algs4 习题 1-1">
 <meta name="twitter:description" content="知乎上有一篇总结的还不错, 如果觉得不够详细，或者想要参考题目以及其他答案的同学，可以在 这里 找到。  练习1. 表达式的值&amp;emsp;a. 7&amp;emsp;b. 200.0000002&amp;emsp;c. true 2. 类型和值&amp;emsp;a. double, 1.618&amp;emsp;b. double, 10.0&amp;emsp;c. boolean, true&amp;emsp;d. String, 33 3">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
@@ -30,7 +30,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.svg">
+<link rel="icon" href="/images/favicon.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -92,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="习题 1-1" height="28">
+                <img src="/images/logo.png" alt="algs4 习题 1-1" height="28">
             
             </a>
         </div>
@@ -154,7 +154,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                习题 1-1
+                algs4 习题 1-1
             
         </h1>
         <div class="content">
@@ -247,6 +247,10 @@
 <h3 id="24-欧几里得算法计算最大公约数"><a href="#24-欧几里得算法计算最大公约数" class="headerlink" title="24. 欧几里得算法计算最大公约数"></a>24. 欧几里得算法计算最大公约数</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Euclid</span> </span>&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">euclid</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (q == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> p;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.printf(<span class="hljs-string">"p = %d, q = %d\n"</span>, p, q);</span><br><span class="line">      <span class="hljs-comment">// 交换值的目的是为了减小递归的运算次数</span></span><br><span class="line">      <span class="hljs-keyword">if</span> (p &lt; q) &#123;</span><br><span class="line">          <span class="hljs-keyword">int</span> temp = p;</span><br><span class="line">          p = q;</span><br><span class="line">          q = temp;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-keyword">return</span> euclid(q, p % q);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> p = StdIn.readInt();</span><br><span class="line">        <span class="hljs-keyword">int</span> q = StdIn.readInt();</span><br><span class="line">        System.out.println(<span class="hljs-string">"\nresult = "</span> + euclid(p, q));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="25-数学归纳法证明欧几里得算法"><a href="#25-数学归纳法证明欧几里得算法" class="headerlink" title="25. 数学归纳法证明欧几里得算法"></a>25. 数学归纳法证明欧几里得算法</h3><p>参考：<br>&emsp;简书 - <a href="https://www.jianshu.com/p/7876eb2dff89?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation" target="_blank" rel="noopener">欧几里得算法心得(辗转相除法)</a><br>&emsp;百度文库 - <a href="https://wenku.baidu.com/view/908b4f7059fafab069dc5022aaea998fcc2240e2.html" target="_blank" rel="noopener">辗转相除法的证明</a></p>
+<hr>
+<h2 id="提高题"><a href="#提高题" class="headerlink" title="提高题"></a>提高题</h2><ul>
+<li><input disabled type="checkbox"> 待更新</li>
+</ul>
 
         </div>
         
@@ -372,7 +376,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="习题 1-1" height="28">
+                    <img src="/images/logo.png" alt="algs4 习题 1-1" height="28">
                 
                 </a>
                 <p class="is-size-7">
