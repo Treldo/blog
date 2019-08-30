@@ -19,7 +19,7 @@
 <meta property="og:description" content="我们在日常使用 Git 进行文件管理时，避免不了会使用多个账号的情况。自己在家开发一些小项目就托管在 Github 上面，而在公司的话会用到另外一个账号，可能是 GitLab 账号进行管理，或者是自己想要搭建一个个人博客并托管在另一个账号，那么单纯的 HTTPS 就不足以支持两个账号在同一客户端进行使用了，这时就需要用到 SSH 来进行管理。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-26T16:49:54.481Z">
+<meta property="og:updated_time" content="2019-08-29T03:54:24.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同一客户端下使用多个 Git 账号">
 <meta name="twitter:description" content="我们在日常使用 Git 进行文件管理时，避免不了会使用多个账号的情况。自己在家开发一些小项目就托管在 Github 上面，而在公司的话会用到另外一个账号，可能是 GitLab 账号进行管理，或者是自己想要搭建一个个人博客并托管在另一个账号，那么单纯的 HTTPS 就不足以支持两个账号在同一客户端进行使用了，这时就需要用到 SSH 来进行管理。">
@@ -165,7 +165,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 646 个字)
+                    5 分钟 读完 (大约 790 个字)
                 </span>
                 
                 
@@ -197,6 +197,8 @@
 <p>如果出现 <code>Could not open a connection to your authentication agent</code> 的错误，就试着用以下命令：</p>
 <figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
 
+<p><code>ssh-add ~/.ssh/id_rsa_new</code> 只能将把指定的私钥添加到 ssh-agent 所管理的一个 session 当中。而 ssh-agent 是一个用于存储私钥的临时性的 session 服务，也就是说当你重启之后，ssh-agent 服务也就重置了，session 会话也就失效了。 解决办法就是在添加 ssh 私钥的时候使用如下命令：<code>ssh-add -K privateKey</code>，即可一劳永逸将私钥添加进 Mac 本身的钥匙串中，即 Keychain。</p>
+<p>参考博客：<a href="http://www.icodeyou.com/2016/01/17/ssh-add-mac/" target="_blank" rel="noopener">http://www.icodeyou.com/2016/01/17/ssh-add-mac/</a></p>
 <h2 id="3-配置-ssh-config-文件"><a href="#3-配置-ssh-config-文件" class="headerlink" title="3. 配置 ~/.ssh/config 文件"></a>3. 配置 ~/.ssh/config 文件</h2><figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#</span> 该文件用于配置私钥对应的服务器</span><br><span class="line">Host git@github.com    # 别名，随便定 后面配置地址有用</span><br><span class="line">    HostName https://github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa    # 密钥文件的地址，注意是私钥</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#</span> second user(second@mail.com)</span><br><span class="line">Host git@code.xxxxxxx.com</span><br><span class="line">    HostName https://code.xxxxxxx.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_new</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -285,7 +287,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
-                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳</a>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
                     </p>
