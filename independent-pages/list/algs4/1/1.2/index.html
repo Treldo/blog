@@ -18,7 +18,7 @@
 <meta property="og:description" content="抽象数据类型 （ADT） 是一种能够对使用者隐藏数据表示的数据类型。使用抽象数据类型时，我们的注意力集中在 API 描述的操作上而不会去关心数据的表示；实现抽象数据类型时，我们的注意力集中在数据本身并将实现对该数据的各种操作。  以适用于各种用途的 API 形式准确地定义问题； 用 API 的实现描述算法和数据结构。  特点：可以在不修改任何用例代码的情况下使用一种算法替换另一种算法并改进所有用例">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-27T09:34:01.477Z">
+<meta property="og:updated_time" content="2019-08-30T16:36:54.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-1.2 数据抽象">
 <meta name="twitter:description" content="抽象数据类型 （ADT） 是一种能够对使用者隐藏数据表示的数据类型。使用抽象数据类型时，我们的注意力集中在 API 描述的操作上而不会去关心数据的表示；实现抽象数据类型时，我们的注意力集中在数据本身并将实现对该数据的各种操作。  以适用于各种用途的 API 形式准确地定义问题； 用 API 的实现描述算法和数据结构。  特点：可以在不修改任何用例代码的情况下使用一种算法替换另一种算法并改进所有用例">
@@ -199,6 +199,8 @@
 <li>向方法传递对象或是从方法中返回对象；</li>
 <li>创建并使用对象的数组。</li>
 </ul>
+<div id="item"></div>
+
 <p><strong>赋值语句</strong> 不会创建对象，而是创建另一个指向某个已经存在的对象的引用。这种情况称为 <strong>别名</strong> ：两个变量同时指向同一个对象。</p>
 <p>对于原始数据类型的变量，会发生值的复制。而对于引用类型，复制的是引用而非实际的值。例如：</p>
 <figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> b = a;</span><br><span class="line">b++;</span><br><span class="line">System.out.println(a);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></table></figure>

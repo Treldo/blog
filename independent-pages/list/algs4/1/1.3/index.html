@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>algs4-1.3 背包、队列和栈 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。 1. API     表 1.3.1&amp;emsp;泛型可迭代的基础集合数据类型的 API        背包           public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;                B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4-1.3 背包、队列和栈">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/algs4/1/1.3/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。 1. API     表 1.3.1&amp;emsp;泛型可迭代的基础集合数据类型的 API        背包           public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;                B">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-01T02:18:58.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algs4-1.3 背包、队列和栈">
+<meta name="twitter:description" content="三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。 1. API     表 1.3.1&amp;emsp;泛型可迭代的基础集合数据类型的 API        背包           public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;                B">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="algs4-1.3 背包、队列和栈" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4-1.3 背包、队列和栈
+            
+        </h1>
+        <div class="content">
+            <p>三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。</p>
+<h2 id="1-API"><a href="#1-API" class="headerlink" title="1. API"></a>1. API</h2><br>
+
+<table>
+  <caption>表 1.3.1&emsp;泛型可迭代的基础集合数据类型的 API</caption>
+  <tr>
+    <th colspan="3">背包</th>
+  </tr>
+  <tr>
+    <td colspan="3">public class <b>Bag&lt;Item&gt;</b> implements Iterable&lt;Item&gt;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Bag()</td>
+    <td>创建一个空背包</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">void</td>
+    <td>add(Item item)</td>
+    <td>添加一个元素</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">boolean</td>
+    <td>isEmpty()</td>
+    <td>背包是否为空</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">int</td>
+    <td>size()</td>
+    <td>背包中的元素数量</td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <th colspan="3">先进先出（FIFO）队列</th>
+  </tr>
+  <tr>
+    <td colspan="3">public class <b>Queue&lt;Item&gt;</b> implements Iterable&lt;Item&gt;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Queue()</td>
+    <td>创建空队列</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">void</td>
+    <td>enqueue(Item item)</td>
+    <td>添加一个元素</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">Item</td>
+    <td>dequeue()</td>
+    <td>删除最早添加的元素</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">boolean</td>
+    <td>isEmpty()</td>
+    <td>队列是否为空</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">int</td>
+    <td>size()</td>
+    <td>队列中的元素数量</td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <th colspan="3">下压（后进先出，LIFO）栈</th>
+  </tr>
+  <tr>
+    <td colspan="3">public class <b>Stack&lt;Item&gt;</b> implements Iterable&lt;Item&gt;</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Stack()</td>
+    <td>创建一个空栈</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">void</td>
+    <td>push(Item item)</td>
+    <td>添加一个元素</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">Item</td>
+    <td>pop()</td>
+    <td>删除最近添加的元素</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">boolean</td>
+    <td>isEmpty()</td>
+    <td>栈是否为空</td>
+  </tr>
+  <tr>
+    <td style="text-align:right">int</td>
+    <td>size()</td>
+    <td>栈中的元素数量</td>
+  </tr>
+</table>
+
+<br>
+
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>泛型也叫参数化类型。看个例子：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Stack&lt;String&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">Queue&lt;Date&gt; queue = <span class="hljs-keyword">new</span> Queue&lt;Date&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>如果向 stack 中添加 Date 对象（或是任何非 String 类型数据），或者是向 queue 中添加 String 对象（或是任何非 Date 类型数据），都会得到一个编译时的错误。</p>
+<h3 id="自动装箱"><a href="#自动装箱" class="headerlink" title="自动装箱"></a>自动装箱</h3><p>类型参数必须被实例化为引用类型，在处理赋值语句、方法的参数和算术或逻辑表达式时，Java 会自动在引用类型和对应的原始数据类型之间进行转换。例如：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Stack&lt;Integer&gt; stack = enw Stack&lt;Integer&gt;();</span><br><span class="line">stack.push(<span class="hljs-number">17</span>);         <span class="hljs-comment">// 自动装箱 (int -&gt; Integer)</span></span><br><span class="line"><span class="hljs-keyword">int</span> i = stack.pop();    <span class="hljs-comment">// 自动拆箱 (Integer -&gt; int)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="可迭代的集合类型"><a href="#可迭代的集合类型" class="headerlink" title="可迭代的集合类型"></a>可迭代的集合类型</h3><p>直接上例子：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 假设在 Queue 中维护一个交易集合</span></span><br><span class="line">Queue&lt;Transaction&gt; queue = <span class="hljs-keyword">new</span> Queue&lt;Transaction&gt;();</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 如果集合是可迭代的，打印交易列表</span></span><br><span class="line"><span class="hljs-keyword">for</span> (Transaction t : queue) &#123;</span><br><span class="line">    StdOut.println(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="背包"><a href="#背包" class="headerlink" title="背包"></a>背包</h3><p>背包不支持从中删除元素，迭代的顺序不确定且与用例无关。使用 Bag 就说明元素的处理顺序不重要，典型用例就是计算平均值和标准差:</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stats</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bag&lt;Double&gt; numbers = <span class="hljs-keyword">new</span> Bag&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty())</span><br><span class="line">            numbers.add(StdIn.readDouble());</span><br><span class="line">        <span class="hljs-keyword">int</span> N = numbers.size();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">double</span> sum = <span class="hljs-number">0.0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">double</span> x : numbers)</span><br><span class="line">            sum += x;</span><br><span class="line">        <span class="hljs-keyword">double</span> mean = sum / N;</span><br><span class="line"></span><br><span class="line">        sum = <span class="hljs-number">0.0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">double</span> x : numbers)</span><br><span class="line">            sum += (x - mean) * (x - mean);</span><br><span class="line">        <span class="hljs-keyword">double</span> std = Math.sqrt(sum / (N - <span class="hljs-number">1</span>));</span><br><span class="line"></span><br><span class="line">        StdOut.printf(<span class="hljs-string">"Mean: %.2f\n"</span>, mean);</span><br><span class="line">        StdOut.printf(<span class="hljs-string">"Std dev: %.2f\n"</span>, std);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="先进先出（FIFIO）队列"><a href="#先进先出（FIFIO）队列" class="headerlink" title="先进先出（FIFIO）队列"></a>先进先出（FIFIO）队列</h3><p>使用 foreach 语句迭代访问队列中的元素时，元素的处理顺序就是它们被添加到队列中的顺序。在应用程序中使用队列的主要原因就是它在保存元素的同时也保存了顺序，也就保证了入列和出列顺序相同。</p>
+<ul>
+<li>队列的用例<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span>[] readInts(String name) &#123;</span><br><span class="line">    <span class="hljs-comment">// 在这里 in 对象的作用就是来保存传入的整型数组的元素作为 System.in 输入</span></span><br><span class="line">    In in = <span class="hljs-keyword">new</span> In(name);</span><br><span class="line">    Queue&lt;Integer&gt; q = <span class="hljs-keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (!in.isEmpty())</span><br><span class="line">        q.enqueue(in.readInt());</span><br><span class="line">    <span class="hljs-keyword">int</span> N = q.size();</span><br><span class="line">    <span class="hljs-keyword">int</span>[] a = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">        a[i] = q.dequeue();</span><br><span class="line">    <span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="下压栈"><a href="#下压栈" class="headerlink" title="下压栈"></a>下压栈</h3><p>下压栈是一种基于后进先出（LIFO）策略的集合类型，叠书就是一个栈的例子。浏览网页时会遇到栈的另一个例子：单击“回退”按钮可以重新访问之前的页面。栈另一个特点就是将存入的数据逆序排列，下面的代码就是一个典型的例子：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Reverse</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Integer&gt; s = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty())</span><br><span class="line">            s.push(StdIn.readInt());</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : s)</span><br><span class="line">            StdOut.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="算术表达式求值"><a href="#算术表达式求值" class="headerlink" title="算术表达式求值"></a>算术表达式求值</h3><p>E.W.Dijkstra 发明了一个非常简单的算法，用到了两个栈（操作数栈、运算符栈）。具体思路：</p>
+<ul>
+<li>将操作数压入（push）操作数栈；</li>
+<li>将运算符压入运算符栈；</li>
+<li>忽略左括号；</li>
+<li>在遇到右括号时，弹出一个运算符，弹出所需数量的操作数，并将运算符和操作数的运算结果压入操作数栈。</li>
+</ul>
+<p>在处理完最后一个括号后，操作数栈上就只剩一个表达式的值。运算顺序：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">(1 + ((2 + 3) * (4 * 5)))</span><br><span class="line">(1 + (5 * (4 * 5)))</span><br><span class="line">(1 + (5 * 20))</span><br><span class="line">(1 + 100)</span><br><span class="line">101</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Dijkstra 的双栈算术表达式求值算法<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Evaluate</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; ops = <span class="hljs-keyword">new</span> Stack&lt;&gt;();     <span class="hljs-comment">// 运算符栈</span></span><br><span class="line">        Stack&lt;Double&gt; vals = <span class="hljs-keyword">new</span> Stack&lt;&gt;();    <span class="hljs-comment">// 操作数栈</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            <span class="hljs-comment">// readString() 方法使用了 Scanner.next() 来读取字符串</span></span><br><span class="line">            String s = StdIn.readString();</span><br><span class="line">            <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"("</span>));</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"+"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"-"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"*"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"/"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"sqrt"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">")"</span>)) &#123;</span><br><span class="line">                String op = ops.pop();</span><br><span class="line">                <span class="hljs-keyword">double</span> val = vals.pop();</span><br><span class="line">                <span class="hljs-keyword">if</span> (op.equals(<span class="hljs-string">"+"</span>)) val = vals.pop() + val;</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op.equals(<span class="hljs-string">"-"</span>)) val = vals.pop() - val;</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op.equals(<span class="hljs-string">"*"</span>)) val = vals.pop() * val;</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op.equals(<span class="hljs-string">"/"</span>)) val = vals.pop() / val;</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (op.equals(<span class="hljs-string">"sqrt"</span>)) val = Math.sqrt(val);</span><br><span class="line">                vals.push(val);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> vals.push(Double.parseDouble(s));</span><br><span class="line">        &#125;</span><br><span class="line">        StdOut.println(vals.pop());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>没有弄清楚这个用例很容易就会出现异常，或是计算出错误的结果。这是一个简单的算法的实现，它有几点要求：</p>
+<ul>
+<li>输入的每个字符串都以空格隔开；</li>
+<li>必须要有右括号（否则不能实现计算）；</li>
+<li>每次只能进行两个操作数的运算；</li>
+<li>开平方也是要需要加括号的。f</li>
+</ul>
+<p>所以为了保险起见，还是要清晰一点。来个稍复杂一些的，比如要计算 12/(6-sqrt(2*8))，我们就这样写： <code>( 12 / ( 6 - ( sqrt ( 2 * 8 ) ) ) )</code></p>
+<p>用过 Emacs 学习了 emacs-lisp 或者学过 lisp 语言的同学可能会想，如果用 lisp 语法进行输入可不可以得到正确结果呢 🧐？同样计算上面式子，输入下面的内容，自己试一试：<code>( / 12 ( - 6 ( sqrt ( * 2 8 ) ) ) )</code></p>
+<blockquote>
+<p>另外，如果使用 IDE 工具，想要结束输入需要按组合键 Ctrl + D（Windows）或 Command + D（Mac）。</p>
+</blockquote>
+<h2 id="2-集合类数据类型的实现"><a href="#2-集合类数据类型的实现" class="headerlink" title="2. 集合类数据类型的实现"></a>2. 集合类数据类型的实现</h2><h3 id="定容栈"><a href="#定容栈" class="headerlink" title="定容栈"></a>定容栈</h3><br>
+
+<table>
+  <caption>表 1.3.2&emsp;一种表示定容字符串栈的抽象数据类型</caption>
+  <tr>
+    <td><b>API</b></td>
+    <td colspan="3">public class <b>FixedCapacityStackOfStrings</b></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>FixedCapacityStackOfStrings(int cap)</td>
+    <td>创建一个容量为 cap 的空栈</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">void</td>
+    <td>push(String item)</td>
+    <td>添加一个字符串</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">String</td>
+    <td>pop()</td>
+    <td>删除最近添加的字符串</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">boolean</td>
+    <td>isEmpty()</td>
+    <td>栈是否为空</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">int</td>
+    <td>size()</td>
+    <td>栈中的字符串数量</td>
+  </tr>
+</table>
+
+<br>
+
+<p>上面这个数据类型与栈的区别就在于它只能处理 String 值，要求用例指定一个容量且不支持迭代。</p>
+<p>它的实例变量为一个用于保存栈中元素的数组 a[] ，和一个用于保存栈中元素数量的整数 N 。 添加和删除元素时 N 的值都会发生变化。</p>
+<ul>
+<li>数据类型的实现<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FixedCapacityStackOfStrings</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> String[] a;  <span class="hljs-comment">// 存储栈中元素的数组</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;       <span class="hljs-comment">// 记录数组大小</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FixedCapacityStackOfStrings</span><span class="hljs-params">(<span class="hljs-keyword">int</span> cap)</span> </span>&#123; a = <span class="hljs-keyword">new</span> String[cap]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> N == <span class="hljs-number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> N; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(String item)</span> </span>&#123; a[N++] = item; &#125;</span><br><span class="line">    <span class="hljs-comment">// 缩减数组大小，丢弃最后一个元素</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> a[--N]; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>理解了上面的实现，请务必完全理解下面的内容：</p>
+<ul>
+<li>测试用例<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FixedCapacityStackOfStrings s = <span class="hljs-keyword">new</span> FixedCapacityStackOfStrings(<span class="hljs-number">100</span>);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String item = StdIn.readString();</span><br><span class="line">        <span class="hljs-keyword">if</span> (!item.equals(<span class="hljs-string">"-"</span>)) s.push(item);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!s.isEmpty()) StdOut.print(s.pop() + <span class="hljs-string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    StdOut.println(<span class="hljs-string">"("</span> + s.size() + <span class="hljs-string">" left on stack)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>输入数据 <code>to be or not to - be - - that - - - is</code></p>
+<p>会得到结果</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">to be not that or be</span><br></pre></td></tr></table></figure>
+
+<p>那么符号 “<code>-</code>” 的作用究竟是什么呢？请仔细思考。</p>
+<h3 id="泛型-1"><a href="#泛型-1" class="headerlink" title="泛型"></a>泛型</h3><p>上面的例子可以使用泛型进行处理，这样做是有好处的，使用泛型就可以处理不仅仅是 String 类型的数据。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FixedCapacityStack</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Item 是一个类型参数，可以理解为象征性的占位符。前面也有提到过泛型，这里需要记住的一点就是：Java 会使用类型参数 Item 来检查类型不匹配的错误。</p>
+<p>如果我们想要创建一个泛型的数组，会想要这样写：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Item[] a = <span class="hljs-keyword">new</span> Item[cap];</span><br></pre></td></tr></table></figure>
+
+<p>但其实这样做是不行的。由于某些历史和技术原因，Java 中并不允许创建泛型数组，感兴趣的同学可以：</p>
+<ul>
+<li>参考知乎上的 <a href="https://www.zhihu.com/question/20928981" target="_blank" rel="noopener">回答</a> ；</li>
+<li>阅读掘金上的文章 <a href="https://juejin.im/post/5b28ca4e51882574e10df32c" target="_blank" rel="noopener">泛型的基本原理</a> ；</li>
+<li>自行搜索（<a href="https://www.google.com/search?q=Java+中为什么不允许创建泛型数组" target="_blank" rel="noopener">Google</a>、<a href="https://www.baidu.com/s?wd=Java中为什么不允许创建泛型数组" target="_blank" rel="noopener">百度</a>、<a href="https://www.dogedoge.com/results?q=Java%20中为什么不允许创建泛型数组" target="_blank" rel="noopener">多吉搜索</a>、<a href="https://mijisou.com/?q=Java+中为什么不允许创建泛型数组" target="_blank" rel="noopener">秘迹搜</a>）。</li>
+</ul>
+<p>我们可以使用类型转换来解决这个问题：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Item[] a = (Item[]) <span class="hljs-keyword">new</span> Object[cap];</span><br></pre></td></tr></table></figure>
+
+<p>这段代码能够达到我们需要的效果，但 Java 编译器会给出一条类似于这样的警告：<code>Unchecked cast: &#39;java.lang.Object[]&#39; to &#39;Item[]&#39;</code> ，不过可以忽略它。</p>
+<br>
+
+<table>
+  <caption>表 1.3.4&emsp;一种表示泛型定容栈的抽象数据类型</caption>
+  <tr>
+    <td><b>API</b></td>
+    <td colspan="3">public class <b>FixedCapacityStack</b><item></item></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>FixedCapacityStack(int cap)</td>
+    <td>创建一个容量为 cap 的空栈</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">void</td>
+    <td>push(<b>Item</b> item)</td>
+    <td>添加一个元素</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right"><b>Item</b></td>
+    <td>pop()</td>
+    <td>删除最近添加的元素</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">boolean</td>
+    <td>isEmpty()</td>
+    <td>栈是否为空</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style="text-align:right">int</td>
+    <td>size()</td>
+    <td>栈中的元素数量</td>
+  </tr>
+</table>
+
+<br>
+
+<p>使用泛型来实现数据类型后，代码也改变了：</p>
+<ul>
+<li><p>数据类型的实现</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FixedCapacityStack</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Item[] a;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FixedCapacityStack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> cap)</span> </span>&#123; a = (Item[]) <span class="hljs-keyword">new</span> Object[cap]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> N == <span class="hljs-number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> N; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Item item)</span> </span>&#123; a[N++] = item; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 如果要避免数据游离，就参考下面的 pop() 实现</span></span><br><span class="line">        <span class="hljs-keyword">return</span> a[--N];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试用例</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FixedCapacityStack&lt;String&gt; s = <span class="hljs-keyword">new</span> FixedCapacityStack&lt;&gt;(<span class="hljs-number">100</span>);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String item = StdIn.readString();</span><br><span class="line">        <span class="hljs-keyword">if</span> (!item.equals(<span class="hljs-string">"-"</span>)) s.push(item);</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!s.isEmpty()) StdOut.print(s.pop() + <span class="hljs-string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    StdOut.println(<span class="hljs-string">"("</span> + s.size() + <span class="hljs-string">" left on stack)"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="调整数组的大小"><a href="#调整数组的大小" class="headerlink" title="调整数组的大小"></a>调整数组的大小</h3><p>在 Java 中，数组一旦创建，就不可以改变它的大小，栈使用的空间只能是这个最大容量的一部分。正常来说应该有一个 isFull() 的方法来判断栈是否已满，避免数据溢出。先不实现这个方法，我们通过修改数组的实现来动态调用数组的大小以保证数据存储的最大利用率。</p>
+<ul>
+<li>实现一个将栈移动到另一个大小为 max 的数组中的方法：<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 这里不允许使用其他类调用这个方法，所以使用了 private 修饰符</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">    Item[] temp = (Item[]) <span class="hljs-keyword">new</span> Object[max];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        temp[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这个方法所起到的间接作用就是扩大了数组 a[] 的大小。</p>
+<ul>
+<li><p>修改 push() 方法，在数据量达到数组最大容量时，将数组的容量扩大到 2 倍。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (N == a.length) resize(<span class="hljs-number">2</span> * a.length);</span><br><span class="line">    a[N++] = item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 pop() 方法，在数据量不及总容量的 1/4 时，缩减数组容量到 1/2：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    Item item = a[--N];</span><br><span class="line">    <span class="hljs-comment">// 避免对象游离（见下节）</span></span><br><span class="line">    a[N] = <span class="hljs-keyword">null</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (N &gt; <span class="hljs-number">0</span> &amp;&amp; N == a.length / <span class="hljs-number">4</span>) resize(a.length / <span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这里将最小数据量控制在 1/4 ，栈永远不会溢出，使用率不会低于 1/4（除了栈为空的情况）。</p>
+<p><strong>PS:</strong> 这里请自行理解。</p>
+<h3 id="对象游离"><a href="#对象游离" class="headerlink" title="对象游离"></a>对象游离</h3><p>在上面使用 pop() 方法弹出了一个元素，它就不会再被访问了，但数组中的引用仍可以让它继续存在。像这种保存一个不需要的对象的引用的情况就称之为游离。</p>
+<p>为了避免游离，我们只需要将弹出的元素值设置为 null，这会覆盖无用的引用，并使系统在该元素使用完毕后回收它的内存。</p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>我们知道 foreach 语句可以迭代访问集合中的数据，其实它本质上与 while 语句是等价的，看这两组代码：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Stack&lt;String&gt; collection = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (String s : collection)</span><br><span class="line">    StdOut.println(s);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Stack&lt;String&gt; collection = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">Iterator&lt;String&gt; i = collection.iterator();</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> (i.hasNext()) &#123;</span><br><span class="line">    String s = i.next();</span><br><span class="line">    StdOut.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可迭代的集合的集合数据类型需要：</p>
+<ul>
+<li>实现一个 iterator() 方法并返回一个 Iterator 对象；</li>
+<li>Iterator 类必须包含两个方法：hasNext()（返回一个 boolean 值）和 next()（返回一个集合中的泛型元素）。</li>
+</ul>
+<p>对与可迭代的数据类型，Java 中定义了所需接口 java.lang.Iterable ：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-function">Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们使用接口机制来指定一个类所必须实现的方法，所以在一个需要迭代的集合中我们必须实现接口中的 iterator() 方法。</p>
+<p>要逆序迭代遍历整个数组，我们定义一个名为 ReverseArrayIterator 的迭代器的类来实现 Iterator 接口（意味着需要实现 Iterator 接口中的方法），作为实现了 Iterable 接口的集合中 iterator() 方法的返回值。</p>
+<ul>
+<li><p>接口 Iterator</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span></span>;</span><br><span class="line">    <span class="hljs-function">Item <span class="hljs-title">next</span><span class="hljs-params">()</span></span>;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>迭代器 ReverseArrayIterator</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReverseArrayIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i = N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> i &gt; <span class="hljs-number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoSuchElementException();</span><br><span class="line">        <span class="hljs-keyword">return</span> a[--i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>我们这里没有给出 remove() 方法的实现，因为我们希望避免在迭代中穿插能够修改数据结构的操作。这个类是实现在栈类的一个嵌套类中（栈类可以是上面提到的类 FixedCapacityStack<item> ），我们来重写一下这个栈类：</item></p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.NoSuchElementException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FixedCapacityStack</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Item[] a;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FixedCapacityStack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">        a = (Item[]) <span class="hljs-keyword">new</span> Object[cap];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">        Item[] temp = (Item[]) <span class="hljs-keyword">new</span> Object[max];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">            temp[i] = a[i];</span><br><span class="line">        a = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ReverseArrayIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReverseArrayIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i = N;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> i &gt; <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoSuchElementException();</span><br><span class="line">            <span class="hljs-keyword">return</span> a[--i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N == <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N == a.length) resize(<span class="hljs-number">2</span> * a.length);</span><br><span class="line">        a[N++] = item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        Item item = a[--N];</span><br><span class="line">        a[N] = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N &gt; <span class="hljs-number">0</span> &amp;&amp; N == a.length / <span class="hljs-number">4</span>) resize(a.length / <span class="hljs-number">2</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果不想让 ReverseArrayIterator 作为这个栈类的嵌套类，你也可以单独新建一个类来实现这个迭代器。但要注意的是，ReverseArrayIterator 实现了 Iterator 接口的同时实现了 next() 方法，这个方法拥有一个泛型的返回值。所以我们要这样去定义这个类：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReverseArrayIterator</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实在你在试过之后就会发现这样是不行的，因为在这个迭代器中使用到了栈类中的数据（存储栈中元素的数组和这个数组所存元素个数）。所以还是就让它做栈类的嵌套类吧！</p>
+<p>另外要注意的就是 Iterable 在 <code>java.lang</code> 中，而 Iterator 在 <code>java.util</code> 中（因为某些历史原因）。</p>
+<p>算法 1.1 是 Stack API 的一种能够动态改变数组大小的实现， 它几乎达到了任意集合类数据类型的实现的最佳性能：</p>
+<ul>
+<li>每项操作的用时都与集合大小无关；</li>
+<li>空间需求总是不超过集合大小乘以一个常数。</li>
+</ul>
+<p>缺点在于某些 push() 和 pop() 操作会调整数组的大小：这项操作的耗时和栈大小成正比。我们会学习克服该缺陷的办法，使用一种不同的方式来组织数据。</p>
+<h2 id="算法-1-1-emsp-下压（LIFO）栈（能够动态调整数组大小的实现）"><a href="#算法-1-1-emsp-下压（LIFO）栈（能够动态调整数组大小的实现）" class="headerlink" title="算法 1.1&emsp;下压（LIFO）栈（能够动态调整数组大小的实现）"></a>算法 1.1&emsp;下压（LIFO）栈（能够动态调整数组大小的实现）</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.NoSuchElementException;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResizingArrayStack</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Item[] a = (Item[]) <span class="hljs-keyword">new</span> Object[<span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N == <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">        Item[] temp = (Item[]) <span class="hljs-keyword">new</span> Object[max];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            temp[i] = a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        a = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N == a.length) resize(<span class="hljs-number">2</span> * a.length);</span><br><span class="line">        a[N++] = item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        Item item = a[--N];</span><br><span class="line">        a[N] = <span class="hljs-keyword">null</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N &gt; <span class="hljs-number">0</span> &amp;&amp; N == a.length / <span class="hljs-number">4</span>) resize(a.length / <span class="hljs-number">2</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ReverseArrayIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ReverseArrayIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i = N;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoSuchElementException();</span><br><span class="line">            <span class="hljs-keyword">return</span> i &gt; <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> a[--i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>PS:</strong> 好像跟我们之前写的那个没有什么不同 😅</p>
+<h2 id="3-链表"><a href="#3-链表" class="headerlink" title="3. 链表"></a>3. 链表</h2><p>链表是一种递归的数据结构，他或者为空（null），或者指向一个结点（node）的引用，该结点含有一个泛型的与与元素和一个指向另一条链表的引用。</p>
+<h3 id="结点记录"><a href="#结点记录" class="headerlink" title="结点记录"></a>结点记录</h3><p>我们可以在嵌套类中定义结点的抽象数据类型。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">    Item item;</span><br><span class="line">    Node next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们会通过 <code>new Node()</code> 触发无参的构造方法来创建一个 Node 类型的对象，它会是一个实例化变量初始为 null 的指向某个 Node 对象的引用。这种类型的类有时也被称为记录。</p>
+<h3 id="构造链表"><a href="#构造链表" class="headerlink" title="构造链表"></a>构造链表</h3><p>我们尝试构造一个含有元素 to、be 和 or 的链表，先为每个元素创造结点：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Node first = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">Node second = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">Node third = <span class="hljs-keyword">new</span> Node();</span><br></pre></td></tr></table></figure>
+
+<p>我们在 item 域中存放 String 类型的数据：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">first.item = <span class="hljs-string">"to"</span>;</span><br><span class="line">second.item = <span class="hljs-string">"be"</span>;</span><br><span class="line">third.item = <span class="hljs-string">"or"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>再设置 next 域来构造链表：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">first.next = second;</span><br><span class="line">second.next = third;</span><br></pre></td></tr></table></figure>
+
+<p>这里 third.next 还是 null 的值，也就是说 third 指向的是 null ，我们看这个图：</p>
+<img src="https://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/sketch/Node.png" width="360">
+
+<p>链表表示的是一列元素，它与数组的区别就在于：在链表中向序列插入和删除元素更为方便。</p>
+<h3 id="在表头插入结点"><a href="#在表头插入结点" class="headerlink" title="在表头插入结点"></a>在表头插入结点</h3><p>两种方式：</p>
+<ul>
+<li>创建一个结点，将它的 next 域设置为 first；</li>
+<li>将 first 保存在 oldfirst 中，再将一个新结点赋予 first ，这里我们用 first 的 item 域存放 “not” ，把它的 next 域设置为 oldfirst ：<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Node oldfirst = first;</span><br><span class="line">first = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">first.item = <span class="hljs-string">"not"</span>;</span><br><span class="line">first.next = oldfirst;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="从表头删除结点"><a href="#从表头删除结点" class="headerlink" title="从表头删除结点"></a>从表头删除结点</h3><p>我们使 first 指向 first.next ，这样改变了 first 的值（变成了之前 first.next 结点对象的一个引用），就无法访问它曾经指向的结点了。曾经的结点对象变成了一个孤儿，Java 的内存管理系统最终将回收它所占用的内存。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">first = first.next;</span><br></pre></td></tr></table></figure>
+
+<p>这条赋值语句的运行时间和链表的长度无关。</p>
+<h3 id="在表尾插入结点"><a href="#在表尾插入结点" class="headerlink" title="在表尾插入结点"></a>在表尾插入结点</h3><p>类似于在表头插入结点，还是两种方式：</p>
+<ul>
+<li>创建一个结点，将之前的 last 结点的 next 域设置为这个结点；</li>
+<li>将之前的 last 保存在 oldlast 中，设置 oldlast 的 next 域为 last ，再将一个新结点赋予 last ，这里我们用 last 的 item 域存放 “not” ：<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Node oldlast = last;</span><br><span class="line">last = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">last.item = <span class="hljs-string">"not"</span>;</span><br><span class="line">oldlast.next = last;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p><strong>PS:</strong> 这里需要强调一点，和在表头插入结点相同，我们创建了一个结点 oldxxx 来保存 xxx ，就是复制了一个 xxx 对象的引用 oldxxx 指向 xxx 对象的地址，相当于创建了一个别名，而不是单纯的值复制，如此一来就有 oldxxx 和 xxx 同时指向同一个对象（我们 <a href="/independent-pages/list/algs4/1/1.2/#item">前面</a> 有提到过只有原始数据类型是值的复制，其他都复制的是对象的引用）。然后我们又使用 new 关键字来更新 xxx 对象，是重新为 xxx 分配了内存空间，而之前的内存空间并没有被弃用，所以不会被系统回收。</p>
+</blockquote>
+<h3 id="其他位置的插入和删除操作"><a href="#其他位置的插入和删除操作" class="headerlink" title="其他位置的插入和删除操作"></a>其他位置的插入和删除操作</h3><p>例如，我们要删除链表的尾结点就需要将它的前一个结点的 next 域设置为 null 。但我们没有其他的信息来找出这个位置，所以唯一的办法就是遍历整条链表并找出指向 last 的结点，如此所需的时间就同链表的长度成正比了。</p>
+<p>实现任意插入和删除操作的标准解决方案就是使用 <strong>双向链表</strong> ，每一个结点都有两个链接指向不同的方向。详见 <a href>练习 1.3.31</a> 。</p>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>我们可以这样来实现链表的迭代访问：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (Node x = first; x != <span class="hljs-keyword">null</span>; x = x.next()) &#123; x.item &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="栈的实现"><a href="#栈的实现" class="headerlink" title="栈的实现"></a>栈的实现</h3><p>在进行 push() 操作时，我们将元素添加在表头；当使用 pop() 删除一个元素时，我们将它从表头删除。</p>
+<p>链表的使用可以达到最优设计目标：</p>
+<ul>
+<li>可以处理任意类型的数据；</li>
+<li>所需空间总是和集合大小成正比；</li>
+<li>操作所需时间与集合大小无关。</li>
+</ul>
+<h2 id="算法-1-2-emsp-下压堆栈（链表实现）"><a href="#算法-1-2-emsp-下压堆栈（链表实现）" class="headerlink" title="算法 1.2&emsp;下压堆栈（链表实现）"></a>算法 1.2&emsp;下压堆栈（链表实现）</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stack</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Node first;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ListIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> Node current = first;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> current != <span class="hljs-keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            Item item = current.item;</span><br><span class="line">            current = current.next;</span><br><span class="line">            <span class="hljs-keyword">return</span> item;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 这里是接口里默认实现的方法，展示出来</span></span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException(<span class="hljs-string">"remove"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">        Item item;</span><br><span class="line">        Node next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> first == <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">        Node oldFirst = first;</span><br><span class="line">        first = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">        first.item = item;</span><br><span class="line">        first.next = oldFirst;</span><br><span class="line">        N++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> Item <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        Item item = first.item;</span><br><span class="line">        first = first.next;</span><br><span class="line">        N--;</span><br><span class="line">        <span class="hljs-keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自己动手写一个测试用例吧！</p>
+<h3 id="队列的实现"><a href="#队列的实现" class="headerlink" title="队列的实现"></a>队列的实现</h3><p>在结构化储存数据集时，<strong>链表是数组的一种重要的替代方式</strong> 。</p>
+<h2 id="算法-1-3-emsp-先进先出队列"><a href="#算法-1-3-emsp-先进先出队列" class="headerlink" title="算法 1.3&emsp;先进先出队列"></a>算法 1.3&emsp;先进先出队列</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Queue</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Node first;</span><br><span class="line">    <span class="hljs-keyword">private</span> Node last;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ListIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> Node current = first;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> current != <span class="hljs-keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            Item item = current.item;</span><br><span class="line">            current = current.next;</span><br><span class="line">            <span class="hljs-keyword">return</span> item;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 这里是接口里默认实现的方法，展示出来</span></span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException(<span class="hljs-string">"remove"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">        Item item;</span><br><span class="line">        Node next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> first == <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">        Node oldLast = last;</span><br><span class="line">        last.item = item;</span><br><span class="line">        <span class="hljs-keyword">if</span> (isEmpty()) first = last;</span><br><span class="line">        <span class="hljs-keyword">else</span> oldLast.next = last;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">dequeue</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        Item item = first.item;</span><br><span class="line">        first = first.next;</span><br><span class="line">        <span class="hljs-keyword">if</span> (isEmpty()) last = <span class="hljs-keyword">null</span>;</span><br><span class="line">        N--;</span><br><span class="line">        <span class="hljs-keyword">return</span> item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自己动手写一个测试用例吧！</p>
+<h3 id="背包的实现"><a href="#背包的实现" class="headerlink" title="背包的实现"></a>背包的实现</h3><h2 id="算法-1-4-emsp-背包"><a href="#算法-1-4-emsp-背包" class="headerlink" title="算法 1.4&emsp;背包"></a>算法 1.4&emsp;背包</h2><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.Iterator;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bag</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterable</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> Node first;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-meta">@Override</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> Iterator&lt;Item&gt; <span class="hljs-title">iterator</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ListIterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListIterator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Iterator</span>&lt;<span class="hljs-title">Item</span>&gt; </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> Node current = first;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasNext</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> current != <span class="hljs-keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">next</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            Item item = current.item;</span><br><span class="line">            current = current.next;</span><br><span class="line">            <span class="hljs-keyword">return</span> item;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-meta">@Override</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 这里是接口里默认实现的方法，展示出来</span></span><br><span class="line">            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException(<span class="hljs-string">"remove"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>&#123;</span><br><span class="line">        Item item;</span><br><span class="line">        Node next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> first == <span class="hljs-keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(Item item)</span> </span>&#123;</span><br><span class="line">        Node oldFirst = first;</span><br><span class="line">        first = <span class="hljs-keyword">new</span> Node();</span><br><span class="line">        first.item = item;</span><br><span class="line">        first.next = oldFirst;</span><br><span class="line">        N++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>背包的链表实现就是 Stack 去掉 pop() 方法，再将它的 push() 更名为 add() 。</p>
+<h2 id="4-综述"><a href="#4-综述" class="headerlink" title="4. 综述"></a>4. 综述</h2><ul>
+<li>这些数据类型是其他高级数据结构的基础；</li>
+<li>它们展示了满足性能目标所带来的挑战；</li>
+<li>重点要支持对对象集合的强大操作。</li>
+</ul>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>数组和链表常被称为顺序存储和链式存储。</p>
+<p>预告</p>
+<ul>
+<li>二叉树的数据结构是含有两个链接的结点组成；</li>
+<li>复合型数据结构：用背包储存栈，用队列储存数组；</li>
+<li>我们可以用数组的背包来表示图。</li>
+</ul>
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="left">数据结构</th>
+<th align="left">优点</th>
+<th align="left">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数组</td>
+<td align="left">通过索引可以直接访问任意元素</td>
+<td align="left">在初始化时就需要知道元素的数量</td>
+</tr>
+<tr>
+<td align="left">链表</td>
+<td align="left">使用的空间和元素数量成正比</td>
+<td align="left">需要通过引用访问任意元素</td>
+</tr>
+</tbody></table>
+<br>
+
+<p>使用抽象想数据类型解决问题：</p>
+<ul>
+<li>定义 API；</li>
+<li>根据特定场景开发用例代码；</li>
+<li>描述一种数据结构，根据 API 定义类的实例变量；</li>
+<li>描述算法，根据它实现类中的实例方法；</li>
+<li>分析算法的性能特点。</li>
+</ul>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点+"></a>知识点+</h2><ul>
+<li><p>除了使用泛型，我们还可以构造一个 Object 对象的栈，并在 pop() 时将对象转换为所需类型。问题就是类型不匹配的错误只能在运行时发现，而使用泛型则会得到一个编译错误。</p>
+</li>
+<li><p>Java 中泛型数组：先了解 <a href="https://zhuanlan.zhihu.com/p/35387281" target="_blank" rel="noopener">协变数组（convariant array）</a>和 <a href="https://blog.csdn.net/wisgood/article/details/11762427" target="_blank" rel="noopener">类型擦除（type erasure）</a>。</p>
+</li>
+<li><p>创建一个字符串栈的数组（需要进行类型转换）</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Stack&lt;String&gt;[] a = (Stack&lt;String&gt;[]) <span class="hljs-keyword">new</span> Stack[N];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在我们写的代码中，栈为空时调用 pop() 会得到一个 NullPointerException 异常。</p>
+</li>
+<li><p>用例在迭代中调用 push() 或 pop() ，Stack 的迭代器会立即抛出一个 java.util.ConcurrentModificationException 异常。</p>
+</li>
+<li><p>String 没有实现 Iterable 接口，不能使用 foreach 循环访问。</p>
+</li>
+</ul>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>见 <a href="/independent-pages/src/algs4/1/1.3/">习题 1-3</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time></div>
+                    <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time></div>
+                    <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="algs4-1.3 背包、队列和栈" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
