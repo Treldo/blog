@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>algs4 习题 1-3 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="练习1. isFull() 方法public boolean isFull() &amp;#123; return N == a.length; &amp;#125;  2. java Stack 的输出was best times of the was the it  3. 不可能产生的出栈返回值  a.  0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -   b.  0 1 2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4 习题 1-3">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/src/algs4/1/1.3/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="练习1. isFull() 方法public boolean isFull() &amp;#123; return N == a.length; &amp;#125;  2. java Stack 的输出was best times of the was the it  3. 不可能产生的出栈返回值  a.  0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -   b.  0 1 2">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-02T17:28:33.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algs4 习题 1-3">
+<meta name="twitter:description" content="练习1. isFull() 方法public boolean isFull() &amp;#123; return N == a.length; &amp;#125;  2. java Stack 的输出was best times of the was the it  3. 不可能产生的出栈返回值  a.  0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -   b.  0 1 2">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="algs4 习题 1-3" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4 习题 1-3
+            
+        </h1>
+        <div class="content">
+            <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="1-isFull-方法"><a href="#1-isFull-方法" class="headerlink" title="1. isFull() 方法"></a>1. isFull() 方法</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFull</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> N == a.length; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-java-Stack-的输出"><a href="#2-java-Stack-的输出" class="headerlink" title="2. java Stack 的输出"></a>2. java Stack 的输出</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">was best times of the was the it</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-不可能产生的出栈返回值"><a href="#3-不可能产生的出栈返回值" class="headerlink" title="3. 不可能产生的出栈返回值"></a>3. 不可能产生的出栈返回值</h3><ul>
+<li><input checked disabled type="checkbox"> a.</li>
+</ul>
+<p><code>0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -</code></p>
+<ul>
+<li><input disabled type="checkbox"> b.</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">0 1 2 3 4 - 5 6 - 7 8 - - - - - 9 - - -</span><br><span class="line">4 6 8 7 5 3 2 9 1 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><input checked disabled type="checkbox"> c.</li>
+</ul>
+<p><code>0 1 2 - 3 4 5 - 6 - 7 - - 8 - 9 - - - -</code></p>
+<ul>
+<li><input checked disabled type="checkbox"> d.</li>
+</ul>
+<p><code>0 1 2 3 4 - - - - - 5 - 6 - 7 - 8 - 9 -</code></p>
+<ul>
+<li><input checked disabled type="checkbox"> e.</li>
+</ul>
+<p><code>0 1 - 2 - 3 - 4 - 5 - 6 - 7 8 9 - - - -</code></p>
+<ul>
+<li><input disabled type="checkbox"> f.</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">0 - 1 2 3 4 - 5 6 - - - 7 8 - - - - 9 -</span><br><span class="line">0 4 6 5 3 8 7 2 1 9</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><input disabled type="checkbox"> g.</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">0 1 - 2 3 4 - 5 6 7 - 8 9 - - - - - - -</span><br><span class="line">1 4 7 9 8 6 5 3 2 0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><input checked disabled type="checkbox"> h.</li>
+</ul>
+<p><code>0 1 2 - - 3 4 - - 5 6 - - 7 8 - - 9 - -</code></p>
+<h3 id="4-用例-Parentheses"><a href="#4-用例-Parentheses" class="headerlink" title="4. 用例 Parentheses"></a>4. 用例 Parentheses</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parentheses</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        while_loop:</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = StdIn.readChar();</span><br><span class="line">            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'&#123;'</span> || c == <span class="hljs-string">'['</span> || c == <span class="hljs-string">'('</span>) &#123;</span><br><span class="line">                stack.push(c);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'&#125;'</span> || c == <span class="hljs-string">']'</span> || c == <span class="hljs-string">')'</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!stack.isEmpty()) &#123;</span><br><span class="line">                    <span class="hljs-keyword">switch</span> (c) &#123;</span><br><span class="line">                        <span class="hljs-keyword">case</span> <span class="hljs-string">'&#125;'</span>:</span><br><span class="line">                            <span class="hljs-keyword">if</span> (stack.pop() != <span class="hljs-string">'&#123;'</span>) &#123;</span><br><span class="line">                                StdOut.println(<span class="hljs-keyword">false</span>);</span><br><span class="line">                                System.exit(<span class="hljs-number">0</span>);</span><br><span class="line">                            &#125;</span><br><span class="line">                        <span class="hljs-keyword">case</span> <span class="hljs-string">']'</span>:</span><br><span class="line">                            <span class="hljs-keyword">if</span> (stack.pop() != <span class="hljs-string">'['</span>) &#123;</span><br><span class="line">                                StdOut.println(<span class="hljs-keyword">false</span>);</span><br><span class="line">                                System.exit(<span class="hljs-number">0</span>);</span><br><span class="line">                            &#125;</span><br><span class="line">                        <span class="hljs-keyword">case</span> <span class="hljs-string">')'</span>:</span><br><span class="line">                            <span class="hljs-keyword">if</span> (stack.pop() != <span class="hljs-string">'('</span>) &#123;</span><br><span class="line">                                StdOut.println(<span class="hljs-keyword">false</span>);</span><br><span class="line">                                System.exit(<span class="hljs-number">0</span>);</span><br><span class="line">                            &#125;</span><br><span class="line">                        <span class="hljs-keyword">default</span>:</span><br><span class="line">                            <span class="hljs-keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    StdOut.println(<span class="hljs-keyword">false</span>);</span><br><span class="line">                    System.exit(<span class="hljs-number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        StdOut.println(<span class="hljs-keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>简述：</strong></p>
+<ul>
+<li>在用例中 stack 栈只存入左半部分的括号；</li>
+<li>根据括号匹配的原则，每一个右括号都应该同栈中 pop() 出来的左括号相匹配；</li>
+<li>这个用例在使用时，如果右括号检查匹配失败，会自动结束输入；</li>
+<li>如果括号完全匹配，最后栈为空；</li>
+<li>如果输入中没有括号的存在，同样返回 true 值。</li>
+</ul>
+<h3 id="5-打印结果"><a href="#5-打印结果" class="headerlink" title="5. 打印结果"></a>5. 打印结果</h3><p>打印 N 的二进制表示。</p>
+<h3 id="6-对-q-的操作"><a href="#6-对-q-的操作" class="headerlink" title="6. 对 q 的操作"></a>6. 对 q 的操作</h3><p>将 q 中的与元素逆序排列。</p>
+<h3 id="7-方法-peek"><a href="#7-方法-peek" class="headerlink" title="7. 方法 peek()"></a>7. 方法 peek()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> first.item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-数组内容和大小"><a href="#8-数组内容和大小" class="headerlink" title="8. 数组内容和大小"></a>8. 数组内容和大小</h3><p><code>it</code> ，大小为 1 。</p>
+<h3 id="9-中序表达式"><a href="#9-中序表达式" class="headerlink" title="9. 中序表达式"></a>9. 中序表达式</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Infix</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; ops = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Stack&lt;String&gt; vals = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            String s = StdIn.readString();</span><br><span class="line">            <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"+"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"-"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"*"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"/"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">")"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!vals.isEmpty()) &#123;</span><br><span class="line">                    String s2 = vals.pop();</span><br><span class="line">                    String s1 = vals.pop();</span><br><span class="line">                    vals.push(<span class="hljs-string">"( "</span> + s1 + <span class="hljs-string">" "</span> + ops.pop() + <span class="hljs-string">" "</span> + s2 + <span class="hljs-string">" )"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                vals.push(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (String s : vals)</span><br><span class="line">            StdOut.print(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>简述：</strong></p>
+<ul>
+<li>ops 栈用来保存操作符号；</li>
+<li>vals 栈用来保存非操作符的内容（数值或数值操作符括号组合）；</li>
+<li>正常执行的前提是按格式标准输入。</li>
+</ul>
+<h3 id="10-过滤器-InfixToPostfix"><a href="#10-过滤器-InfixToPostfix" class="headerlink" title="10. 过滤器 InfixToPostfix"></a>10. 过滤器 InfixToPostfix</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InfixToPostfix</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; ops = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Stack&lt;String&gt; vals = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            String s = StdIn.readString();</span><br><span class="line">            <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"("</span>));</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"+"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"-"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"*"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"/"</span>)) ops.push(s);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">")"</span>)) &#123;</span><br><span class="line">                String s2 = vals.pop();</span><br><span class="line">                String s1 = vals.pop();</span><br><span class="line">                vals.push(s1 + <span class="hljs-string">" "</span> + s2 + <span class="hljs-string">" "</span> + ops.pop());</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                vals.push(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (String s : vals)</span><br><span class="line">            StdOut.print(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请按如下格式进行输入：<code>( ( ( 2 * 3 ) / ( 2 - 1 ) ) + ( 3 * ( 4 - 1 ) ) )</code></p>
+<p>输出结果：<code>2 3 * 2 1 - / 3 4 1 - * +</code></p>
+<h3 id="11-后序表达式计算-EvaluatePostfix"><a href="#11-后序表达式计算-EvaluatePostfix" class="headerlink" title="11. 后序表达式计算 EvaluatePostfix"></a>11. 后序表达式计算 EvaluatePostfix</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EvaluatePostfix</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Stack&lt;String&gt; ops = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        Stack&lt;Double&gt; vals = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            String s = StdIn.readString();</span><br><span class="line">            <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"+"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">double</span> val = vals.pop();</span><br><span class="line">                vals.push(vals.pop() + val);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"-"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">double</span> val = vals.pop();</span><br><span class="line">                vals.push(vals.pop() - val);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"*"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">double</span> val = vals.pop();</span><br><span class="line">                vals.push(vals.pop() * val);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s.equals(<span class="hljs-string">"/"</span>)) &#123;</span><br><span class="line">                <span class="hljs-keyword">double</span> val = vals.pop();</span><br><span class="line">                vals.push(vals.pop() / val);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> vals.push(Double.parseDouble(s));</span><br><span class="line">        &#125;</span><br><span class="line">        StdOut.println(vals.pop());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-有静态方法-copy-的-Stack-用例"><a href="#12-有静态方法-copy-的-Stack-用例" class="headerlink" title="12. 有静态方法 copy() 的 Stack 用例"></a>12. 有静态方法 copy() 的 Stack 用例</h3><p>这里使用了迭代器和 foreach 循环。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Stack&lt;String&gt; <span class="hljs-title">copy</span><span class="hljs-params">(Stack&lt;String&gt; stack)</span> </span>&#123;</span><br><span class="line">    Iterator&lt;String&gt; iterator = stack.iterator();</span><br><span class="line">    Stack&lt;String&gt; res = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    Stack&lt;String&gt; temp = <span class="hljs-keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">if</span> (iterator.hasNext()) temp.push(iterator.next());</span><br><span class="line">    <span class="hljs-keyword">for</span> (String s : stack) res.push(s);</span><br><span class="line">    <span class="hljs-keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="13-不可能产生的出列返回值"><a href="#13-不可能产生的出列返回值" class="headerlink" title="13. 不可能产生的出列返回值"></a>13. 不可能产生的出列返回值</h3><p>根据队列先进先出的特点，所以只有 a 是可能实现的。</p>
+<h3 id="14-类-ResizingArrayQueueOfStrings"><a href="#14-类-ResizingArrayQueueOfStrings" class="headerlink" title="14. 类 ResizingArrayQueueOfStrings"></a>14. 类 ResizingArrayQueueOfStrings</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ResizingArrayQueueOfStrings</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> String[] a;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> N;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> first;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> last;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ResizingArrayQueueOfStrings</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        a = <span class="hljs-keyword">new</span> String[<span class="hljs-number">2</span>];</span><br><span class="line">        N = <span class="hljs-number">0</span>;</span><br><span class="line">        first = <span class="hljs-number">0</span>;</span><br><span class="line">        last = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N == <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resize</span><span class="hljs-params">(<span class="hljs-keyword">int</span> max)</span> </span>&#123;</span><br><span class="line">        String[] temp = <span class="hljs-keyword">new</span> String[max];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            temp[i] = a[(first + <span class="hljs-number">1</span>) % a.length];</span><br><span class="line">        &#125;</span><br><span class="line">        a = temp;</span><br><span class="line">        first = <span class="hljs-number">0</span>;</span><br><span class="line">        last = N;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enqueue</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N == a.length) resize(<span class="hljs-number">2</span> * a.length);</span><br><span class="line">        a[last++] = s;</span><br><span class="line">        N++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">dequeue</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        String s = a[first];</span><br><span class="line">        a[first] = <span class="hljs-keyword">null</span>;</span><br><span class="line">        N--;</span><br><span class="line">        first++;</span><br><span class="line">        <span class="hljs-keyword">if</span> (N &gt; <span class="hljs-number">0</span> &amp;&amp; N == a.length / <span class="hljs-number">4</span>) resize(a.length / <span class="hljs-number">2</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-Queue-用例"><a href="#15-Queue-用例" class="headerlink" title="15. Queue 用例"></a>15. Queue 用例</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Queue&lt;String&gt; q = <span class="hljs-keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">int</span> k = Integer.parseInt(args[<span class="hljs-number">0</span>]);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String s = StdIn.readString();</span><br><span class="line">        q.enqueue(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; (q.size() + <span class="hljs-number">1</span> - k); i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i == q.size() - k) &#123;</span><br><span class="line">            StdOut.println(q.dequeue());</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        q.dequeue();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="16-静态方法-readDates"><a href="#16-静态方法-readDates" class="headerlink" title="16. 静态方法 readDates()"></a>16. 静态方法 readDates()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Date[] readDates() &#123;</span><br><span class="line">    Queue&lt;Date&gt; q = <span class="hljs-keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String[] str = StdIn.readString().split(<span class="hljs-string">"/"</span>);</span><br><span class="line">        <span class="hljs-keyword">int</span> month = Integer.parseInt(str[<span class="hljs-number">0</span>]);</span><br><span class="line">        <span class="hljs-keyword">int</span> day = Integer.parseInt(str[<span class="hljs-number">1</span>]);</span><br><span class="line">        <span class="hljs-keyword">int</span> year = Integer.parseInt(str[<span class="hljs-number">2</span>]);</span><br><span class="line">        q.enqueue(<span class="hljs-keyword">new</span> Date(year, month, day));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = q.size();</span><br><span class="line">    Date[] a = <span class="hljs-keyword">new</span> Date[N];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">        a[i] = q.dequeue();</span><br><span class="line">    <span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="17-对-Transaction-的实现"><a href="#17-对-Transaction-的实现" class="headerlink" title="17. 对 Transaction 的实现"></a>17. 对 Transaction 的实现</h3><p>我在 Date 里写了一个静态方法 readDate(String s) 用来对读入的字符串进行处理，返回一个 Date 对象：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Date <span class="hljs-title">readDate</span><span class="hljs-params">(String s)</span> </span>&#123;</span><br><span class="line">    String[] str = s.split(<span class="hljs-string">"/"</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> month = Integer.parseInt(str[<span class="hljs-number">0</span>]);</span><br><span class="line">    <span class="hljs-keyword">int</span> day = Integer.parseInt(str[<span class="hljs-number">1</span>]);</span><br><span class="line">    <span class="hljs-keyword">int</span> year = Integer.parseInt(str[<span class="hljs-number">2</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Date(year, month, day);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Transaction 中的静态方法 readTransactions() 是这样写的，同上面的 readDates() 方法类似，比它稍微复杂了一点：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Transaction[] readTransactions() &#123;</span><br><span class="line">    Queue&lt;Transaction&gt; q = <span class="hljs-keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String name = StdIn.readString();</span><br><span class="line">        Date date = Date.readDate(StdIn.readString());</span><br><span class="line">        <span class="hljs-keyword">double</span> amount = Double.parseDouble(StdIn.readString());</span><br><span class="line">        q.enqueue(<span class="hljs-keyword">new</span> Transaction(name, date, amount));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = q.size();</span><br><span class="line">    Transaction[] a = <span class="hljs-keyword">new</span> Transaction[N];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">        a[i] = q.dequeue();</span><br><span class="line">    <span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表练习"><a href="#链表练习" class="headerlink" title="链表练习"></a>链表练习</h2><ul>
+<li><input disabled type="checkbox"> 待更新</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time></div>
+                    <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time></div>
+                    <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="algs4 习题 1-3" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
