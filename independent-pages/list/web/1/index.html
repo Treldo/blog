@@ -7,17 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2019 - Vubee&#39;s Site</title>
+<title>HTML5 基础 - Vubee&#39;s Site</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vubee&#39;s Site">
-<meta property="og:url" content="http://vubee.github.io/archives/2019/index.html">
+    <meta name="description" content="从 HTML4 到 HTML5语法变化 省略了 &amp;lt;html&amp;gt;、&amp;lt;head&amp;gt;、&amp;lt;body&amp;gt; 等元素，简化 &amp;lt;meta&amp;gt; 元素的 charset 属性值，&amp;lt;p&amp;gt; 元素的结束标记。 文档类型声明简化为 &amp;lt;!DOCTYPE html&amp;gt; ，使用工具时可以加入 SYSTEM 识别符，声明方法：&amp;lt;!DOCTYPE html SYST">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML5 基础">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/web/1/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="从 HTML4 到 HTML5语法变化 省略了 &amp;lt;html&amp;gt;、&amp;lt;head&amp;gt;、&amp;lt;body&amp;gt; 等元素，简化 &amp;lt;meta&amp;gt; 元素的 charset 属性值，&amp;lt;p&amp;gt; 元素的结束标记。 文档类型声明简化为 &amp;lt;!DOCTYPE html&amp;gt; ，使用工具时可以加入 SYSTEM 识别符，声明方法：&amp;lt;!DOCTYPE html SYST">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-05T15:25:10.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vubee&#39;s Site">
+<meta name="twitter:title" content="HTML5 基础">
+<meta name="twitter:description" content="从 HTML4 到 HTML5语法变化 省略了 &amp;lt;html&amp;gt;、&amp;lt;head&amp;gt;、&amp;lt;body&amp;gt; 等元素，简化 &amp;lt;meta&amp;gt; 元素的 charset 属性值，&amp;lt;p&amp;gt; 元素的结束标记。 文档类型声明简化为 &amp;lt;!DOCTYPE html&amp;gt; ，使用工具时可以加入 SYSTEM 识别符，声明方法：&amp;lt;!DOCTYPE html SYST">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
 
@@ -88,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                <img src="/images/logo.png" alt="HTML5 基础" height="28">
             
             </a>
         </div>
@@ -144,147 +148,75 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                HTML5 基础
+            
+        </h1>
+        <div class="content">
+            <hr>
+<h2 id="从-HTML4-到-HTML5"><a href="#从-HTML4-到-HTML5" class="headerlink" title="从 HTML4 到 HTML5"></a>从 HTML4 到 HTML5</h2><h3 id="语法变化"><a href="#语法变化" class="headerlink" title="语法变化"></a>语法变化</h3><ul>
+<li>省略了 &lt;html&gt;、&lt;head&gt;、&lt;body&gt; 等元素，简化 &lt;meta&gt; 元素的 charset 属性值，&lt;p&gt; 元素的结束标记。</li>
+<li>文档类型声明简化为 <code>&lt;!DOCTYPE html&gt;</code> ，使用工具时可以加入 SYSTEM 识别符，声明方法：<code>&lt;!DOCTYPE html SYSTEM &quot;about:legacy-cpmpat&quot;&gt;</code> 。</li>
+<li>简化了 charset 属性的写法：<br><code>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text.html&quot;; charset=&quot;UTF-8&quot;&gt;</code><br>–&gt; <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></li>
+</ul>
+<h3 id="标记省略"><a href="#标记省略" class="headerlink" title="标记省略"></a>标记省略</h3><p>…</p>
+<p>在 <body> 标签省略之后可以使用 document.body 进行访问。</body></p>
+<h3 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h3><p>在不写属性值时属性值才会为空。</p>
+<p>属性值可以使用单双引&emsp;–&gt;&emsp;属性值不包括 “空串、&lt;、&gt;、-、单双引号” 时可以省略两边的引号</p>
+<h3 id="HTML4-属性"><a href="#HTML4-属性" class="headerlink" title="HTML4 属性"></a>HTML4 属性</h3><p>核心属性：</p>
+<ul>
+<li>class：类规则或样式规则</li>
+<li>id：元素的唯一标识</li>
+<li>style：元素的样式声明</li>
+<li>文档头部区域，定义网页元信息：html、head、title、base、meta、param、script、style</li>
+</ul>
+<p>语言属性：</p>
+<ul>
+<li>lang：元素的语言代码或编码</li>
+<li>dir：文本方向，包括 ltr 和 rtl</li>
+<li>没有语言属性的元素：frameset、frame、iframe、br、hr、base、param、script</li>
+</ul>
+<p>键盘属性：</p>
+<ul>
+<li>accesskey：访问某元素的键盘快捷键（Alt + 字母）</li>
+<li>tabindex：元素的 Tab 键索引编号（大小决定 Tab 键遍历顺序）</li>
+</ul>
+<p>内容属性：</p>
+<ul>
+<li>alt：元素的替换文本</li>
+<li>title：元素的提示文本</li>
+<li>longdesc：元素包含内容的大段描述信息</li>
+<li>cite：元素包含内容的引用信息</li>
+<li>datetime：元素包含内容的日期和时间</li>
+</ul>
+<p>替换属性：</p>
+<ul>
+<li>rel：当前页面与其他页面的关系（源文档 –&gt;目标文档，prev 属性代指平等关系）</li>
+<li>rev：其他页面与当前页面之间的链接关系（目标文档 –&gt; 源文档）</li>
+</ul>
+<h2 id="XHTML-文档"><a href="#XHTML-文档" class="headerlink" title="XHTML 文档"></a>XHTML 文档</h2><p>格式中含有：</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- xmlns 属性声明文档命名空间 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">&lt;!-- 设置文档字符编码 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text.html"</span>; <span class="hljs-attr">charset</span>=<span class="hljs-string">"gb2312"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-09-05T14:00:44.000Z">2019-09-05</time>
-                        <a href="/web-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">前端学习笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time>
-                        <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time>
-                        <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time>
-                        <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-24T15:33:25.000Z">2019-06-24</time>
-                        <a href="/vscode-warning-classpath-is-incomplete/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于 VS Code 中 &#34;Classpath is incomplete&#34; warning</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/VS-Code/">VS Code</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-06-21T12:50:59.000Z">2019-06-21</time>
-                        <a href="/git-one-more-account/" class="title has-link-black-ter is-size-6 has-text-weight-normal">同一客户端下使用多个 Git 账号</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Git/">Git</a> / <a class="has-link-grey -link" href="/categories/Git/开发工具/">开发工具</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-12-31T16:14:33.000Z">2019-01-01</time>
-                        <a href="/hanoi-cpp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hanoi 塔问题在 C++ 中的递归实现</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/C/">C++</a> / <a class="has-link-grey -link" href="/categories/C/算法/">算法</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+<h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><p>文档类型、设置 xmlns 属性、闭合标签、元素和属性必须小写、属性使用引号扩起来、所有属性必须赋值、</p>
+<figure class="highlight html hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">&lt;!-- 错误写法：&lt;td nowrap&gt; --&gt;</span></span><br><span class="line"><span class="hljs-comment">&lt;!-- 没有值的属性使用自身来进行赋值 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nowrap</span>=<span class="hljs-string">"nowrap"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>name 属性被废除，使用 id 作为统一的名称（IE4.0 版本一下可以同时使用）</p>
+
         </div>
+        
+        
+        
     </div>
 </div>
+
+
+
+
 
 
 </div>
@@ -399,7 +331,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                    <img src="/images/logo.png" alt="HTML5 基础" height="28">
                 
                 </a>
                 <p class="is-size-7">
