@@ -18,7 +18,7 @@
 <meta property="og:description" content="练习1. isFull() 方法public boolean isFull() &amp;#123; return N == a.length; &amp;#125;  2. java Stack 的输出was best times of the was the it  3. 不可能产生的出栈返回值  a.  0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -   b.  0 1 2">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-02T17:28:33.213Z">
+<meta property="og:updated_time" content="2019-09-06T16:23:58.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4 习题 1-3">
 <meta name="twitter:description" content="练习1. isFull() 方法public boolean isFull() &amp;#123; return N == a.length; &amp;#125;  2. java Stack 的输出was best times of the was the it  3. 不可能产生的出栈返回值  a.  0 1 2 3 4 - - - - - 5 6 7 8 9 - - - - -   b.  0 1 2">
@@ -242,9 +242,21 @@
 <p>Transaction 中的静态方法 readTransactions() 是这样写的，同上面的 readDates() 方法类似，比它稍微复杂了一点：</p>
 <figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Transaction[] readTransactions() &#123;</span><br><span class="line">    Queue&lt;Transaction&gt; q = <span class="hljs-keyword">new</span> Queue&lt;&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        String name = StdIn.readString();</span><br><span class="line">        Date date = Date.readDate(StdIn.readString());</span><br><span class="line">        <span class="hljs-keyword">double</span> amount = Double.parseDouble(StdIn.readString());</span><br><span class="line">        q.enqueue(<span class="hljs-keyword">new</span> Transaction(name, date, amount));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = q.size();</span><br><span class="line">    Transaction[] a = <span class="hljs-keyword">new</span> Transaction[N];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">        a[i] = q.dequeue();</span><br><span class="line">    <span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="链表练习"><a href="#链表练习" class="headerlink" title="链表练习"></a>链表练习</h2><ul>
-<li><input disabled type="checkbox"> 待更新</li>
-</ul>
+<h2 id="链表练习"><a href="#链表练习" class="headerlink" title="链表练习"></a>链表练习</h2><h3 id="18-语句的效果"><a href="#18-语句的效果" class="headerlink" title="18. 语句的效果"></a>18. 语句的效果</h3><p>x.next 指向了 x.next.next ，之前的 x.next 就变成了孤儿，会被 Java 回收，相当于删除了 x 的后续结点。</p>
+<h3 id="19-删除链表的尾结点"><a href="#19-删除链表的尾结点" class="headerlink" title="19. 删除链表的尾结点"></a>19. 删除链表的尾结点</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">Node current = first;</span><br><span class="line"><span class="hljs-keyword">while</span> (current.next.next != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">    current = current.next;</span><br><span class="line">&#125;</span><br><span class="line">current.next = <span class="hljs-keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="20-方法-delete"><a href="#20-方法-delete" class="headerlink" title="20. 方法 delete()"></a>20. 方法 delete()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">delete</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    Node current = first;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k - <span class="hljs-number">2</span>; i++) &#123;</span><br><span class="line">        current = current.next;</span><br><span class="line">        <span class="hljs-keyword">if</span> (current == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (current.next != <span class="hljs-keyword">null</span>) current.next = current.next.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="21-方法-find"><a href="#21-方法-find" class="headerlink" title="21. 方法 find()"></a>21. 方法 find()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">find</span><span class="hljs-params">(Chain&lt;String&gt; c, String s)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 前提是链表中的 first 属性为 public</span></span><br><span class="line">    Node current = c.first;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; c.size(); i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (s.equals(current.item)) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i != c.size() - <span class="hljs-number">1</span>) current = current.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="22-代码做了什么"><a href="#22-代码做了什么" class="headerlink" title="22. 代码做了什么"></a>22. 代码做了什么</h3><p>将 t 插入 x 与 x.next 之间。</p>
+<h3 id="23-为什么效果不同"><a href="#23-为什么效果不同" class="headerlink" title="23. 为什么效果不同"></a>23. 为什么效果不同</h3><p>x.next 已经替换为 t ，x.next 指向 t 本身，不再与曾经的后续结点有关。</p>
+<h3 id="24-方法-removeAfter"><a href="#24-方法-removeAfter" class="headerlink" title="24. 方法 removeAfter()"></a>24. 方法 removeAfter()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removeAfter</span><span class="hljs-params">(Node node)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (node != <span class="hljs-keyword">null</span> &amp;&amp; node.next != <span class="hljs-keyword">null</span>)</span><br><span class="line">        node.next = <span class="hljs-keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="25-方法-insertAfter"><a href="#25-方法-insertAfter" class="headerlink" title="25. 方法 insertAfter()"></a>25. 方法 insertAfter()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insertAfter</span><span class="hljs-params">(Node node_1, Node node_2)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (node_1 != <span class="hljs-keyword">null</span> &amp;&amp; node_2 != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">        node_2.next = node_1.next;</span><br><span class="line">        node_1.next = node_2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="26-方法-remove"><a href="#26-方法-remove" class="headerlink" title="26. 方法 remove()"></a>26. 方法 remove()</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(Chain&lt;String&gt; c, String s)</span> </span>&#123;</span><br><span class="line">    Node current = c.first;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; c.size(); i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (current.next == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (item.equals(current.next.item)) current.next = current.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -258,13 +270,37 @@
 
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '1162ca7a40d7c12ec3ac94e3ff7de071',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
     
         
 <div class="card widget">
