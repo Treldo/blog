@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>algs4-1.4 算法分析 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4-1.4 算法分析">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/algs4/1/1.4/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-08T15:42:52.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algs4-1.4 算法分析">
+<meta name="twitter:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="algs4-1.4 算法分析" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4-1.4 算法分析
+            
+        </h1>
+        <div class="content">
+            <p>如何更好地将问题规模和运行时间的关系量化？</p>
+<h2 id="计时器的例子"><a href="#计时器的例子" class="headerlink" title="计时器的例子"></a>计时器的例子</h2><ul>
+<li><p>计时器的数据类型</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Stopwatch</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> start;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 创建一个计时器。</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Stopwatch</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        start = System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 返回创建对象以来经过的时间。</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 从对象创建以来经过的时间（单位：s）</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">elapsedTime</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">long</span> now = System.currentTimeMillis();</span><br><span class="line">        <span class="hljs-keyword">return</span> (now - start) / <span class="hljs-number">1000.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对数组中三个不同元素进行加和检验</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreeSum</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment">     * 计算数组中相邻三个数的加和，如果等于 0 记录，最后返回计算结果为 0 的次数。</span></span><br><span class="line"><span class="hljs-comment">     *</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> a 进行处理的数组</span></span><br><span class="line"><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 计算结果为 0 的次数</span></span><br><span class="line"><span class="hljs-comment">     */</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">count</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n = a.length;</span><br><span class="line">        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n; j++)</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = j + <span class="hljs-number">1</span>; k &lt; n; k++)</span><br><span class="line">                    <span class="hljs-keyword">if</span> (a[i] + a[j] + a[k] == <span class="hljs-number">0</span>)</span><br><span class="line">                        cnt++;</span><br><span class="line">        <span class="hljs-keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试用例</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n = Integer.parseInt(args[<span class="hljs-number">0</span>]);</span><br><span class="line">    <span class="hljs-keyword">int</span>[] a = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        a[i] = StdRandom.uniform(-<span class="hljs-number">1000000</span>, <span class="hljs-number">1000000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Stopwatch stopwatch = <span class="hljs-keyword">new</span> Stopwatch();</span><br><span class="line">    <span class="hljs-keyword">int</span> cnt = ThreeSum.count(a);</span><br><span class="line">    System.out.println(cnt+ <span class="hljs-string">"   "</span> + stopwatch.elapsedTime() + <span class="hljs-string">"s"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面这个例子是打印一个图，横坐标为问题规模 N ，纵坐标为处理 N 个随机 6 位整数的运行时间。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">double</span> <span class="hljs-title">timeTrial</span><span class="hljs-params">(<span class="hljs-keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> MAX = <span class="hljs-number">1000000</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] a = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)</span><br><span class="line">            a[i] = StdRandom.uniform(-MAX, MAX);</span><br><span class="line">        Stopwatch timer = <span class="hljs-keyword">new</span> Stopwatch();</span><br><span class="line">        <span class="hljs-keyword">int</span> cnt = ThreeSum.count(a);</span><br><span class="line">        <span class="hljs-keyword">return</span> timer.elapsedTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 坐标轴的范围在这里修改</span></span><br><span class="line">        StdDraw.setXscale(<span class="hljs-number">0</span>, <span class="hljs-number">5000</span>);</span><br><span class="line">        StdDraw.setYscale(-<span class="hljs-number">1</span>, <span class="hljs-number">5</span>);</span><br><span class="line">        StdDraw.setPenRadius(.<span class="hljs-number">008</span>);</span><br><span class="line">        StdDraw.setPenColor(StdDraw.RED);</span><br><span class="line">        <span class="hljs-comment">// 这里可以修改 N 的测试范围</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> N = <span class="hljs-number">1000</span>; N &lt;= <span class="hljs-number">4000</span>; N += <span class="hljs-number">100</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">double</span> time = timeTrial(N);</span><br><span class="line">            System.out.printf(<span class="hljs-string">"%7d %5.1f\n"</span>, N, time);</span><br><span class="line">            StdDraw.point(N, time);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>我使用这个方法进行了两组操作，分别得到了 N 从 100 到 4000 ，和 N 从 1000 到 4000 的图，它们分别是：</p>
+<img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/sketch/100-%3E4000.png" width="240">
+<img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/sketch/1000-%3E4000.png" width="240">
+
+<p>正常来说随着问题规模 N 的增加，运行时间也应该不断增加。但是 N 从 1000 到 4000 的图像却分成了两个部分，我还没有弄明白，你也运行一下试试看吧。</p>
+<h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>我们观察 ThreeSum 这个类的实现，它计算了在数组中任意三个不同元素的和：</p>
+<figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line">a[1] + a[2] + a[3]</span><br><span class="line">a[1] + a[2] + a[4]</span><br><span class="line">...</span><br><span class="line">a[1] + a[2] + a[N - 1]</span><br><span class="line">a[1] + a[3] + a[4]</span><br><span class="line">a[1] + a[3] + a[5]</span><br><span class="line">...</span><br><span class="line">a[2] + a[3] + a[4]</span><br><span class="line">...</span><br><span class="line">a[N - 3] + a[N - 2] + a[N - 1]</span><br></pre></td></tr></table></figure>
+
+<p>所以相当于遍历了 a[N] 中的所有不同的三个元素，我们可以使用 \(C_{N}^{3}\) 来进行计算。算下来 if 语句的执行次数就是：</p>
+<p>$$\frac{N(N-1)(N-2)}{6}=\frac{N^{3}}{6}-\frac{N^{2}}{2}+\frac{N}{3}$$</p>
+<blockquote>
+<p>我们用 ~f(N) 表示所有随着 N 的增大除以 f(N) 的结果趋近于 1 的函数。用 g(N)~f(N) 表示 g(N)/f(N) 随着 N 的增大趋近于 1 。</p>
+</blockquote>
+<p>我们就可以使用 ~\(\frac{N^{3}}{6}\) 来表示 ThreeSum 中的 if 语句的执行次数。根据前文所述的所述的数学模型有 \(T(N)\)~\(a{N^{3}}\) ，其中常数 a 取决于计算机的型号。</p>
+<p><strong>得到运行时间的数学模型：</strong></p>
+<ul>
+<li>确定输入模型，定义问题规模；</li>
+<li>识别内循环；</li>
+<li>根据内循环中的操作确定成本模型；</li>
+<li>对于给定输入，判断这些操作的执行频率。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">算法</th>
+<th align="left">运行时间的增长数量级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ThreeSum</td>
+<td align="left">\(NlogN\)</td>
+</tr>
+<tr>
+<td align="left">ThreeSumFast</td>
+<td align="left">\(N^{2}logN\)</td>
+</tr>
+</tbody></table>
+<p>ThreeSumFast 使用了 <code>Arrays.sort()</code> 的归并排序和 <code>BinarySearch.indexOf()</code> 的二分查找（对整型数组进行处理）</p>
+<ul>
+<li>ThreeSumFast 源码<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ThreeSumFast</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">count</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(a);</span><br><span class="line">        <span class="hljs-keyword">int</span> n = a.length;</span><br><span class="line">        <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; n; j++)</span><br><span class="line">                <span class="hljs-keyword">if</span> (BinarySearch.indexOf(a, -a[i] - a[j]) &gt; j)</span><br><span class="line">                    cnt++;</span><br><span class="line">        <span class="hljs-keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span>[] a = StdIn.readInts();</span><br><span class="line">        System.out.println(count(a));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>显而易见，ThreeSumFast 算法更快。在这里二分查找的增长数量级为线性级别 \(N\) ，对数组进行排序时用到的归并排序的增长数量级为线性对数级别 \(NlogN\) 。</p>
+<p><strong>大致介绍一下常见增长数量级的分类：</strong></p>
+<ul>
+<li>常数级别：运行时间不依赖于 \(N\) ；</li>
+<li>对数级别：仅比常数时间的程序稍慢，典型的例子就是 \(二分查找\)；</li>
+<li>线性级别：单个 for 循环是最常见的，运行时间和 \(N\) 成正比；</li>
+<li>线性对数级别：增长数量级为 \(NlogN\) ，对数的底数和增长数量级无关，典型的例子是 Merge.sort()（算法 2.4）和 Quick.sort()（算法 2.5）；</li>
+<li>平方级别：一般为两个 for 循环，例子有 Selection.sort()（算法 2.1）和 Insertion.sort()（算法 2.2）；</li>
+<li>立方级别：一般有三个 for 循环，ThreeSum 就是一个例子；</li>
+<li>指数级别：一般描述为 \(b^{N}\) ，这里的 b &gt; 1 且为常数。</li>
+</ul>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><ul>
+<li>原始数据类型的常见内存、需求<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">字节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">boolean</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">byte</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="left">8</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">8</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><ul>
+<li><p>一个 Node 对象需要使用 40 字节（其中对象开销 16 字节，指向 Item 和 Node 对象的引用各需 8 字节，另外还有 8 字节的额外开销）</p>
+</li>
+<li><p>Integer 对象需要使用 24 字节（16 字节的对象开销，4 字节保存 int 值以及 4 个填充字节）</p>
+</li>
+</ul>
+<p>一个含有 N 的整数的基于链表的栈需要使用（32+64N）字节（16 字节对象开销，引用类型实例变量 8 字节，int 型实例变量 4 字节，4 个填充字节，每个元素包含一个 Node 对象的 40 字节和一个 Integer 对象的 24 字节）</p>
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>一个原始数据类型的数组一般需要 24 字节的头信息（16 字节的对象开销，4 字节用于保存数组长度以及 4 填充字节）。</p>
+<p>例如：一个含有 N 个 int 值的数组对象需要使用（24+4N）字节（会被填充为 8 的倍数），如果是 double 则需要使用（24+8N）字节。</p>
+<h3 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h3><p>4 个实例变量（一个 8 字节的指向字符数组的引用和三个 int 值）</p>
+<p>3 个 int 值：</p>
+<ul>
+<li>字符数组中的偏移量；</li>
+<li>计数器（字符串的长度）；</li>
+<li>散列值。</li>
+</ul>
+<p>所以每个 String 对象会使用 40 字节（16 字节表示对象，三个 4 字节 int 实例变量，8 字节数组引用和 4 个填充字节），这是除字符数组之外字符串所需要的内存空间，字符所需的内存需要另记，因为 String 的 char 数组是在多个字符串之间共享的。（String 对象不可变，多个对象含有同一个 <code>value[]</code> 数组时可以节省内存。</p>
+<h3 id="字符串的值和子字符串"><a href="#字符串的值和子字符串" class="headerlink" title="字符串的值和子字符串"></a>字符串的值和子字符串</h3><p>子字符串重用了 <code>value[]</code> ，只会使用 40 字节的内存。可以说，一个子字符串所需的额外内存是一个常数，构造一个子字符串的时间也是常数。这样做可以避免子字符串复制字符使用线性的时间和空间。</p>
+<p>当程序调用一个方法时，系统会从栈中为方法分配所需要的内存用于保存局部变量；<br>方法返回时，它所占用的内存也被返回给了系统栈。</p>
+<p>所以在递归程序中创建数组或是其他大型对象是很危险的！</p>
+<p><strong><em>关注运行成本！</em></strong></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点+"></a>知识点+</h2><ul>
+<li>\(f(N)\)~\(g(N)\) 的正式定义为 \(\lim_{N\to\infty}\frac{f(N)}{g(N)} = 1\)</li>
+</ul>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>见 <a href="/independent-pages/src/algs4/1/1.4/">习题 1-4</a></p>
+<hr>
+
+        </div>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '05a0d10a510452a78bd775e237b9a917',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T15:35:02.000Z">2019-09-07</time></div>
+                    <a href="/web-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 开发学习规划</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T14:00:44.000Z">2019-09-05</time></div>
+                    <a href="/web-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T13:22:41.000Z">2019-07-28</time></div>
+                    <a href="/emacs-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Emacs Note</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="algs4-1.4 算法分析" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
