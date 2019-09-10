@@ -18,7 +18,7 @@
 <meta property="og:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-08T15:42:52.196Z">
+<meta property="og:updated_time" content="2019-09-09T15:44:34.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-1.4 算法分析">
 <meta name="twitter:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
@@ -188,6 +188,7 @@
 <p>我们用 ~f(N) 表示所有随着 N 的增大除以 f(N) 的结果趋近于 1 的函数。用 g(N)~f(N) 表示 g(N)/f(N) 随着 N 的增大趋近于 1 。</p>
 </blockquote>
 <p>我们就可以使用 ~\(\frac{N^{3}}{6}\) 来表示 ThreeSum 中的 if 语句的执行次数。根据前文所述的所述的数学模型有 \(T(N)\)~\(a{N^{3}}\) ，其中常数 a 取决于计算机的型号。</p>
+<h3 id="成本模型"><a href="#成本模型" class="headerlink" title="成本模型"></a>成本模型</h3><p>使用成本模型来评估算法的性质，定义了我们所研究算法中的基本操作。比如研究 3-sum 问题，我们记录数组的访问次数。</p>
 <p><strong>得到运行时间的数学模型：</strong></p>
 <ul>
 <li>确定输入模型，定义问题规模；</li>
@@ -228,7 +229,7 @@
 <li>立方级别：一般有三个 for 循环，ThreeSum 就是一个例子；</li>
 <li>指数级别：一般描述为 \(b^{N}\) ，这里的 b &gt; 1 且为常数。</li>
 </ul>
-<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><ul>
+<h2 id="倍率实验"><a href="#倍率实验" class="headerlink" title="倍率实验"></a>倍率实验</h2><h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><ul>
 <li>原始数据类型的常见内存、需求<table>
 <thead>
 <tr>
