@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>顺序表之初用 C 指针 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="之前没有真正使用 C 语言编写过程序，第一次使用 C 语言进行建立数据结构，因为使用了指针的概念，遇到了很多问题，这里大致说一下。 #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define INITLENGTH 100#define INCREMENT 10typedef int ElemType;  这是在结构体之上引入的库和定义，其中 E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="顺序表之初用 C 指针">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/data-struct-lessons/sqlist-c/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="之前没有真正使用 C 语言编写过程序，第一次使用 C 语言进行建立数据结构，因为使用了指针的概念，遇到了很多问题，这里大致说一下。 #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define INITLENGTH 100#define INCREMENT 10typedef int ElemType;  这是在结构体之上引入的库和定义，其中 E">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-12T10:13:06.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="顺序表之初用 C 指针">
+<meta name="twitter:description" content="之前没有真正使用 C 语言编写过程序，第一次使用 C 语言进行建立数据结构，因为使用了指针的概念，遇到了很多问题，这里大致说一下。 #include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define INITLENGTH 100#define INCREMENT 10typedef int ElemType;  这是在结构体之上引入的库和定义，其中 E">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="顺序表之初用 C 指针" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                顺序表之初用 C 指针
+            
+        </h1>
+        <div class="content">
+            <p>之前没有真正使用 C 语言编写过程序，第一次使用 C 语言进行建立数据结构，因为使用了指针的概念，遇到了很多问题，这里大致说一下。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">#define INITLENGTH 100</span><br><span class="line">#define INCREMENT 10</span><br><span class="line">typedef <span class="hljs-keyword">int</span> ElemType;</span><br></pre></td></tr></table></figure>
+
+<p>这是在结构体之上引入的库和定义，其中 ElemType 作为 int 的别名（其实这里不需要，因为顺序表基本都是对数值进行操作）。</p>
+<blockquote>
+<p>在程序中，大致实现了 初始化、输出表元、获取最大值、获取最小值、二分查找、冒泡排序（还没怎么接触到高级排序算法，在看 算法第四版 补充知识）、获得输入、获取索引表元、插入、删除、倒置以及合并操作。</p>
+</blockquote>
+<p><strong>下面来说几个我出错的地方：</strong></p>
+<ul>
+<li>Insert 方法<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Insert</span><span class="hljs-params">(SqList *L, <span class="hljs-keyword">int</span> index, ElemType elem)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">0</span> || index &gt; L-&gt;length) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (L1-&gt;length &gt;= L-&gt;size)</span><br><span class="line">    &#123;</span><br><span class="line">        ElemType * newbase = (ElemType *) realloc(L-&gt;elem, (L-&gt;size + INCREMENT) * sizeof(ElemType));</span><br><span class="line">        <span class="hljs-keyword">if</span> (!newbase)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(<span class="hljs-string">"Insert Failed!"</span>);</span><br><span class="line">            exit(-<span class="hljs-number">2</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            L-&gt;size = L-&gt;size + INCREMENT;</span><br><span class="line">            L-&gt;elem = newbase;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = L-&gt;length; i &gt; index; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        *(L-&gt;elem + i) = *(L-&gt;elem + i - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    *(L-&gt;elem + index) = elem;</span><br><span class="line">    L-&gt;length++;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这里的逻辑比较清晰，在表中元素数目大于等于系统分配的内存空间时进行扩容操作，index 不正确会以 -1 的返回值结束调用，我开始将 for 循环移位操作写成了这样：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = L-&gt;length - index; i &gt; <span class="hljs-number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">    *(L-&gt;elem + i) = *(L-&gt;elem + i - <span class="hljs-number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样操作虽然移位元素的数目相同，也就是进行的移位操作次数相同，但是却移动了一些本不该移动的元素。应该是这样：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = L-&gt;length; i &gt; index; i--)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Merge 方法<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function">SqList <span class="hljs-title">Merge</span><span class="hljs-params">(SqList *L1, SqList *L2)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (L1-&gt;length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> *L2;</span><br><span class="line">    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (L2-&gt;length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> *L1;</span><br><span class="line">    SqList L3;</span><br><span class="line">    ElemType * base = (ElemType *) calloc(L1-&gt;size + L2-&gt;size, sizeof(ElemType));</span><br><span class="line">    L3.elem = base;</span><br><span class="line">    L3.length = <span class="hljs-number">0</span>;</span><br><span class="line">    L3.size = L1-&gt;size + L2-&gt;size;</span><br><span class="line">    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (i &lt; L1-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (*(L1-&gt;elem + i) == *(L1-&gt;elem + i + <span class="hljs-number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == L1-&gt;length - <span class="hljs-number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L1-&gt;elem + i++);</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">while</span> (j &lt; L2-&gt;length)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">while</span> (*(L2-&gt;elem + j) == *(L2-&gt;elem + j + <span class="hljs-number">1</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (j == L2-&gt;length - <span class="hljs-number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    *(L3.elem + index++) = *(L2-&gt;elem + j++);</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                j++;</span><br><span class="line">                <span class="hljs-keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span> (*(L1-&gt;elem + i) &lt; *(L2-&gt;elem + j))</span><br><span class="line">            &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L1-&gt;elem + i++);</span><br><span class="line">                L3.length++;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (*(L1-&gt;elem + i) &gt; *(L2-&gt;elem + j)) &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L2-&gt;elem + j++);</span><br><span class="line">                L3.length++;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L1-&gt;elem + i++);</span><br><span class="line">                L3.length++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span>(i &lt; L1-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (*(L1-&gt;elem + i) == *(L1-&gt;elem + i + <span class="hljs-number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (j == L1-&gt;length - <span class="hljs-number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L1-&gt;elem + i++);</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        *(L3.elem + index++) = *(L1-&gt;elem + i++);</span><br><span class="line">        L3.length++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (j &lt; L2-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (*(L2-&gt;elem + j) == *(L2-&gt;elem + j + <span class="hljs-number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (j == L2-&gt;length - <span class="hljs-number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                *(L3.elem + index++) = *(L2-&gt;elem + j++);</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        *(L3.elem + index++) = *(L2-&gt;elem + j++);</span><br><span class="line">        L3.length++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> L3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>这个方法大致考虑到了所有可能进行操作的 L1 和 L2 的情况，稍稍复杂了一点，具体实现也可以将 L1 与 L2 中的元素复制到 L3 里，再进行排序和查重的操作。</p>
+<p>出现了一个很不应该出现的问题，就是类似于这样的 while 语句和 if 语句的条件判断：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span> (*(L1-&gt;elem + i) == *(L1-&gt;elem + i + <span class="hljs-number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> (*(L2-&gt;elem + j) == *(L2-&gt;elem + j + <span class="hljs-number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>在最开始的时候没有进行解引用的操作，😂 写成了这个样子：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">while</span> (L1-&gt;elem + i == L1-&gt;elem + i + <span class="hljs-number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">if</span> (L2-&gt;elem + j == L2-&gt;elem + j + <span class="hljs-number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>实际上就是对地址进行了比较，就出现了不会执行这部分语句块的问题，所以对 <strong>指针</strong> 的注意 ⚠️ 尤为重要！！</p>
+<p><strong><em>PS:</em></strong>&emsp;一定要对 <code>*</code> 、 <code>&amp;</code> 和 <code>-&gt;</code> 这三个运算符有一个清晰的认识，具体可以参考 <a href="https://blog.csdn.net/soonfly/article/details/51131141" target="_blank" rel="noopener">这篇</a>  博客，和 <a href="https://blog.csdn.net/weixin_39951988/article/details/87773322" target="_blank" rel="noopener">这篇</a> 。</p>
+<p><b>下载源码 <a href="http://foyoodo.oss-cn-beijing.aliyuncs.com/code/c/SqList.c" target="_blank" rel="noopener">SqList.c <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/inset/code.png" width="20"></a></b></p>
+<p>这是可以直接运行的程序，在 main 函数中验证了部分方法的正确性。关于结构体的定义这里不会详细做阐释，不懂的知识点请自行补充。</p>
+<hr>
+
+        </div>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '9b3a7895e4c086b80b7658e404281c5f',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-12T08:59:28.000Z">2019-09-12</time></div>
+                    <a href="/data-struct-lessons/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数据结构课程实践与收获</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T15:35:02.000Z">2019-09-07</time></div>
+                    <a href="/web-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 开发学习规划</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T14:00:44.000Z">2019-09-05</time></div>
+                    <a href="/web-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="顺序表之初用 C 指针" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
