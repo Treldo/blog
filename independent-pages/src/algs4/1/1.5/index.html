@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>algs4 习题 1-5 - Vubee&#39;s Site</title>
+
+
+    <meta name="description" content="练习1. 给出数组内容和访问次数只需将方法这样改写一下： private int n = 0;public int find(int index) &amp;#123;    n++;    return id[index];&amp;#125;public void union(int p, int q) &amp;#123;    int pID = find(p);    int qID = find(q);">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4 习题 1-5">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/src/algs4/1/1.5/index.html">
+<meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="练习1. 给出数组内容和访问次数只需将方法这样改写一下： private int n = 0;public int find(int index) &amp;#123;    n++;    return id[index];&amp;#125;public void union(int p, int q) &amp;#123;    int pID = find(p);    int qID = find(q);">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-17T03:51:35.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algs4 习题 1-5">
+<meta name="twitter:description" content="练习1. 给出数组内容和访问次数只需将方法这样改写一下： private int n = 0;public int find(int index) &amp;#123;    n++;    return id[index];&amp;#125;public void union(int p, int q) &amp;#123;    int pID = find(p);    int qID = find(q);">
+<meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="algs4 习题 1-5" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4 习题 1-5
+            
+        </h1>
+        <div class="content">
+            <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="1-给出数组内容和访问次数"><a href="#1-给出数组内容和访问次数" class="headerlink" title="1. 给出数组内容和访问次数"></a>1. 给出数组内容和访问次数</h3><p>只需将方法这样改写一下：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">    <span class="hljs-keyword">return</span> id[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> pID = find(p);</span><br><span class="line">    <span class="hljs-keyword">int</span> qID = find(q);</span><br><span class="line">    <span class="hljs-keyword">if</span> (pID == qID) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; id.length; i++)</span><br><span class="line">            System.out.print(id[i] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; id.length; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (id[i] == pID)</span><br><span class="line">            id[i] = qID;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; id.length; i++)</span><br><span class="line">        System.out.print(id[i] + <span class="hljs-string">" "</span>);</span><br><span class="line">    System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">    count--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试用例可以这样弄：</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = StdIn.readInt();</span><br><span class="line">    UF uf = <span class="hljs-keyword">new</span> EX1(N);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> p = StdIn.readInt();</span><br><span class="line">        <span class="hljs-keyword">int</span> q = StdIn.readInt();</span><br><span class="line">        uf.union(p, q);</span><br><span class="line">    &#125;</span><br><span class="line">    StdOut.println(uf.count + <span class="hljs-string">"components"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-完成-quick-union-算法"><a href="#2-完成-quick-union-算法" class="headerlink" title="2. 完成 quick-union 算法"></a>2. 完成 quick-union 算法</h3><p>与 练习1.5.1 用例相同</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (p != id[p])&#123;</span><br><span class="line">        p = id[p];</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> pRoot = find(p);</span><br><span class="line">    <span class="hljs-keyword">int</span> qRoot = find(q);</span><br><span class="line">    <span class="hljs-keyword">if</span> (pRoot == qRoot)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; id.length; i++)</span><br><span class="line">            System.out.print(id[i] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    id[pRoot] = qRoot;</span><br><span class="line">    n++;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; id.length; i++)</span><br><span class="line">        System.out.print(id[i] + <span class="hljs-string">" "</span>);</span><br><span class="line">    System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">    count--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>画出每次 id[] 数组表示的森林吧～</p>
+<h3 id="3-完成加权-quick-union-算法"><a href="#3-完成加权-quick-union-算法" class="headerlink" title="3. 完成加权 quick-union 算法"></a>3. 完成加权 quick-union 算法</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> current = p, t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (p != id[p]) &#123;</span><br><span class="line">        p = id[p];</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (current != p) &#123;</span><br><span class="line">        t = id[current];</span><br><span class="line">        id[current] = p;</span><br><span class="line">        current = t;</span><br><span class="line">        n += <span class="hljs-number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> i = find(p);</span><br><span class="line">    <span class="hljs-keyword">int</span> j = find(q);</span><br><span class="line">    <span class="hljs-keyword">if</span> (i == j) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sz[i] &lt; sz[j]) &#123;</span><br><span class="line">        id[i] = j;</span><br><span class="line">        sz[j] += sz[i];</span><br><span class="line">        n++;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        id[j] = i;</span><br><span class="line">        sz[i] += sz[j];</span><br><span class="line">        n++;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line">    count--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-添加-sz-数组的操作"><a href="#4-添加-sz-数组的操作" class="headerlink" title="4. 添加 sz[] 数组的操作"></a>4. 添加 sz[] 数组的操作</h3><figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n1 = <span class="hljs-number">0</span>. n2 = <span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> current = p, t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (p != id[p]) &#123;</span><br><span class="line">        p = id[p];</span><br><span class="line">        n1++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (current != p) &#123;</span><br><span class="line">        t = id[current];</span><br><span class="line">        id[current] = p;</span><br><span class="line">        current = t;</span><br><span class="line">        n1 += <span class="hljs-number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p, <span class="hljs-keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> i = find(p);</span><br><span class="line">    <span class="hljs-keyword">int</span> j = find(q);</span><br><span class="line">    <span class="hljs-keyword">if</span> (i == j) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n1);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; sz.length; index++)</span><br><span class="line">            System.out.print(sz[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n2);</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sz[i] &lt; sz[j]) &#123;</span><br><span class="line">        id[i] = j;</span><br><span class="line">        sz[j] += sz[i];</span><br><span class="line">        n1++;</span><br><span class="line">        n2 += <span class="hljs-number">2</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n1);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; sz.length; index++)</span><br><span class="line">            System.out.print(sz[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n2);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        id[j] = i;</span><br><span class="line">        sz[i] += sz[j];</span><br><span class="line">        n1++;</span><br><span class="line">        n2 += <span class="hljs-number">2</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; id.length; index++)</span><br><span class="line">            System.out.print(id[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n1);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; sz.length; index++)</span><br><span class="line">            System.out.print(sz[index] + <span class="hljs-string">" "</span>);</span><br><span class="line">        System.out.printf(<span class="hljs-string">"[%d]\n"</span>, n2);</span><br><span class="line">    &#125;</span><br><span class="line">    count--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-估算时间"><a href="#5-估算时间" class="headerlink" title="5. 估算时间"></a>5. 估算时间</h3><p>\(sum \approx 10^9 \times 10^6 \times 10 \times 10^9 = 10^{25}\)</p>
+<p>\(T = sum \div 10^9 \div 3600 \div 24 \approx 116\ days\)</p>
+<h3 id="6-估算时间"><a href="#6-估算时间" class="headerlink" title="6. 估算时间"></a>6. 估算时间</h3><p>\(sum \approx lg10^9 \times 10 \times 10^6 = 9 \times 10^7\)</p>
+<p>\(T = sum \div 10^9 \approx 0.1\ s\)</p>
+<h3 id="7-类的实现"><a href="#7-类的实现" class="headerlink" title="7. 类的实现"></a>7. 类的实现</h3><p>前面都有提到，这里就不再赘述了。</p>
+<h3 id="8-错在哪里"><a href="#8-错在哪里" class="headerlink" title="8. 错在哪里"></a>8. 错在哪里</h3><p>没有将 id[i] 同 p 的根节点 ID 进行比较，不能实现将两条多触点链连接在一起。</p>
+<h3 id="9-可不可能"><a href="#9-可不可能" class="headerlink" title="9. 可不可能"></a>9. 可不可能</h3><p>已经有同学将对应的树画出来了：</p>
+<div style="text-align: center; ">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/union-find7.png" width="160">
+</div>
+
+<br>
+
+<p><font size="2px"><strong>原文链接：</strong><a href="https://www.cnblogs.com/songdechiu/p/6561636.html" target="_blank" rel="noopener">https://www.cnblogs.com/songdechiu/p/6561636.html</a></font></p>
+<p>对于加权的 quick-union 算法来说，需要将小的树连接到大的树上。如果是先将 6 和成型的 5 建立连接，那么 6 应该连接到 5 上面才对；而如果现将 5 和成型的 6 建立连接，那么 5 应该与 6 的根节点 1 建立连接。按这种思路进行推理…</p>
+<h3 id="10-是否正确"><a href="#10-是否正确" class="headerlink" title="10. 是否正确"></a>10. 是否正确</h3><p>这样做是正确的，不过可能会将一个小的树直接连接在另一个树的树叶上，增加了树的高度，不能保证性能。</p>
+<h3 id="11-影响"><a href="#11-影响" class="headerlink" title="11. 影响"></a>11. 影响</h3><p>这样做增加了 find() 操作的成本，增加了数组的访问次数，每一次 find() 操作都会消耗大量的时间成本。</p>
+
+        </div>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: 'b5eb6000b75b79110466adb695c83c4d',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-12T08:59:28.000Z">2019-09-12</time></div>
+                    <a href="/data-struct-lessons/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数据结构课程实践与收获</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-07T15:35:02.000Z">2019-09-07</time></div>
+                    <a href="/web-index/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 开发学习规划</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-05T14:00:44.000Z">2019-09-05</time></div>
+                    <a href="/web-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Web 学习笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-19T12:24:40.000Z">2019-08-19</time></div>
+                    <a href="/awesome-mac-apps/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Mac 上好用的 APP 整理</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
+                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/笔记/">笔记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="algs4 习题 1-5" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Vubee&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Email" href="mailto:vuebee.163.com">
+                        
+                        <i class="far fa-envelope"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Vubee">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
