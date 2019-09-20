@@ -7,17 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: C++ - Vubee&#39;s Site</title>
+<title>单向循环链表解决约瑟夫环问题 - Golang 实现 - Vubee&#39;s Site</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vubee&#39;s Site">
-<meta property="og:url" content="http://vubee.github.io/tags/C/index.html">
+    <meta name="description" content="问题描述编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。 基本要求利用单向循环链表存储结构模拟此过程，按照出列">
+<meta property="og:type" content="website">
+<meta property="og:title" content="单向循环链表解决约瑟夫环问题 - Golang 实现">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/data-struct-lessons/josephus-go/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="问题描述编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。 基本要求利用单向循环链表存储结构模拟此过程，按照出列">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-20T03:07:43.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vubee&#39;s Site">
+<meta name="twitter:title" content="单向循环链表解决约瑟夫环问题 - Golang 实现">
+<meta name="twitter:description" content="问题描述编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。 基本要求利用单向循环链表存储结构模拟此过程，按照出列">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
 
@@ -88,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                <img src="/images/logo.png" alt="单向循环链表解决约瑟夫环问题 - Golang 实现" height="28">
             
             </a>
         </div>
@@ -145,57 +149,63 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">C++</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-31T16:14:33.000Z">2019-01-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/C/">C++</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/C/算法/">算法</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1174 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/hanoi-cpp/">Hanoi 塔问题在 C++ 中的递归实现</a>
+                单向循环链表解决约瑟夫环问题 - Golang 实现
             
         </h1>
         <div class="content">
-            <p>Hanoi 塔问题想必是很多同学在大一都会接触到的，它是一个很经典的算法问题，这里主要阐释 Hanoi 问题在 C++ 中的递归实现。</p>
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。</p>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>利用单向循环链表存储结构模拟此过程，按照出列的顺序印出各人的编号。</p>
+<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><p>7 个人的密码依次为：3, 1, 7, 2, 4, 8, 4 ；m 值为 6 （正确的出列顺序应为 6, 1, 4, 7, 2, 3, 5）。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><ul>
+<li><strong>定义指针和结构体</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 定义结构体</span></span><br><span class="line"><span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	num  <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 序号</span></span><br><span class="line">	code <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 密码</span></span><br><span class="line">	next *Person</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> head, tail *Person     <span class="hljs-comment">// 分别指向 ring 的头和尾</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>添加操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/* 向 ring 中添加一个编号为 num ，密码为 code 的人 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Person)</span> <span class="hljs-title">add_Jos</span><span class="hljs-params">(num <span class="hljs-keyword">int</span>, code <span class="hljs-keyword">int</span>)</span></span> &#123;</span><br><span class="line">	current := &amp;Person&#123;code: code, num: num&#125;</span><br><span class="line">	<span class="hljs-keyword">if</span> head == <span class="hljs-literal">nil</span> &#123; <span class="hljs-comment">// 当 ring 中还没有人时，使 head 和 tail 指向 current</span></span><br><span class="line">		head = current</span><br><span class="line">		current.next = head</span><br><span class="line">		tail = current</span><br><span class="line">	&#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 将 current 作为 ring 的尾巴，设定 current.next 为 head</span></span><br><span class="line">		tail.next = current</span><br><span class="line">		current.next = head</span><br><span class="line">		tail = current</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>移除操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/* 移除报到 code 的人，打印出这个人的序号并返回他的密码 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Person)</span> <span class="hljs-title">remove_Jos</span><span class="hljs-params">(code <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> code == <span class="hljs-number">1</span> &#123; <span class="hljs-comment">// 当要移除的人是 head 指向的人时</span></span><br><span class="line">		code = head.code</span><br><span class="line">		fmt.Printf(<span class="hljs-string">"%d "</span>, head.num)</span><br><span class="line">		head = head.next</span><br><span class="line">		tail.next = head <span class="hljs-comment">// head 的指向改变，重新设定 tail.next 为 head</span></span><br><span class="line">		<span class="hljs-keyword">return</span> code</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">// 当要移除的人不是 head 指向的人时</span></span><br><span class="line">	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; code<span class="hljs-number">-2</span>; i++ &#123; <span class="hljs-comment">// 使 head 指向需要移除的人的前一个人</span></span><br><span class="line">		head = head.next</span><br><span class="line">	&#125;</span><br><span class="line">	code = head.next.code</span><br><span class="line">	fmt.Printf(<span class="hljs-string">"%d "</span>, head.next.num)</span><br><span class="line">	tail = head           <span class="hljs-comment">// 此时 head 指向的人作为新的 tail</span></span><br><span class="line">	head = head.next.next <span class="hljs-comment">// head 指向需要移除的人的下一个人，他作为新的 head</span></span><br><span class="line">	tail.next = head      <span class="hljs-comment">// head 的指向改变，重新设定 tail.next 为 head</span></span><br><span class="line">	<span class="hljs-keyword">return</span> code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>执行操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">/* 执行操作，m 为设定的初值 */</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Run_Jos</span><span class="hljs-params">(ring *Person, m <span class="hljs-keyword">int</span>)</span></span> &#123;</span><br><span class="line">	code := m</span><br><span class="line">	<span class="hljs-keyword">for</span> head != tail &#123;     <span class="hljs-comment">// 当 head 和 tail 不指向同一个人时（ ring 中剩余人数大于 1 ）</span></span><br><span class="line">		code = Remove_Jos(ring, code)     <span class="hljs-comment">// 进行移除操作并获取新的密码</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Print(head.num)     <span class="hljs-comment">// 将 ring 中的最后一个人的序号打印出来</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>主函数</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">var</span> ring *Person</span><br><span class="line"></span><br><span class="line">	<span class="hljs-comment">// 添加测试数据</span></span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>)</span><br><span class="line">	Add_Jos(ring, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>)</span><br><span class="line"></span><br><span class="line">	Run_Jos(ring, <span class="hljs-number">6</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行结果</strong></li>
+</ul>
+<figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">6 1 4 7 2 3 5</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>单向循环链表与单向链表差别并不大，只是增加了一个尾部指向头部的步骤。这个例子中使用到了 <code>head</code> 和 <code>tail</code> 两个指针用来记录 <code>ring</code> 中的头和尾，这样方便了向其中添加新的数据，而且头尾两个指针也有效减少了在删除过程中循环遍历结点的操作。</p>
+
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/hanoi-cpp/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
         
     </div>
 </div>
@@ -206,7 +216,29 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '397ab397fc03e15bb96b2983e8c5b412',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
 
+    </div>
+</div>
 </div>
                 
 
@@ -319,7 +351,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                    <img src="/images/logo.png" alt="单向循环链表解决约瑟夫环问题 - Golang 实现" height="28">
                 
                 </a>
                 <p class="is-size-7">
