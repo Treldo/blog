@@ -18,7 +18,7 @@
 <meta property="og:description" content="问题描述编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。 基本要求利用单向循环链表存储结构模拟此过程，按照出列">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-20T03:07:43.452Z">
+<meta property="og:updated_time" content="2019-09-26T09:49:52.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单向循环链表解决约瑟夫环问题 - Golang 实现">
 <meta name="twitter:description" content="问题描述编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。 基本要求利用单向循环链表存储结构模拟此过程，按照出列">
@@ -160,8 +160,8 @@
         <div class="content">
             <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>编号为 1, 2, … , n 的 n 个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数上限值 m ，从第一个人开始按顺时针方向自 1 开始顺序报数，报到 m 时停止报数。报 m 的人出列，将他的密码作为新的 m 的值，从他在顺时针方向上的下一个人开始重新从 1 报数，如此下去，直至所有人全部出列为止。</p>
 <h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><p>利用单向循环链表存储结构模拟此过程，按照出列的顺序印出各人的编号。</p>
-<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><p>7 个人的密码依次为：3, 1, 7, 2, 4, 8, 4 ；m 值为 6 （正确的出列顺序应为 6, 1, 4, 7, 2, 3, 5）。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><ul>
+<h2 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h2><p>7 个人的密码依次为：3, 1, 7, 2, 4, 8, 4 ；<br>m 值为 6 （正确的出列顺序应为 6, 1, 4, 7, 2, 3, 5）。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="单个结构体的实现"><a href="#单个结构体的实现" class="headerlink" title="单个结构体的实现"></a>单个结构体的实现</h3><ul>
 <li><strong>定义指针和结构体</strong></li>
 </ul>
 <figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 定义结构体</span></span><br><span class="line"><span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	num  <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 序号</span></span><br><span class="line">	code <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 密码</span></span><br><span class="line">	next *Person</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> head, tail *Person     <span class="hljs-comment">// 分别指向 ring 的头和尾</span></span><br></pre></td></tr></table></figure>
@@ -191,7 +191,49 @@
 </ul>
 <figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">6 1 4 7 2 3 5</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>单向循环链表与单向链表差别并不大，只是增加了一个尾部指向头部的步骤。这个例子中使用到了 <code>head</code> 和 <code>tail</code> 两个指针用来记录 <code>ring</code> 中的头和尾，这样方便了向其中添加新的数据，而且头尾两个指针也有效减少了在删除过程中循环遍历结点的操作。</p>
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<p>单向循环链表与单向链表差别并不大，只是增加了一个尾部指向头部的步骤。这个例子中使用到了 <code>head</code> 和 <code>tail</code> 两个指针用来记录 <code>ring</code> 中的头和尾，这样方便了向其中添加新的数据，而且头尾两个指针也有效减少了在删除过程中循环遍历结点的操作。</p>
+<h3 id="多个结构体的实现"><a href="#多个结构体的实现" class="headerlink" title="多个结构体的实现"></a>多个结构体的实现</h3><ul>
+<li><strong>定义结构体</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	num  <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 序号</span></span><br><span class="line">	code <span class="hljs-keyword">int</span>     <span class="hljs-comment">// 密码</span></span><br><span class="line">	next *Person <span class="hljs-comment">// 指向下一个 Person</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">type</span> Ring <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	head  *Person <span class="hljs-comment">// ring 的头</span></span><br><span class="line">	tail  *Person <span class="hljs-comment">// ring 的尾</span></span><br><span class="line">	count <span class="hljs-keyword">int</span>     <span class="hljs-comment">// ring 中的元素数目</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>判断 Ring 是否为空</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Ring)</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> <span class="hljs-title">bool</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> ring.head != <span class="hljs-literal">nil</span> &#123; <span class="hljs-comment">// 当 head 值为 nil 时 ring 为空</span></span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>添加操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Ring)</span> <span class="hljs-title">add</span><span class="hljs-params">(code <span class="hljs-keyword">int</span>)</span></span> &#123;</span><br><span class="line">	ring.count++        <span class="hljs-comment">// 放在片段开头是为了方便设定 Person 的 num 属性</span></span><br><span class="line">	<span class="hljs-keyword">if</span> ring.isEmpty() &#123; <span class="hljs-comment">// ring 为空时首尾相同</span></span><br><span class="line">		ring.tail = &amp;Person&#123;ring.count, code, <span class="hljs-literal">nil</span>&#125;</span><br><span class="line">		ring.head = ring.tail</span><br><span class="line">	&#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">		oldTail := ring.tail <span class="hljs-comment">// 暂存 tail</span></span><br><span class="line">		ring.tail = &amp;Person&#123;ring.count, code, <span class="hljs-literal">nil</span>&#125;</span><br><span class="line">		oldTail.next = ring.tail</span><br><span class="line">	&#125;</span><br><span class="line">	ring.tail.next = ring.head <span class="hljs-comment">// 确保循环性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>移除操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// 根据密码值移除 Person ，有 num 和 code 两个返回值</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Ring)</span> <span class="hljs-title">outFor</span><span class="hljs-params">(code <span class="hljs-keyword">int</span>)</span> <span class="hljs-params">(num <span class="hljs-keyword">int</span>, _ <span class="hljs-keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> code &lt; <span class="hljs-number">1</span> &#123; <span class="hljs-comment">// 值 -1 标志传入参数值非法</span></span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span></span><br><span class="line">	&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> code == <span class="hljs-number">1</span> &#123; <span class="hljs-comment">// 当需要移除的是 head</span></span><br><span class="line">		code = ring.head.code</span><br><span class="line">		num = ring.head.num</span><br><span class="line">		ring.tail.next = ring.head.next</span><br><span class="line">		ring.head = ring.tail.next</span><br><span class="line">	&#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 使用 current 确定移除位置</span></span><br><span class="line">		current := ring.head</span><br><span class="line">		<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; code<span class="hljs-number">-2</span>; i++ &#123;</span><br><span class="line">			current = current.next</span><br><span class="line">		&#125; <span class="hljs-comment">// 循环结束后 current 指向需要移除的前一个位置</span></span><br><span class="line">		code = current.next.code</span><br><span class="line">		num = current.next.num</span><br><span class="line">		ring.tail = current           <span class="hljs-comment">// current 为新的 tail</span></span><br><span class="line">		ring.head = current.next.next <span class="hljs-comment">// current.next 变成了孤儿，Golang 提供了自动回收机制</span></span><br><span class="line">		ring.tail.next = ring.head    <span class="hljs-comment">// 确保循环性</span></span><br><span class="line">	&#125;</span><br><span class="line">	ring.count--</span><br><span class="line">	<span class="hljs-keyword">return</span> num, code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>执行操作</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(ring *Ring)</span> <span class="hljs-title">run</span><span class="hljs-params">(code <span class="hljs-keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="hljs-keyword">var</span> num <span class="hljs-keyword">int</span></span><br><span class="line">	<span class="hljs-keyword">for</span> ring.head != ring.tail &#123; <span class="hljs-comment">// 依次打印满足条件时移除元素的 num 值</span></span><br><span class="line">		num, code = ring.outFor(code)</span><br><span class="line">		fmt.Printf(<span class="hljs-string">"%d "</span>, num)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Print(ring.head.num) <span class="hljs-comment">// 打印 ring 中最后一个元素的 num 值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>主函数</strong></li>
+</ul>
+<figure class="highlight golang hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">	<span class="hljs-comment">// run 方法的测试</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">var</span> ring Ring</span><br><span class="line">		ring.add(<span class="hljs-number">3</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">1</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">7</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">2</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">4</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">8</span>)</span><br><span class="line">		ring.add(<span class="hljs-number">4</span>)</span><br><span class="line"></span><br><span class="line">		ring.run(<span class="hljs-number">6</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>运行结果</strong></li>
+</ul>
+<figure class="highlight shell hljs"><table><tr><td class="code"><pre><span class="line">6 1 4 7 2 3 5</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>总结</strong></li>
+</ul>
+<p>相比于使用单个结构体实现来说，这种方法避免了独立于结构体之外的 <code>head</code> 和 <code>tail</code> 指针的使用，在程序中减少了指针的操作，主体更容易理解。</p>
 
         </div>
         

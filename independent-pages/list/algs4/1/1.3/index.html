@@ -18,7 +18,7 @@
 <meta property="og:description" content="三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。 1. API     表 1.3.1&amp;emsp;泛型可迭代的基础集合数据类型的 API        背包           public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;                B">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-16T16:04:45.535Z">
+<meta property="og:updated_time" content="2019-09-26T03:13:54.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-1.3 背包、队列和栈">
 <meta name="twitter:description" content="三种数据类型：背包（Bag）、队列（Queue）和栈（Stack）。它们的不同之处就在于删除或者访问对象的顺序不同。 1. API     表 1.3.1&amp;emsp;泛型可迭代的基础集合数据类型的 API        背包           public class Bag&amp;lt;Item&amp;gt; implements Iterable&amp;lt;Item&amp;gt;                B">
@@ -299,7 +299,7 @@
 <li>输入的每个字符串都以空格隔开；</li>
 <li>必须要有右括号（否则不能实现计算）；</li>
 <li>每次只能进行两个操作数的运算；</li>
-<li>开平方也是要需要加括号的。f</li>
+<li>开平方也是要需要加括号的。</li>
 </ul>
 <p>所以为了保险起见，还是要清晰一点。来个稍复杂一些的，比如要计算 12/(6-sqrt(2*8))，我们就这样写： <code>( 12 / ( 6 - ( sqrt ( 2 * 8 ) ) ) )</code></p>
 <p>用过 Emacs 学习了 emacs-lisp 或者学过 lisp 语言的同学可能会想，如果用 lisp 语法进行输入可不可以得到正确结果呢 🧐？同样计算上面式子，输入下面的内容，自己试一试：<code>( / 12 ( - 6 ( sqrt ( * 2 8 ) ) ) )</code></p>
