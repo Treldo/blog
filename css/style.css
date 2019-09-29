@@ -2,10 +2,10 @@
  *       Override CSS Framework
  * --------------------------------- */
 html {
-  font-size: 14px;
+  font-size: 13px;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: transparent;
 }
 body,
 button,
@@ -55,7 +55,7 @@ textarea {
 }
 .card {
   border-radius: 4px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 1px rgba(0,0,0,0.2);
 }
 .card + .card,
 .card + .column-right-shadow {
@@ -80,7 +80,7 @@ img.thumbnail {
   max-height: 1.75rem;
 }
 .navbar-main {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 1px rgba(0,0,0,0.5);
 }
 .navbar-main .navbar-menu,
 .navbar-main .navbar-start,
@@ -372,19 +372,23 @@ img.thumbnail {
   font-weight: 600;
 }
 .content h1 {
-  font-size: 1.5em;
+  font-size: 1.75em;
+  color: #192a56;
 }
 .content h2 {
-  font-size: 1.25em;
+  font-size: 1.375em;
+  color: #273c75;
 }
 .content h3 {
-  font-size: 1em;
+  font-size: 1.125em;
+  color: #40739e;
 }
 .content h4 {
-  font-size: 0.85em;
+  font-size: 1em;
+  color: #3498db;
 }
 .content h5 {
-  font-size: 0.6em;
+  font-size: 0.85em;
 }
 .content code,
 .content pre {
@@ -424,7 +428,7 @@ figure.highlight pre {
   overflow: visible;
 }
 figure.highlight pre .line {
-  line-height: 1.5rem;
+  line-height: 1.6rem;
 }
 figure.highlight figcaption,
 figure.highlight .gutter {

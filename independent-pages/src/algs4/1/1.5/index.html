@@ -18,7 +18,7 @@
 <meta property="og:description" content="练习1. 给出数组内容和访问次数只需将方法这样改写一下： private int n = 0;public int find(int index) &amp;#123;    n++;    return id[index];&amp;#125;public void union(int p, int q) &amp;#123;    int pID = find(p);    int qID = find(q);">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-17T03:51:35.178Z">
+<meta property="og:updated_time" content="2019-09-27T10:25:46.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4 习题 1-5">
 <meta name="twitter:description" content="练习1. 给出数组内容和访问次数只需将方法这样改写一下： private int n = 0;public int find(int index) &amp;#123;    n++;    return id[index];&amp;#125;public void union(int p, int q) &amp;#123;    int pID = find(p);    int qID = find(q);">
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github.css">
 
 
     
@@ -180,7 +180,7 @@
 <h3 id="8-错在哪里"><a href="#8-错在哪里" class="headerlink" title="8. 错在哪里"></a>8. 错在哪里</h3><p>没有将 id[i] 同 p 的根节点 ID 进行比较，不能实现将两条多触点链连接在一起。</p>
 <h3 id="9-可不可能"><a href="#9-可不可能" class="headerlink" title="9. 可不可能"></a>9. 可不可能</h3><p>已经有同学将对应的树画出来了：</p>
 <div style="text-align: center; ">
-  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/union-find7.png" width="160">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/1.5/weight-union-1.5.9.png" width="160">
 </div>
 
 <br>
@@ -393,15 +393,13 @@
 var IcarusThemeSettings = {
     article: {
         highlight: {
-            clipboard: true,
-            fold: 'unfolded'
+            clipboard: false,
+            fold: ''
         }
     }
 };
 </script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
 

@@ -18,7 +18,7 @@
 <meta property="og:description" content="动态连通性假设“相连”是一种等价关系，则它具有：自反性、对称性和传递性。 注： 本节使用网络方面的术语，将对象称为触点，将整数对称为连接，将等价类称为连通分量或是简称为分量。      表 1.5.1&amp;emsp;union-find 算法的 API        public class UF                UF(int N)     以整数标识（0 到 N-1）初始化 N 个触点">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-22T06:45:28.068Z">
+<meta property="og:updated_time" content="2019-09-28T08:04:20.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-1.5 案例研究：union-find 算法">
 <meta name="twitter:description" content="动态连通性假设“相连”是一种等价关系，则它具有：自反性、对称性和传递性。 注： 本节使用网络方面的术语，将对象称为触点，将整数对称为连接，将等价类称为连通分量或是简称为分量。      表 1.5.1&amp;emsp;union-find 算法的 API        public class UF                UF(int N)     以整数标识（0 到 N-1）初始化 N 个触点">
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github.css">
 
 
     
@@ -286,7 +286,7 @@
 <p><strong>find() 方法的实现：</strong></p>
 <figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> current = p, t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (p != id[p]) p = id[p];</span><br><span class="line">    <span class="hljs-comment">// 将当前节点的每代父节点都链接到根节点上（但不会改变它的子节点）</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (current != p) &#123;</span><br><span class="line">        t = id[current];</span><br><span class="line">        id[current] = p;</span><br><span class="line">        current = t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点+"></a>知识点+</h2><ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
 <li>cell-probe 是一种计算模型，我们只会记录对随机内存的访问，内存的大小足以保存所有输入且假设其他操作均没有成本。</li>
 </ul>
 <h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>见 <a href="/independent-pages/src/algs4/1/1.5/">习题 1-5</a></p>
@@ -495,15 +495,13 @@
 var IcarusThemeSettings = {
     article: {
         highlight: {
-            clipboard: true,
-            fold: 'unfolded'
+            clipboard: false,
+            fold: ''
         }
     }
 };
 </script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
 

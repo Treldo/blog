@@ -18,7 +18,7 @@
 <meta property="og:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-09T15:44:34.710Z">
+<meta property="og:updated_time" content="2019-09-28T08:04:22.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-1.4 算法分析">
 <meta name="twitter:description" content="如何更好地将问题规模和运行时间的关系量化？ 计时器的例子 计时器的数据类型 public class Stopwatch &amp;#123;    private final long start;    /**     * 创建一个计时器。     */    public Stopwatch() &amp;#123;        start = System.currentTimeMillis();">
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/github.css">
 
 
     
@@ -289,7 +289,7 @@
 <p>当程序调用一个方法时，系统会从栈中为方法分配所需要的内存用于保存局部变量；<br>方法返回时，它所占用的内存也被返回给了系统栈。</p>
 <p>所以在递归程序中创建数组或是其他大型对象是很危险的！</p>
 <p><strong><em>关注运行成本！</em></strong></p>
-<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点+"></a>知识点+</h2><ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
 <li>\(f(N)\)~\(g(N)\) 的正式定义为 \(\lim_{N\to\infty}\frac{f(N)}{g(N)} = 1\)</li>
 </ul>
 <h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><p>见 <a href="/independent-pages/src/algs4/1/1.4/">习题 1-4</a></p>
@@ -498,15 +498,13 @@
 var IcarusThemeSettings = {
     article: {
         highlight: {
-            clipboard: true,
-            fold: 'unfolded'
+            clipboard: false,
+            fold: ''
         }
     }
 };
 </script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
 
