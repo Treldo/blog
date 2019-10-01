@@ -10,19 +10,19 @@
 <title>关于 VS Code 中 &#34;Classpath is incomplete&#34; warning - Vubee&#39;s Site</title>
 
 
-    <meta name="description" content="问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
+    <meta name="description" content="本文翻译自官方 vscode-java Wiki 。   问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
 <meta name="keywords" content="VS Code">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 VS Code 中 &quot;Classpath is incomplete&quot; warning">
 <meta property="og:url" content="http://vubee.github.io/vscode-warning-classpath-is-incomplete/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
-<meta property="og:description" content="问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
+<meta property="og:description" content="本文翻译自官方 vscode-java Wiki 。   问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-26T16:50:06.120Z">
+<meta property="og:updated_time" content="2019-10-01T02:52:21.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于 VS Code 中 &quot;Classpath is incomplete&quot; warning">
-<meta name="twitter:description" content="问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
+<meta name="twitter:description" content="本文翻译自官方 vscode-java Wiki 。   问题概述每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
 
@@ -165,7 +165,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 362 个字)
+                    2 分钟 读完 (大约 370 个字)
                 </span>
                 
                 
@@ -178,7 +178,11 @@
             
         </h1>
         <div class="content">
-            <h2 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h2><p>每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：<a id="more"></a></p>
+            <div style="font-size: 12px;">
+  <p>本文翻译自官方 <a href="https://github.com/redhat-developer/vscode-java/wiki/%22Classpath-is-incomplete%22-warning" target="_blank" rel="noopener">vscode-java Wiki</a> 。</p>
+</div>
+
+<h2 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h2><p>每当打开一个 java 文件时，它不属于项目（我们称之为独立的 java 文件），vscode-java 无法计算正确的类路径。它使报告编译错误变得毫无用处，因为 UI 会在整个文件中填充令人分心的红色错误，例如：<a id="more"></a></p>
 <img src="https://user-images.githubusercontent.com/148698/49049616-bd28bd00-f1ad-11e8-8122-598fb1aee14f.png">
 
 <p>幸运的是，vscode-java 仍然能够为基本 JDK 类提供有用的内容辅助，报告语法错误，计算类大纲或允许代码导航。因此，显示以下警告：</p>
@@ -192,9 +196,7 @@
 </li>
 </ul>
 <h2 id="Android-项目"><a href="#Android-项目" class="headerlink" title="Android 项目"></a>Android 项目</h2><p>基于 Gradle 的 Android 项目目前显示此消息，因为目前不支持 Android 开发。这是 <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=468315" target="_blank" rel="noopener">limitation of BuildShip</a>，该项目提供 Gradle 支持。</p>
-<blockquote>
-<p>参考：<a href="https://github.com/redhat-developer/vscode-java/wiki/%22Classpath-is-incomplete%22-warning" target="_blank" rel="noopener">https://github.com/redhat-developer/vscode-java/wiki/%22Classpath-is-incomplete%22-warning</a></p>
-</blockquote>
+<hr>
 
         </div>
         
@@ -230,9 +232,9 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/emacs-note/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/algs4/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Emacs Note</span>
+                <span class="level-item">《算法（第4版）》知识点归纳解读 + 习题解析</span>
             </a>
         </div>
         
@@ -281,11 +283,33 @@
 <div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
     
         
+<div class="statement widget">
+    <div class="card-content" style="font-size: 12px;">
+        <p><b>版权声明</b>：除特殊标注外，本站所有文章均为博主原创，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> 版权协议，转载请附上原文出处链接和本声明。</p>
+    </div>
+</div>
+
+
+    
+        
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-30T22:26:30.000Z">2019-10-01</time></div>
+                    <a href="/cpp-primer-note/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C++ Primer 手记</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -339,19 +363,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time></div>
-                    <a href="/algs4/" class="title has-link-black-ter is-size-6 has-text-weight-normal">《算法（第4版）》知识点归纳解读 + 习题解析</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -362,7 +373,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Elisp/" style="font-size: 10px;">Elisp</a> <a href="/tags/Emacs/" style="font-size: 10px;">Emacs</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hanoi/" style="font-size: 10px;">Hanoi</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
     </div>
 </div>
 
