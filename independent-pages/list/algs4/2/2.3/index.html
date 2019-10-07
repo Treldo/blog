@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签 - Vubee&#39;s Site</title>
+<title>algs4-2.3 快速排序 - Vubee&#39;s Site</title>
 
 
-    <meta name="keywords" content="Java,算法,Mac,笔记,数据结构,Git,C++,Hanoi,VS Code,Web">
+    <meta name="description" content="特点：  原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比； 内循环短小。  缺点：  在实现时需要避免低性能，否则只有平方级别。  基本算法与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。 它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Vubee&#39;s Site">
-<meta property="og:url" content="http://vubee.github.io/tags/index.html">
+<meta property="og:title" content="algs4-2.3 快速排序">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/list/algs4/2/2.3/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="特点：  原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比； 内循环短小。  缺点：  在实现时需要避免低性能，否则只有平方级别。  基本算法与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。 它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-05T11:39:12.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vubee&#39;s Site">
+<meta name="twitter:title" content="algs4-2.3 快速排序">
+<meta name="twitter:description" content="特点：  原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比； 内循环短小。  缺点：  在实现时需要避免低性能，否则只有平方级别。  基本算法与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。 它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
 
@@ -89,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                <img src="/images/logo.png" alt="algs4-2.3 快速排序" height="28">
             
             </a>
         </div>
@@ -106,7 +109,7 @@
                 <a class="navbar-item"
                 href="/categories">分类</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/tags">标签</a>
                 
                 <a class="navbar-item"
@@ -145,88 +148,128 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C++</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Git/">
-                        <span class="tag">Git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Hanoi/">
-                        <span class="tag">Hanoi</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Java/">
-                        <span class="tag">Java</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Mac/">
-                        <span class="tag">Mac</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/VS-Code/">
-                        <span class="tag">VS Code</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Web/">
-                        <span class="tag">Web</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/数据结构/">
-                        <span class="tag">数据结构</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/笔记/">
-                        <span class="tag">笔记</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/算法/">
-                        <span class="tag">算法</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-            </div>
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                algs4-2.3 快速排序
+            
+        </h1>
+        <div class="content">
+            <p><strong>特点</strong>：</p>
+<ul>
+<li>原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比；</li>
+<li>内循环短小。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>在实现时需要避免低性能，否则只有平方级别。</li>
+</ul>
+<h2 id="基本算法"><a href="#基本算法" class="headerlink" title="基本算法"></a>基本算法</h2><p>与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。</p>
+<p>它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。</p>
+<br>
+
+<div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/quicksort-overview.png" width="400" ">
+</div>
+
+<br>
+
+<p>🔜<strong>快速排序</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quick</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        StdRandom.shuffle(a);          <span class="hljs-comment">// Eliminate dependence on input.</span></span><br><span class="line">        sort(a, <span class="hljs-number">0</span>, a.length - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (hi &lt;= lo) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = partition(a, lo, hi);  <span class="hljs-comment">// Partition (see page 291).</span></span><br><span class="line">        sort(a, lo, j - <span class="hljs-number">1</span>);            <span class="hljs-comment">// Sort left part a[lo .. j-1].</span></span><br><span class="line">        sort(a, j + <span class="hljs-number">1</span>, hi);            <span class="hljs-comment">// Sort right part a[j+1 .. hi].</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>快速排序概览</strong></p>
+<div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/quick-sort.png" width="400" ">
+</div>
+
+<br>
+
+<p><strong>数组满足</strong>：</p>
+<ul>
+<li>对于某个 j ，a[j] 的位置已经确定；</li>
+<li>a[lo] 到 a[j-1] 中元素不大于 a[i]；</li>
+<li>a[j+1] 到 a[hi] 中元素不小于 a[j]。</li>
+</ul>
+<p>其中的 a[lo] 就是我们随机取的 <strong>切分元素</strong> ，我们就是通过递归地调用切分来排序的。</p>
+<p><strong>快速排序的切分</strong></p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">partition</span><span class="hljs-params">(Comparable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> i = lo, j = hi+<span class="hljs-number">1</span>;            <span class="hljs-comment">// left and right scan indices</span></span><br><span class="line">    Comparable v = a[lo];            <span class="hljs-comment">// partitioning item</span></span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (less(a[++i], v)) <span class="hljs-keyword">if</span> (i == hi) <span class="hljs-keyword">break</span>;</span><br><span class="line">        <span class="hljs-keyword">while</span> (less(v, a[--j])) <span class="hljs-keyword">if</span> (j == lo) <span class="hljs-keyword">break</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i &gt;= j) <span class="hljs-keyword">break</span>;</span><br><span class="line">        exch(a, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    exch(a, lo, j);</span><br><span class="line">    <span class="hljs-keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>切分轨迹</strong></p>
+<div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/partitioning-trace.png" width="400" ">
+</div>
+
+<br>
+
+<p>⚠️ <strong>注意事项</strong></p>
+<ul>
+<li>原地切分，避免使用辅助数组；</li>
+<li>扫描指针不要越界；</li>
+<li>保持随机性，使切分元素是随机的；</li>
+<li>保证循环可以终止；</li>
+<li>处理切分元素有重复的情况；</li>
+<li>保证递归可以终止。</li>
+</ul>
+<h2 id="性能特点"><a href="#性能特点" class="headerlink" title="性能特点"></a>性能特点</h2><br>
+
+<hr>
+<p><strong>命题</strong>：</p>
+<p><strong>证明</strong>：</p>
+<hr>
+<br>
+
         </div>
+        
+        
+        
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '403df1225f2a397c116fe6a6fa56fb49',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -347,7 +390,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                    <img src="/images/logo.png" alt="algs4-2.3 快速排序" height="28">
                 
                 </a>
                 <p class="is-size-7">

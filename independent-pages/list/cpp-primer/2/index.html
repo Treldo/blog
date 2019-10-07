@@ -18,7 +18,7 @@
 <meta property="og:description" content="指针 空指针使用 nullptr（ C++ 11 中引入） 、NULL ( 预处理变量，cstdlib 中) 、0 生成； 应避免使用 NULL ； 不明确时建议初始化为 nullptr 或 0 。 不能直接操作 void* 指针所指的对象； r 是一个对指针 p 的引用。int *p;int *&amp;amp;r = p;    const 限定符const 默认 const 对象仅在文件内有效，如需">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-01T01:44:47.292Z">
+<meta property="og:updated_time" content="2019-10-07T09:46:44.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第 2 章 变量和基本类型">
 <meta name="twitter:description" content="指针 空指针使用 nullptr（ C++ 11 中引入） 、NULL ( 预处理变量，cstdlib 中) 、0 生成； 应避免使用 NULL ； 不明确时建议初始化为 nullptr 或 0 。 不能直接操作 void* 指针所指的对象； r 是一个对指针 p 的引用。int *p;int *&amp;amp;r = p;    const 限定符const 默认 const 对象仅在文件内有效，如需">
@@ -221,7 +221,21 @@
 
 </li>
 </ul>
-<h2 id="自定义数据结构"><a href="#自定义数据结构" class="headerlink" title="自定义数据结构"></a>自定义数据结构</h2><hr>
+<h2 id="自定义数据结构"><a href="#自定义数据结构" class="headerlink" title="自定义数据结构"></a>自定义数据结构</h2><h3 id="定义-Sales-data-类型"><a href="#定义-Sales-data-类型" class="headerlink" title="定义 Sales_data 类型"></a>定义 Sales_data 类型</h3><ul>
+<li><p>不推荐将类的定义和对象的定义放在一起；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sales_data</span> &#123;</span> &#125; accum, trans, *salesptr;</span><br><span class="line"><span class="hljs-comment">// 推荐写法，与上面等价</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sales_data</span> &#123;</span> &#125;;</span><br><span class="line">Sales_data accum, trans, *salesptr;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>类内初始值</strong> （ C++ 11 ）。</p>
+</li>
+</ul>
+<h3 id="编写自己的头文件"><a href="#编写自己的头文件" class="headerlink" title="编写自己的头文件"></a>编写自己的头文件</h3><ul>
+<li><p>头文件保护符；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> SALES_DATA_H</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SALES_DATA_H</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Sales_data</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> bookNo;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> units_sold = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">double</span> revenue = <span class="hljs-number">0.0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line"><span class="hljs-comment">// 除此之外还有 #ifdef</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>预处理变量无视 C++ 语言中关于作用域的规则。</p>
+</li>
+</ul>
+<hr>
 
         </div>
         
