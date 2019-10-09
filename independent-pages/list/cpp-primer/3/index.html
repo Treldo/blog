@@ -18,7 +18,7 @@
 <meta property="og:description" content="命名空间的 using 声明 每个名字都需要独立的 using 声明； using namespace std;using std::cin; // ...  头文件中不应包含 using 声明（否则每个使用了这个头文件的文件都会含有这个声明，可能会产生名字冲突）；   标准库类型 string（可变长的字符序列）string 对象的初始化 拷贝初始化 和 直接初始化 （是否使用了 “=”）。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-08T05:58:33.039Z">
+<meta property="og:updated_time" content="2019-10-09T13:54:06.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第 3 章 字符串、向量和数组">
 <meta name="twitter:description" content="命名空间的 using 声明 每个名字都需要独立的 using 声明； using namespace std;using std::cin; // ...  头文件中不应包含 using 声明（否则每个使用了这个头文件的文件都会含有这个声明，可能会产生名字冲突）；   标准库类型 string（可变长的字符序列）string 对象的初始化 拷贝初始化 和 直接初始化 （是否使用了 “=”）。">
@@ -218,7 +218,7 @@
 </li>
 <li><p>编译器根据模版创建类或函数的过程称为 <strong>实例化</strong> ；</p>
 </li>
-<li><p>vector 是模版而非类型，应包含元素类型，如 vector<int> ；</int></p>
+<li><p>vector 是模版而非类型，应包含元素类型，如 vector&lt;int&gt; ；</p>
 </li>
 <li><p>vector 中元素还是 vector 的新旧标准差异（C++ 11）。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt;   <span class="hljs-comment">// C++ 11 之前的标准需要在右括号前添加空格</span></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;    <span class="hljs-comment">// 新标准不需要加空格</span></span><br></pre></td></tr></table></figure>
@@ -226,16 +226,19 @@
 </li>
 </ul>
 <h3 id="定义和初始化-vector-对象"><a href="#定义和初始化-vector-对象" class="headerlink" title="定义和初始化 vector 对象"></a>定义和初始化 vector 对象</h3><ul>
-<li>直接初始化和间接初始化；</li>
-<li>可以定义一个空的 vector ，在运行时获取到元素的值后再逐一增加；</li>
-<li>列表初始化是值初始化，直接初始化是元素数量和初始值。</li>
-</ul>
-<h4 id="列表初始化"><a href="#列表初始化" class="headerlink" title="列表初始化"></a>列表初始化</h4><figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; articles = &#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;   <span class="hljs-comment">// 拷贝初始化</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v&#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;   <span class="hljs-comment">// 列表初始化</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="创建指定数量的元素"><a href="#创建指定数量的元素" class="headerlink" title="创建指定数量的元素"></a>创建指定数量的元素</h4><figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec(<span class="hljs-number">10</span>, <span class="hljs-number">1</span>);   <span class="hljs-comment">// 10 个 1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="值初始化"><a href="#值初始化" class="headerlink" title="值初始化"></a>值初始化</h4><ul>
-<li><p>支持默认初始化；</p>
+<li><p>直接初始化和间接初始化；</p>
+</li>
+<li><p>可以定义一个空的 vector ，在运行时获取到元素的值后再逐一增加；</p>
+</li>
+<li><p>列表初始化是值初始化，直接初始化是元素数量和初始值；</p>
+</li>
+<li><p>列表初始化；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; articles = &#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;   <span class="hljs-comment">// 拷贝初始化</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; v&#123;<span class="hljs-string">"a"</span>, <span class="hljs-string">"an"</span>, <span class="hljs-string">"the"</span>&#125;;   <span class="hljs-comment">// 列表初始化</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建指定数量的元素；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec(<span class="hljs-number">10</span>, <span class="hljs-number">1</span>);   <span class="hljs-comment">// 10 个 1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值初始化支持默认初始化；</p>
 <figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec(<span class="hljs-number">10</span>);   <span class="hljs-comment">// 10 个 0</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果只提供了元素数量，没有设定初值，只能使用直接初始化。</p>
@@ -296,6 +299,112 @@
 </li>
 <li><p>二分查找。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-comment">// text 必须是有序的</span></span><br><span class="line"><span class="hljs-comment">// beg 和 end 表示搜索范围</span></span><br><span class="line"><span class="hljs-keyword">auto</span> beg = text.begin(), end = text.end();</span><br><span class="line"><span class="hljs-keyword">auto</span> mid = text.begin() + (end - beg) / <span class="hljs-number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">while</span> (mid != end &amp;&amp; *mid != sought)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (sought &lt; *mid) end = mid;</span><br><span class="line">    <span class="hljs-keyword">else</span> beg = mid + <span class="hljs-number">1</span>;</span><br><span class="line">    mid = beg + (end - beg) / <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="数组（大小固定）"><a href="#数组（大小固定）" class="headerlink" title="数组（大小固定）"></a>数组（大小固定）</h2><h3 id="定义和初始化"><a href="#定义和初始化" class="headerlink" title="定义和初始化"></a>定义和初始化</h3><ul>
+<li><p>数组纬度必须是一个常量表达式；</p>
+</li>
+<li><p>默认初始化；</p>
+</li>
+<li><p>不允许使用 auto 关键字由初始值的列表推断类型（auto 的到的类型是指针）；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> ia[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">ia2</span><span class="hljs-params">(ia)</span></span>;   <span class="hljs-comment">// ia2 的类型是 int* ，指向 ia 的第一个元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>忽略数组纬度，显式初始化；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> ia[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;;        <span class="hljs-comment">// 正确</span></span><br><span class="line"><span class="hljs-keyword">int</span> ia2[<span class="hljs-number">2</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;;   <span class="hljs-comment">// 错误，初始值过多</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串字面值初始化；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">char</span> ca[] = <span class="hljs-string">"C++"</span>;     <span class="hljs-comment">// 正确：'C'，'+'，'+'，'\0'</span></span><br><span class="line"><span class="hljs-keyword">char</span> ca2[<span class="hljs-number">3</span>] = <span class="hljs-string">"C++"</span>;   <span class="hljs-comment">// 错误，没有空间存放空字符</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不允许拷贝和赋值（一些编译器支持数组的赋值，是所谓的 <strong>编译器扩展</strong> ，尽量避免使用）；</p>
+</li>
+<li><p>复杂数组声明。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> *ptrs[<span class="hljs-number">10</span>];              <span class="hljs-comment">// ptrs 是含有 10 个整型指针的数组</span></span><br><span class="line"><span class="hljs-keyword">int</span> (*Parray)[<span class="hljs-number">10</span>] = &amp;arr;   <span class="hljs-comment">// Parray 指向一个含有 10 个整数的数组</span></span><br><span class="line"><span class="hljs-keyword">int</span> (&amp;arrRef)[<span class="hljs-number">10</span>] = arr;    <span class="hljs-comment">// arrRef 引用一个含有 10 个整数的数组</span></span><br><span class="line"><span class="hljs-keyword">int</span> *(&amp;arry)[<span class="hljs-number">10</span>] = ptrs;    <span class="hljs-comment">// array 是数组的引用，该数组含有 10 个指针</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="访问数组元素"><a href="#访问数组元素" class="headerlink" title="访问数组元素"></a>访问数组元素</h3><ul>
+<li>通常类型为 size_t ，是一种机器相关的无符号类型，定义在 <a href="https://zh.cppreference.com/w/cpp/header/cstddef" target="_blank" rel="noopener">cstddef 头文件</a> 中；</li>
+<li>推荐使用范围 for 进行遍历；</li>
+<li>缓冲区溢出：下标越界，试图访问非法内存区域。</li>
+</ul>
+<h3 id="指针和数组"><a href="#指针和数组" class="headerlink" title="指针和数组"></a>指针和数组</h3><ul>
+<li><p>大多数表达式中，使用数组类型的对象其实是使用一个指向该数组首元素的指针；</p>
+</li>
+<li><p>可以使用 decltype 推断类型；</p>
+</li>
+<li><p>指针也是迭代器；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> *e = &amp;arr[<span class="hljs-number">10</span>];   <span class="hljs-comment">// 尾后迭代器</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> *b = arr; b != e; ++b)</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; *b &lt;&lt; <span class="hljs-built_in">endl</span>;   <span class="hljs-comment">// 输出 arr 中元素</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>标准库函数 begin 和 end （非成员函数，定义在 <a href="https://zh.cppreference.com/w/cpp/iterator" target="_blank" rel="noopener">iterator 头文件</a> 中）</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> *beg = begin(ia);</span><br><span class="line"><span class="hljs-keyword">int</span> *last = end(ia);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>尾后指针不能执行解引用和递增操作；</p>
+</li>
+<li><p>指针运算问题；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">size_t</span> sz = <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> arr[sz] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> *p = arr + sz;    <span class="hljs-comment">// 正确，arr 转换成指向它首元素的指针</span></span><br><span class="line"><span class="hljs-keyword">int</span> *p2 = arr + <span class="hljs-number">10</span>;   <span class="hljs-comment">// 错误，arr 只有 5 个元素，p2 的值未定义</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针相减得到类型 ptrdiff_t ，同样定义在 <a href="https://zh.cppreference.com/w/cpp/header/cstddef" target="_blank" rel="noopener">cstddef 头文件</a> 中，是机器相关的带符号类型；</p>
+</li>
+<li><p>指向同一对象的指针可以进行比较；</p>
+</li>
+<li><p>内置的下标运算符所用的索引值不是无符号类型，这一点与 vector 和 string 不一样。</p>
+</li>
+</ul>
+<h3 id="C-风格字符串"><a href="#C-风格字符串" class="headerlink" title="C 风格字符串"></a>C 风格字符串</h3><p>字符串放在字符数组中以空字符（<code>&#39;\0&#39;</code>）结束。</p>
+<p><a href="https://zh.cppreference.com/w/cpp/header/cstring" target="_blank" rel="noopener">cstring 头文件</a> 中，C 风格字符串的函数：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-built_in">strlen</span>(p)</span><br><span class="line"><span class="hljs-built_in">strcmp</span>(p1, p2)</span><br><span class="line"><span class="hljs-built_in">strcat</span>(p1, p2)</span><br><span class="line"><span class="hljs-built_in">strcpy</span>(p1, p2)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>strlen 函数的一个误区（正解：直到遇到空字符才会停止）；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">char</span> ca[] = &#123;<span class="hljs-string">'C'</span>, <span class="hljs-string">'+'</span>, <span class="hljs-string">'+'</span>&#125;;</span><br><span class="line"><span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">strlen</span>(ca) &lt;&lt; <span class="hljs-built_in">endl</span>;    <span class="hljs-comment">// 错误，ca 没有以空字符结束</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运算符作用在 C 风格字符串上，实际比较的是指针而非字符串本身，需要使用 strcmp ；</p>
+</li>
+<li><p>对大多数应用来说，使用 <a href="https://zh.cppreference.com/w/cpp/header/string" target="_blank" rel="noopener">标准库 string</a> 要比使用 C 风格字符串更安全、更高效。</p>
+</li>
+</ul>
+<h3 id="与旧代码的接口"><a href="#与旧代码的接口" class="headerlink" title="与旧代码的接口"></a>与旧代码的接口</h3><h4 id="混用-string-对象和-C-风格字符串"><a href="#混用-string-对象和-C-风格字符串" class="headerlink" title="混用 string 对象和 C 风格字符串"></a>混用 string 对象和 C 风格字符串</h4><ul>
+<li><p>允许使用以空字符结束的字符数组来初始化 string 对象或为 string 对象赋值；</p>
+</li>
+<li><p>允许使用以空字符结束的字符数组作为 string 对象加法运算的一个运算对象（不能两个运算对象都是）；</p>
+</li>
+<li><p>string 对象的复合赋值允许使用以空字符结束的字符数组作为右侧的运算对象；</p>
+</li>
+<li><p>s_str 成员函数；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-string">"Hello World"</span>)</span></span>;</span><br><span class="line"><span class="hljs-keyword">char</span> *str = s;                <span class="hljs-comment">// 错误，不能使用 string 对象初始化 char*</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *str = s.cstr();   <span class="hljs-comment">// 正确，c_str 返回一个 C 风格字符串，是一个指针</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>⚠️ 如果执行完 c_str 函数后程序想一直都能使用其返回的数组，最好重新拷贝一份。</p>
+</li>
+</ul>
+<h4 id="使用数组初始化-vector-对象"><a href="#使用数组初始化-vector-对象" class="headerlink" title="使用数组初始化 vector 对象"></a>使用数组初始化 vector 对象</h4><ul>
+<li><p>指明拷贝区域；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> int_arr[] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ivec(begin(int_arr), end(int_arr));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以是数组的一部分（传入地址）；</p>
+</li>
+<li><p>📒 尽量使用 vector 和迭代器而非内置数组和指针；尽量使用 string 而非 C 风格的基于数组的字符串。</p>
+</li>
+</ul>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>实际上是数组的数组。</p>
+<ul>
+<li><p>初始化；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;</span><br><span class="line">    &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>&#125;,</span><br><span class="line">    &#123;<span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;&#123; <span class="hljs-number">0</span> &#125;, &#123; <span class="hljs-number">4</span> &#125;, &#123; <span class="hljs-number">8</span> &#125;&#125;;   <span class="hljs-comment">// 每行第一个元素</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;   <span class="hljs-comment">// 显式初始化第一行 4 个元素，其余执行值初始化为 0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下标引用；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> (&amp;row)[<span class="hljs-number">4</span>] = ia[<span class="hljs-number">1</span>];   <span class="hljs-comment">// 将 row 绑定到 ia 的第二个 4 元素数组上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>⚠️ 范围 for 遍历的一个重点：除了最内层循环外，其他控制变量都应是引用类型；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> row : ia)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> col : row)   <span class="hljs-comment">// 错误，无法通过编译（row 不是引用，而是指向数组首元素的 int*）</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 正确方式</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;row : ia)</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> col : row)       <span class="hljs-comment">// 不同于上面，这里的 col 不是一个指针</span></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; col &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针和多维数组，圆括号不可少；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">int</span> *ip[<span class="hljs-number">4</span>];     <span class="hljs-comment">// 整型指针的数组</span></span><br><span class="line"><span class="hljs-keyword">int</span> (*ip)[<span class="hljs-number">4</span>];   <span class="hljs-comment">// 指向含有 4 个整数的数组</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 auto 或 decltype 避免在数组前面加上指针类型（C++ 11）；</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> p = ia; p != ia + <span class="hljs-number">3</span>; ++p)   <span class="hljs-comment">// p 指向含有 4 个整数的数组</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> q = *p; q != *p + <span class="hljs-number">4</span>; ++q)</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; *q &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 使用库函数 begin 和 end 实现</span></span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> p = begin(ia); p != end(ia); ++p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> q = begin(*p); q != end(*p); ++q)</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; *q &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类型别名简化多维数组的指针。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> int_array = <span class="hljs-keyword">int</span>[<span class="hljs-number">4</span>];</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> int_array[<span class="hljs-number">4</span>];   <span class="hljs-comment">// 与上面声明等价</span></span><br><span class="line"><span class="hljs-keyword">for</span> (int_array *p = ia; p != ia + <span class="hljs-number">3</span>; ++p)   <span class="hljs-comment">// p 指向含有 4 个整数的数组（这里是 ia 的第一个子数组）</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> *q = *p; q != *p + <span class="hljs-number">4</span>; ++q)</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; *q &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>

@@ -18,7 +18,7 @@
 <meta property="og:description" content="指针 空指针使用 nullptr（ C++ 11 中引入） 、NULL ( 预处理变量，cstdlib 中) 、0 生成； 应避免使用 NULL ； 不明确时建议初始化为 nullptr 或 0 。 不能直接操作 void* 指针所指的对象； r 是一个对指针 p 的引用。int *p;int *&amp;amp;r = p;    const 限定符const 默认 const 对象仅在文件内有效，如需">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-07T09:46:44.078Z">
+<meta property="og:updated_time" content="2019-10-09T13:53:27.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第 2 章 变量和基本类型">
 <meta name="twitter:description" content="指针 空指针使用 nullptr（ C++ 11 中引入） 、NULL ( 预处理变量，cstdlib 中) 、0 生成； 应避免使用 NULL ； 不明确时建议初始化为 nullptr 或 0 。 不能直接操作 void* 指针所指的对象； r 是一个对指针 p 的引用。int *p;int *&amp;amp;r = p;    const 限定符const 默认 const 对象仅在文件内有效，如需">
@@ -189,14 +189,16 @@
 <h3 id="constexpr"><a href="#constexpr" class="headerlink" title="constexpr"></a>constexpr</h3><ul>
 <li>constexpr 类型只能使用常量表达式进行初始化；</li>
 <li>constexpr 指针的初值必须是 nullptr 、0 或者是储存于某个固定地址中的对象；</li>
-<li>在 constexpr 声明中如果定义了一个指针，限定符只对指针有效。</li>
+<li>在 constexpr 声明中如果定义了一个指针，限定符只对指针有效，与指针所指对象无关。<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *p = <span class="hljs-literal">nullptr</span>;             <span class="hljs-comment">// p 是指向整型常量的指针</span></span><br><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> *q = <span class="hljs-literal">nullptr</span>;         <span class="hljs-comment">// q 是指向整数的常量指针</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *r = <span class="hljs-literal">nullptr</span>;   <span class="hljs-comment">// r 是常量指针，指向整型常量</span></span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 <h2 id="处理类型"><a href="#处理类型" class="headerlink" title="处理类型"></a>处理类型</h2><h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><ul>
 <li><p>使用 <strong>别名声明</strong> 定义类型别名（ C++ 11 ）；</p>
 <figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">using</span> SI = Sales_item;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>一个错误的理解。</p>
-<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">char</span> *pstring;</span><br><span class="line"><span class="hljs-keyword">const</span> pstring cstr;     <span class="hljs-comment">// 指向 char 的常量指针</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cstr = <span class="hljs-number">0</span>;   <span class="hljs-comment">// 指向 const char 的指针</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">char</span> *pstring;   <span class="hljs-comment">// pstring 是 char* 的别名</span></span><br><span class="line"><span class="hljs-keyword">const</span> pstring cstr;      <span class="hljs-comment">// 指向 char 的常量指针</span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cstr = <span class="hljs-number">0</span>;    <span class="hljs-comment">// 指向 const char 的指针</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
