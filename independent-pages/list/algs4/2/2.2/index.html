@@ -18,7 +18,7 @@
 <meta property="og:description" content="归并排序最吸引人的性质就是能够保证长度为 \(N\) 的数组排序所需时间和 \(NlogN\) 成正比；缺点是所需的额外空间和 \(N\) 成正比。 原地归并将数组拆分成两个部分。操作完成后，左半部分小于等于右半部分。 public static void merge(Compareable[] a, int lo, int mid, int hi) &amp;#123;    int i = lo, j">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-09-28T08:06:57.372Z">
+<meta property="og:updated_time" content="2019-10-10T09:00:38.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-2.2 归并排序">
 <meta name="twitter:description" content="归并排序最吸引人的性质就是能够保证长度为 \(N\) 的数组排序所需时间和 \(NlogN\) 成正比；缺点是所需的额外空间和 \(N\) 成正比。 原地归并将数组拆分成两个部分。操作完成后，左半部分小于等于右半部分。 public static void merge(Compareable[] a, int lo, int mid, int hi) &amp;#123;    int i = lo, j">
@@ -191,7 +191,7 @@
 
 <p><em>换一种方式理解：下面的树就有 \(n\) 层，对于 \(0\) 到 \(n - 1\) 之间的任意 \(k\) ，自顶向下第 \(k\) 层有 \(2^k\) 个子数组，每个数组的长度为 \(2^{k-n}\) ，归并最多需要 \(2^{k-n}\) 次比较。每层的比较次数就是 \(2^k \times 2^{k-n} = 2^n\) ，\(n\) 层总共为 \(n2^n = NlgN\) 。</em></p>
 <div style="text-align: center;">
-  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/mergesort-tree-n-16.png" width="600" ">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/mergesort-tree-n-16.png" width="600">
 </div>
 
 <br>
@@ -207,11 +207,11 @@
 <h3 id="测试数组是否已经有序"><a href="#测试数组是否已经有序" class="headerlink" title="测试数组是否已经有序"></a>测试数组是否已经有序</h3><p>上面提到的 <code>merge()</code> 方法是将数组拆分成两个部分（左小右大），而对于左右两边都已经排好序的情况下，当 a[mid] &lt; a[mid + 1] 时，实际上整个数组已经有序，我们就可以跳过这一步的归并操作。这样做并不会影响排序的递归调用，但对于任意有序的子数组，算法的运行时间就变为线性的了。</p>
 <h3 id="不将元素复制到辅助数组"><a href="#不将元素复制到辅助数组" class="headerlink" title="不将元素复制到辅助数组"></a>不将元素复制到辅助数组</h3><p>我们可以先将输入数组排序到辅助数组，然后在递归调用的每个层次交换 🎭 输入数组与辅助数组的角色，这样就省去了迭代复制的操作。</p>
 <h2 id="自底向上的归并排序"><a href="#自底向上的归并排序" class="headerlink" title="自底向上的归并排序"></a>自底向上的归并排序</h2><p>思路就是先归并微型数组，再成对归并的到的子数组。</p>
-<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MergeBU</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Compareable[] aux;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(Compareable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> mid, <span class="hljs-keyword">int</span> hi)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Compareable[] a)</span> </span>&#123; <span class="hljs-comment">// 共进行 lgN 次两两归并</span></span><br><span class="line">        <span class="hljs-keyword">int</span> N = a.length;</span><br><span class="line">        aux = <span class="hljs-keyword">new</span> Compareable[N];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> sz = <span class="hljs-number">1</span>; sz &lt; N; sz = sz + sz)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> lo = <span class="hljs-number">0</span>; lo &lt; N - sz; lo += sz + sz)</span><br><span class="line">                <span class="hljs-comment">// 归并两个大小为 sz 的数组，保证右索引不超过 N - 1</span></span><br><span class="line">                merge(a, lo, lo + sz -<span class="hljs-number">1</span>, Math.min(lo + sz + sz - <span class="hljs-number">1</span>, N - <span class="hljs-number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MergeBU</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Compareable[] aux;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(Compareable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> mid, <span class="hljs-keyword">int</span> hi)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Compareable[] a)</span> </span>&#123;   <span class="hljs-comment">// 共进行 lgN 次两两归并</span></span><br><span class="line">        <span class="hljs-keyword">int</span> N = a.length;</span><br><span class="line">        aux = <span class="hljs-keyword">new</span> Compareable[N];   <span class="hljs-comment">// 这里的 aux 数组在 merge 方法中会使用</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> sz = <span class="hljs-number">1</span>; sz &lt; N; sz += sz)</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> lo = <span class="hljs-number">0</span>; lo &lt; N - sz; lo += <span class="hljs-number">2</span> * sz)</span><br><span class="line">                <span class="hljs-comment">// 归并两个大小为 sz 的数组，保证右索引不超过 N - 1</span></span><br><span class="line">                merge(a, lo, lo + sz -<span class="hljs-number">1</span>, Math.min(lo + <span class="hljs-number">2</span> * sz - <span class="hljs-number">1</span>, N - <span class="hljs-number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>图片会更直观一点：</p>
 <div style="text-align: center;">
-  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/visual-trace-of-bottom-up-mergesort.png" width="200" ">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/visual-trace-of-bottom-up-mergesort.png" width="200">
 </div>
 
 <br>
@@ -226,19 +226,19 @@
 <p><strong>命题</strong>：没有任何基于比较的算法能够保证使用少于 \(lg(N!)\) ~ \(NlgN\) 次比较将长度为 \(N\) 的数组排序。</p>
 <p><strong>证明</strong>：对于 \(N\) 个不同的主键，有 \(N!\) 种不同的排列。这是一个 \(N = 3\) 时的比较树：</p>
 <div style="text-align: center;">
-  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/tree-n-3.png" width="300" ">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/tree-n-3.png" width="300">
 </div>
 
 <br>
 
-<p>树中的结点要么是一片叶子 <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/leaf.png" width="110" "> ，表示排序完成前的原输入顺序；要么是一个内部结点 <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/in-node.png" width="24" "> ，表示比较操作。</p>
+<p>树中的结点要么是一片叶子 <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/leaf.png" width="110"> ，表示排序完成前的原输入顺序；要么是一个内部结点 <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/in-node.png" width="24"> ，表示比较操作。</p>
 
 <p>二叉树的一个基本组合学性质就是高度为 \(h\) 的树最多只可能有 \(2^h\) 个叶子结点，拥有 \(2^h\) 个结点的树是完美平衡的，或称为完全树。所以我们可以得到：</p>
 <p>$$N! \leq 叶子结点的数量 \leq 2^h$$</p>
 <p>\(h\) 的值就是最坏情况下的比较次数，两边同时取对数得到任意算法的比较次数至少为 \(lgN!\) 。</p>
 <p>根据 <a href="https://zhuanlan.zhihu.com/p/56546743" target="_blank" rel="noopener">斯特林公式</a> 可得近似 \(lgN!\) ~ \(NlgN\) 。</p>
 <div style="text-align: center;">
-  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/stirling.jpg" width="300" ">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.2/stirling.jpg" width="300">
 </div>
 
 <hr>
