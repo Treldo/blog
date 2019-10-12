@@ -18,7 +18,7 @@
 <meta property="og:description" content="特点：  原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比； 内循环短小。  缺点：  在实现时需要避免低性能，否则只有平方级别。  基本算法与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。 它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-10T15:26:07.593Z">
+<meta property="og:updated_time" content="2019-10-12T14:20:11.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="algs4-2.3 快速排序">
 <meta name="twitter:description" content="特点：  原地排序（只需要一个很小的辅助栈），所需时间与 \(NlgN\) 成正比； 内循环短小。  缺点：  在实现时需要避免低性能，否则只有平方级别。  基本算法与归并排序相同，快速排序也是一种分治的排序算法；与归并排序不同，快速排序的思路是将子数组变有序，从而得到整个有序数列。 它利用切分元素将数组划分成两个部分，递归调用发生在处理整个数组之后，切分的位置取决于数组的内容。">
@@ -178,7 +178,7 @@
 <br>
 
 <p>🔜<strong>快速排序</strong></p>
-<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quick</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        StdRandom.shuffle(a);          <span class="hljs-comment">// Eliminate dependence on input.</span></span><br><span class="line">        sort(a, <span class="hljs-number">0</span>, a.length - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (hi &lt;= lo) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = partition(a, lo, hi);  <span class="hljs-comment">// Partition (see page 291).</span></span><br><span class="line">        sort(a, lo, j - <span class="hljs-number">1</span>);            <span class="hljs-comment">// Sort left part a[lo .. j-1].</span></span><br><span class="line">        sort(a, j + <span class="hljs-number">1</span>, hi);            <span class="hljs-comment">// Sort right part a[j+1 .. hi].</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quick</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        StdRandom.shuffle(a);          <span class="hljs-comment">// Eliminate dependence on input.</span></span><br><span class="line">        sort(a, <span class="hljs-number">0</span>, a.length - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (hi &lt;= lo) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = partition(a, lo, hi);</span><br><span class="line">        sort(a, lo, j - <span class="hljs-number">1</span>);            <span class="hljs-comment">// Sort left part a[lo .. j-1].</span></span><br><span class="line">        sort(a, j + <span class="hljs-number">1</span>, hi);            <span class="hljs-comment">// Sort right part a[j+1 .. hi].</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -269,12 +269,52 @@
 
 </li>
 </ul>
-<h3 id="熵最优的排序"><a href="#熵最优的排序" class="headerlink" title="熵最优的排序"></a>熵最优的排序</h3><div style="text-align: center;">
+<h3 id="熵最优的排序"><a href="#熵最优的排序" class="headerlink" title="熵最优的排序"></a>熵最优的排序</h3><p>在实际应用中可能会出现数据重复次数很多的情况，这就具有很大的改进潜力，我们可以将当前实现的线性对数级的性能提高到线性级别。一个简单的思路是将数组切分为三个部分。</p>
+<figure class="highlight java hljs"><table><tr><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Quick3way</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">        StdRandom.shuffle(a);          <span class="hljs-comment">// Eliminate dependence on input.</span></span><br><span class="line">        sort(a, <span class="hljs-number">0</span>, a.length - <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sort</span><span class="hljs-params">(Comparable[] a, <span class="hljs-keyword">int</span> lo, <span class="hljs-keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (hi &lt;= lo) <span class="hljs-keyword">return</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> lt = lo, i = lo+<span class="hljs-number">1</span>, gt = hi;</span><br><span class="line">        Comparable v = a[lo];</span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt;= gt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> cmp = a[i].compareTo(v);</span><br><span class="line">            <span class="hljs-keyword">if</span> (cmp &lt; <span class="hljs-number">0</span>) exch(a, lt++, i++);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cmp &gt; <span class="hljs-number">0</span>) exch(a, i, gt--);</span><br><span class="line">            <span class="hljs-keyword">else</span> i++;</span><br><span class="line">        &#125;  <span class="hljs-comment">// Now a[lo..lt-1] &lt; v = a[lt..gt] &lt; a[gt+1..hi]. sort(a, lo, lt - 1);</span></span><br><span class="line">        sort(a, gt + <span class="hljs-number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>三种情况</strong></p>
+<ul>
+<li>a[i] &lt; v，将 a[lt] 和 a[i] 进行交换，将 lt 和 i 加一；</li>
+<li>a[i] &gt; v，将 a[gt] 和 a[i] 进行交换，将 gt 减一；</li>
+<li>a[i] = v，将 i 加一。</li>
+</ul>
+<p>三向切分的快速排序主要是用在重复数据量比较大的情况，比如对按男女进行排序。对于这种只有若干主键的随机数组，归并排序的时间复杂度是线性对数的，而三向切分的快速排序则是线性的。而对于主键几乎不重复的随机序列，三向切分的快速排序的性能只会是线性对数级别，在这种情况下可以使用三取样四取样切分等方法来达到更好的排序效果。</p>
+<p><strong>切分轨迹</strong></p>
+<div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/3-way-partitioning-trace.png" width="300">
+</div>
+
+<br>
+
+<p><strong>可视轨迹</strong></p>
+<div style="text-align: center;">
   <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/visual-trace-of-quick-sort-3-way.png" width="400">
 </div>
 
 <br>
 
+<p>设 \(P(i)\) 为随机抽取一个元素时第 \(i\) 个主键值出现的概率，那么所有主键的 <em>信息熵（香农信息量）</em> 可以定义为：</p>
+<p>$$H(P) = \sum_{i=1}^n P(i)log_2{\frac{1}{P(i)}} = -\sum_{i=1}^n P(i)log_2{P(i)}$$</p>
+<p>储存空间的储存因子 \(F(P_i)\)：</p>
+<p>$$F(P_i) = log_2{(\frac{1}{P_i})}$$</p>
+<p>关于 <em>信息熵（香农信息量）</em> 的内容可以参考：</p>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/熵_(信息论)" target="_blank" rel="noopener">【维基百科】熵（信息论）</a>；</li>
+<li><a href="https://www.zhihu.com/question/30828247/answer/160647576" target="_blank" rel="noopener">【知乎问答】信息熵</a> ；</li>
+<li><a href="https://charlesliuyx.github.io/2017/09/11/什么是信息熵、交叉熵和相对熵/" target="_blank" rel="noopener">【遥行的博客】信息熵、交叉熵和相对熵</a> 。</li>
+</ul>
+<p><em>给定任意一个待排序的数组，通过统计每个主键出现的频率就可以计算出它包含的信息量。可以通过这个信息量得出三向切分的快速排序所需要的比较次数的上下界。</em></p>
+<hr>
+<p><strong>命题</strong>：不存在任何基于比较的算法能够保证在 \(NH - N\) 次比较之内将 \(N\) 个元素排序，其中 \(H\) 为主键值出现频率定义的 <em>香农信息量</em> 。</p>
+<p><strong>命题</strong>：对于大小为 \(N\) 的数组，三向切分的快速排序需要 ~ \((2ln2)NH\) 次比较。</p>
+<hr>
+<p><em>三向切分的最坏情况是所有主键均不相同，此时有 \(H = lgN\)（所有主键的概率均为 \(1/N\)），当存在重复主键时，性能就会比归并排序好得多。三向切分是 信息量最优 的，即对任意分布的输入，最优的基于比较的算法平均所需要的比较次数和三向切分的快速排序平均所需的比较次数相互处于常数因子范围内。</em></p>
+<p><em>三向切分的快速排序的运行时间和输入的信息量的 \(N\) 倍是成正比的。对于包含大量重复元素的数组，它将排序时间从线性对数级别降低到了线性级别。三向切分的快速排序对重复元素的适应性使之成为了排序库函数的最佳算法选择 —— 需要将包含大量重复元素的数组排序的用例很常见。</em></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>随机打乱能够防止出现最坏情况并使运行时间可以预计；</li>
+<li>重复元素会直接影响到实际应用中的性能。</li>
+</ul>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>见 <a href="/independent-pages/src/algs4/2/2.3/">练习 2-3</a></p>
 <hr>
 
         </div>
