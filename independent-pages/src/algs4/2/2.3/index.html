@@ -7,17 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: Java - Vubee&#39;s Site</title>
+<title>algs4 习题 2-3 - Vubee&#39;s Site</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vubee&#39;s Site">
-<meta property="og:url" content="http://vubee.github.io/tags/Java/index.html">
+    <meta name="description" content="练习1. 切分轨迹        2. 排序轨迹      注意：这个题目是利用快速排序进行的数组排序轨迹，题解在排序开始前进行了一次打乱。 3. 交换次数对于最大元素，可以在每一次的切分中都进行交换，总共进行切分 \(lgN\) 次，所以最多进行 \(lgN\) 次交换。 4. 交换次数最多的数组  12.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="algs4 习题 2-3">
+<meta property="og:url" content="http://vubee.github.io/independent-pages/src/algs4/2/2.3/index.html">
 <meta property="og:site_name" content="Vubee&#39;s Site">
+<meta property="og:description" content="练习1. 切分轨迹        2. 排序轨迹      注意：这个题目是利用快速排序进行的数组排序轨迹，题解在排序开始前进行了一次打乱。 3. 交换次数对于最大元素，可以在每一次的切分中都进行交换，总共进行切分 \(lgN\) 次，所以最多进行 \(lgN\) 次交换。 4. 交换次数最多的数组  12.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://vubee.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-15T15:33:19.221Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vubee&#39;s Site">
+<meta name="twitter:title" content="algs4 习题 2-3">
+<meta name="twitter:description" content="练习1. 切分轨迹        2. 排序轨迹      注意：这个题目是利用快速排序进行的数组排序轨迹，题解在排序开始前进行了一次打乱。 3. 交换次数对于最大元素，可以在每一次的切分中都进行交换，总共进行切分 \(lgN\) 次，所以最多进行 \(lgN\) 次交换。 4. 交换次数最多的数组  12.">
 <meta name="twitter:image" content="http://vubee.github.io/images/og_image.png">
 
 
@@ -88,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                <img src="/images/logo.png" alt="algs4 习题 2-3" height="28">
             
             </a>
         </div>
@@ -145,63 +149,48 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Java</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-31T10:23:49.000Z">2019-07-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 961 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/algs4/">《算法（第4版）》知识点归纳解读 + 习题解析</a>
+                algs4 习题 2-3
             
         </h1>
         <div class="content">
-            <div style="font-size: 12px;">
-  <p><b>免责声明</b>：本文部分内容来自于《 算法（第4版）》一书（中英），文中提供的所有资料仅供学习使用。如涉及到版权问题，请 <a href="mailto:vuebee@163.com" target="_blank" rel="noopener">邮箱</a> 联系我。</p>
+            <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="1-切分轨迹"><a href="#1-切分轨迹" class="headerlink" title="1. 切分轨迹"></a>1. 切分轨迹</h3><div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/partition-3.1.1.png" width="270">
 </div>
 
 <br>
 
-<p>本文主要记录自己在书中总结归纳的知识点以及一些易懂的解释，希望能帮助自己和大家更好地记忆书中的内容，并在复习时有一个可以对照的大纲。</p>
+<h3 id="2-排序轨迹"><a href="#2-排序轨迹" class="headerlink" title="2. 排序轨迹"></a>2. 排序轨迹</h3><div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/quick-3.1.2.png" width="300">
+</div>
+
+<p><strong>注意</strong>：这个题目是利用快速排序进行的数组排序轨迹，题解在排序开始前进行了一次打乱。</p>
+<h3 id="3-交换次数"><a href="#3-交换次数" class="headerlink" title="3. 交换次数"></a>3. 交换次数</h3><p>对于最大元素，可以在每一次的切分中都进行交换，总共进行切分 \(lgN\) 次，所以最多进行 \(lgN\) 次交换。</p>
+<h3 id="4-交换次数最多的数组"><a href="#4-交换次数最多的数组" class="headerlink" title="4. 交换次数最多的数组"></a>4. 交换次数最多的数组</h3><figure class="highlight plain hljs"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h3><div style="text-align: center;">
+  <img src="http://foyoodo.oss-cn-beijing.aliyuncs.com/image_src/algs4/2.3/partition-3.1.12.png" width="300">
+</div>
+
+<br>
+
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/algs4/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
+        <!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_telegram"></a>
+<a class="a2a_button_wechat"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
         
     </div>
 </div>
@@ -212,7 +201,29 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '62f275f1e5d5106df9a9',
+        clientSecret: 'da440c26a40d88d4ef266a838240971bc72fd2a9',
+        id: '28fb091be449d9309fdd1ef96eb1edfa',
+        repo: 'vubee.github.io',
+        owner: 'Vubee',
+        admin: "Vubee",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
 
+    </div>
+</div>
 </div>
                 
 
@@ -334,7 +345,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="Vubee&#39;s Site" height="28">
+                    <img src="/images/logo.png" alt="algs4 习题 2-3" height="28">
                 
                 </a>
                 <p class="is-size-7">
